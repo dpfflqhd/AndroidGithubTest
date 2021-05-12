@@ -177,25 +177,12 @@ public class JoinActivity extends AppCompatActivity {
             String id = cursor.getString(0);
             String pw = cursor.getString(1);
             String first_name = cursor.getString(2);
-            String last_name = cursor.getString(3);
-            String age = cursor.getString(4);
+            String age = cursor.getString(3);
 
-            data.add("아이디:"+id+" / 비번 : " +pw+ "/ 성 :" +first_name+"/ 이름:"+ last_name + "/ 나이:"+age);
-            Log.d("데이터조회 : ", id + "/" + pw + "/" + first_name + "/" + last_name + "/" + age);
-
-            Intent login_intent = new Intent(getApplicationContext(), LoginActivity.class);
-
-//            memberinfo_intent.putExtra("id", id);
-//            memberinfo_intent.putExtra("pw", pw);
-//            memberinfo_intent.putExtra("first_name", first_name);
-//            memberinfo_intent.putExtra("last_name", last_name);
-//            memberinfo_intent.putExtra("age", age);
-
-
-
-
-
-
+            data.add("아이디:"+ id +" / 비번 : " + pw + "/ 이름:" +first_name + "/ 나이:"+age);
+            Log.d("데이터조회 : ", id + "/" + pw + "/" + first_name + "/" + "/" + age);
+//
+//            Intent login_intent = new Intent(getApplicationContext(), LoginActivity.class);
 
         }
     }
@@ -203,6 +190,8 @@ public class JoinActivity extends AppCompatActivity {
     public void insert(String id, String pw, String first_name, String age){
 //        database.execSQL("insert into member2(name, age, phone) values('"+name+"', "+age+", '"+phone+"');");
 
+
+        select();
 
         ContentValues values = new ContentValues();
         //데이터베이스 객체의 insert()에 넘겨줄 객체
