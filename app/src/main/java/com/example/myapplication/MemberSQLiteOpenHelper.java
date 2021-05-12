@@ -16,7 +16,7 @@ public class MemberSQLiteOpenHelper extends SQLiteOpenHelper {
 
         //최초에 한 번 실행되는 메소드 --> 테이블생성
         //정수형 : INTEGER, 문자열 : TEXT, 실수 : REAL,
-        db.execSQL("create table member3(id TEXT primary key, pw TEXT, first_name TEXT, last_name TEXT, age TEXT)");
+        db.execSQL("create table member3(id TEXT primary key, pw TEXT, first_name TEXT, age TEXT)");
 
     }
 

@@ -82,10 +82,9 @@ public class JoinActivity extends AppCompatActivity {
                 String id = edt_join_id.getText().toString();
                 String pw = edt_join_pw.getText().toString();
                 String first_name = edt_join_fn.getText().toString();
-                String last_name = edt_join_ln.getText().toString();
                 String age = edt_age.getText().toString();
                 data.clear();
-                insert(id, pw, first_name, last_name, age);
+                insert(id, pw, first_name, age);
 //                select();
 
             }
@@ -96,7 +95,6 @@ public class JoinActivity extends AppCompatActivity {
         edt_join_fn = findViewById(R.id.edt_join_fn);
         edt_join_id = findViewById(R.id.edt_join_id);
         edt_join_pw = findViewById(R.id.edt_join_pw);
-        edt_join_ln = findViewById(R.id.edt_join_ln);
         btn_join_go = findViewById(R.id.btn_join_go);
         data = new ArrayList<>();
         adapter = new ArrayAdapter<>(getApplication(), android.R.layout.simple_list_item_1, data);
@@ -185,7 +183,6 @@ public class JoinActivity extends AppCompatActivity {
             data.add("아이디:"+id+" / 비번 : " +pw+ "/ 성 :" +first_name+"/ 이름:"+ last_name + "/ 나이:"+age);
             Log.d("데이터조회 : ", id + "/" + pw + "/" + first_name + "/" + last_name + "/" + age);
 
-            Intent memberinfo_intent = new Intent(getApplicationContext(), StartActivity.class);
             Intent login_intent = new Intent(getApplicationContext(), LoginActivity.class);
 
 //            memberinfo_intent.putExtra("id", id);
@@ -196,7 +193,6 @@ public class JoinActivity extends AppCompatActivity {
 
 
 
-            startActivity(memberinfo_intent);
 
 
 
@@ -204,7 +200,7 @@ public class JoinActivity extends AppCompatActivity {
         }
     }
 
-    public void insert(String id, String pw, String first_name, String last_name, String age){
+    public void insert(String id, String pw, String first_name, String age){
 //        database.execSQL("insert into member2(name, age, phone) values('"+name+"', "+age+", '"+phone+"');");
 
 
@@ -214,10 +210,9 @@ public class JoinActivity extends AppCompatActivity {
         values.put("id", id);
         values.put("pw", pw);
         values.put("first_name", first_name);
-        values.put("last_name", last_name);
         values.put("age", age);
 
-        String member_info = id + pw + first_name + last_name + age;
+        String member_info = id + pw + first_name + age;
 
 
 
