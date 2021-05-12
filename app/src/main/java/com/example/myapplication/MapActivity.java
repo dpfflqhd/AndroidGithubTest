@@ -23,12 +23,9 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
 
 //        net.daum.mf.map.api.MapView mapView = new net.daum.mf.map.api.MapView(this);
-        MapView mapView = new MapView(this);
 
-        RelativeLayout mapViewContainer = (RelativeLayout) findViewById(R.id.MapView);
-        mapViewContainer.addView(mapView);
 
-        try {
+        /*try {
             PackageInfo info = getPackageManager().getPackageInfo("com.example.myapplication", PackageManager.GET_SIGNATURES);
             for(Signature signature : info.signatures){
                 MessageDigest md = MessageDigest.getInstance("SHA");
@@ -37,7 +34,36 @@ public class MapActivity extends AppCompatActivity {
             }
         } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException e) {
             e.printStackTrace();
-        }
+        }*/
 
+        getHashKey();
+
+
+        MapView mapView = new MapView(this);
+
+        RelativeLayout mapViewContainer = (RelativeLayout) findViewById(R.id.MapView);
+        mapViewContainer.addView(mapView);
+
+    }
+
+    private void getHashKey(){
+        PackageInfo packageInfo = null;
+        try {
+            packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (packageInfo == null)
+            Log.e("KeyHash", "KeyHash:null");
+
+        for (Signature signature : packageInfo.signatures) {
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            } catch (NoSuchAlgorithmException e) {
+                Log.e("KeyHash", "Unable to get MessageDigest. signature=" + signature, e);
+            }
+        }
     }
 }

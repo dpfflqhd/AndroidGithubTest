@@ -49,11 +49,12 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-            <meta-data android:name="com.kakao.sdk.AppKey" android:value="5416ba37b7be46d1f8bb2c4287931d7a"/>
+
         </provider>
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="70dc925e75196f959f1957432c8cfdef"/>
 
 
     </application>
 
-    <meta-data android:name="com.kakao.sdk.AppKey" android:value="09f0d8cf2011df1728163c33ebe20ad8"/>
+
 </manifest>
