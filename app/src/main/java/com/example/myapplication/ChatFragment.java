@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 public class ChatFragment extends Fragment {
 
 
+    /*테스트*/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
