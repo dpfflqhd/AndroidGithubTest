@@ -14,6 +14,7 @@ public class CultureFragment extends Fragment {
     private Button btn_fragment_culture_photo;
 
 
+    /*테스트*/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
