@@ -30,14 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CulturePhotoActivity" />
-        <activity android:name=".MemberInfoActivity" />
         <activity android:name=".DateActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".JoinActivity" />
-        <activity android:name=".StartActivity">
-
-        </activity>
         <activity android:name=".PhotoActivity" />
         <activity android:name=".MainActivity" />
 
