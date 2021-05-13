@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             /*data.add("아이디:"+id+" / 비번 : " +pw+ "/ 성 :" +first_name+"/ 이름:"+ last_name + "/ 나이:"+age);
             Log.d("데이터조회 : ", id + "/" + pw + "/" + first_name + "/" + last_name + "/" + age);*/
 
-            Intent main_intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent main_intent = new Intent(getApplicationContext(), ImageActivity.class);
 
             /*main_intent.putExtra("first_name", first_name);
             main_intent.putExtra("last_name", last_name);*/
