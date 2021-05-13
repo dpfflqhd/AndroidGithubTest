@@ -119,7 +119,7 @@ public class ImageActivity extends AppCompatActivity {
                     }
                 };
 
-                // 서버에 요청 보내기
+                // 서버에 요청 보내기 // 현재 너무많은게 실행된다는 에러가 발생중
                 requestQueue.add(requestServer);
             }
         });
