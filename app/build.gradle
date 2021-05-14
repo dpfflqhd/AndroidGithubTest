@@ -48,6 +48,7 @@ dependencies {
     implementation files('libs/libDaumMapAndroid.jar')
     implementation files('libs\\Android_DaumMap_SDK_1.2.11.jar')
     implementation 'com.android.volley:volley:1.2.0'
+    implementation 'me.relex:circleindicator:2.1.4'
 
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
