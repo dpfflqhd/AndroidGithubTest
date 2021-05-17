@@ -25,8 +25,9 @@
 
             <ImageView
                 android:id="@+id/img_food"
-                android:layout_width="482dp"
-                android:layout_height="314dp"
+                android:layout_width="329dp"
+                android:layout_height="313dp"
+                android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -64,7 +65,7 @@
                 android:layout_width="24dp"
                 android:layout_height="47dp"
                 android:layout_marginTop="134dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="132dp"
                 android:background="@drawable/next2"
                 app:layout_constraintBottom_toBottomOf="@+id/img_food"
@@ -75,7 +76,7 @@
                 android:id="@+id/btn_before"
                 android:layout_width="24dp"
                 android:layout_height="47dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="134dp"
                 android:layout_marginBottom="132dp"
                 android:background="@drawable/next1"
@@ -221,6 +222,7 @@
                                 android:layout_width="150dp"
                                 android:layout_height="150dp"
                                 android:layout_weight="1"
+                                android:scaleType="fitXY"
                                 app:srcCompat="@drawable/salmon" />
 
                             <TextView
@@ -234,6 +236,7 @@
                                 android:id="@+id/img_reco2"
                                 android:layout_width="150dp"
                                 android:layout_height="150dp"
+                                android:scaleType="fitXY"
                                 app:srcCompat="@drawable/foodimg" />
 
                             <TextView
@@ -248,6 +251,7 @@
                                 android:layout_width="150dp"
                                 android:layout_height="150dp"
                                 android:layout_weight="1"
+                                android:scaleType="fitXY"
                                 app:srcCompat="@drawable/menu" />
 
                         </LinearLayout>

@@ -23,19 +23,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ResultActivity"></activity>
-        <activity android:name=".StartActivity"></activity>
-        <activity android:name=".MapActivity" />
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".JoinActivity" />
-        <activity android:name=".PhotoActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".MainSwipeActivity">
+        <activity android:name=".ResultActivity" />
+        <activity android:name=".StartActivity" >
+        </activity>
+        <activity android:name=".MapActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".JoinActivity" />
+        <activity android:name=".PhotoActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MainSwipeActivity">
         </activity>
 
         <provider
