@@ -20,16 +20,18 @@ public class MainSwipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_swipe);
 
-        Home = new SecondFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.vpPager, Home).commit();
-
         ViewPager vpPager = (ViewPager) findViewById(R.id.vpPager);
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
+        vpPager.setCurrentItem(1);
 
         CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(vpPager);
 
+
+
+//        Home = new SecondFragment();
+//        getSupportFragmentManager().beginTransaction().replace(R.id.vpPager, Home).commit();
 
     }
 

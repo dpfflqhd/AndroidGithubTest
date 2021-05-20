@@ -22,7 +22,7 @@
         tools:srcCompat="@drawable/camera" />
 
     <Button
-        android:id="@+id/searchImage"
+        android:id="@+id/btn_searchImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="이미지 검색"

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyLikeViewAdapter">
+
+    <ImageView
+        android:id="@+id/iv_dishImg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/zambalaya" />
+
+    <TextView
+        android:id="@+id/tv_resLoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="이태원"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_dishImg"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_resName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="테이스팅룸"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_resLoc"
+        app:layout_constraintTop_toBottomOf="@+id/tv_resLoc" />
+
+    <TextView
+        android:id="@+id/tv_starScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="4.3"
+        app:layout_constraintStart_toStartOf="@+id/tv_resName"
+        app:layout_constraintTop_toBottomOf="@+id/tv_resName" />
+
+    <TextView
+        android:id="@+id/tv_dishName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:text="곱창잠발라야"
+        app:layout_constraintStart_toEndOf="@+id/tv_resName"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
