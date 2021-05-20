@@ -10,8 +10,8 @@
 
     <Button
         android:id="@+id/btn_start_login"
-        android:layout_width="309dp"
-        android:layout_height="51dp"
+        android:layout_width="258dp"
+        android:layout_height="48dp"
         android:layout_gravity="center"
         android:layout_marginTop="501dp"
         android:background="@drawable/rounded"
@@ -26,13 +26,13 @@
 
     <Button
         android:id="@+id/btn_start_join"
-        android:layout_width="309dp"
-        android:layout_height="51dp"
+        android:layout_width="258dp"
+        android:layout_height="48dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="98dp"
         android:background="@drawable/rounded"
-        android:backgroundTint="#5D858585"
+        android:backgroundTint="#858585"
         android:text="CREATE ACCOUNT"
         android:textColor="#C4FFFFFF"
         android:textSize="18sp"
