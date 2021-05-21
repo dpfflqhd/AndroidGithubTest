@@ -19,7 +19,7 @@ public class FirstFragment extends Fragment {
     private String title;
     private int page;
 
-    TextView tv_likeview;
+    TextView tv_likeview, tv_myMusciView;
     ImageView profileImage;
 
     // newInstance constructor for creating fragment with arguments
@@ -46,9 +46,11 @@ public class FirstFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
-
+        
+        // view객체로 요소 초기화
         tv_likeview = view.findViewById(R.id.tv_likeview);
         profileImage = view.findViewById(R.id.profileImage);
+        tv_myMusciView = view.findViewById(R.id.tv_myMusciView);
 
         Glide.with(getContext()).load(R.drawable.paddington).apply(new RequestOptions().circleCrop()).into(profileImage);
 
@@ -60,6 +62,16 @@ public class FirstFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        tv_myMusciView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), MyMusicActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         return view;
     }

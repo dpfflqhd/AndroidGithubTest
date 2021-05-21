@@ -172,7 +172,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/tv_myMusciView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -190,7 +190,7 @@
                 android:layout_marginStart="55dp"
                 android:text="아니 이 맛은...!"
                 android:textSize="9sp"
-                app:layout_constraintBottom_toTopOf="@+id/textView23"
+                app:layout_constraintBottom_toTopOf="@+id/tv_myMusciView"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
