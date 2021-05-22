@@ -3,6 +3,8 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -28,14 +30,18 @@ public class MyMusicActivity extends AppCompatActivity {
         iv_myMusic_back.setImageResource(R.drawable.next1);
         
         // 임의로 데이터셋 생성함. 여기에 DB를 받아오는 코드 필요
-        for (int a=0; a<10; a++) {
+        for (int a=0; a<5; a++) {
             data.add(new MyMusicVO(R.drawable.zambalaya, R.raw.like_a_hurricane, "AI 음악 "+a+"번째"));
+            if (a==3) {
+                data.add(new MyMusicVO(R.drawable.salmon, R.raw.fifth_season, "AI 음악 "+a+"번째"));
+            }
         }
 
-        adapter = new MyMusicAdapter(MyMusicActivity.this, R.layout.adapter_my_music, data);
+        adapter = new MyMusicAdapter(getApplicationContext(), R.layout.adapter_my_music, data);
 
         // 어댑터 실행
         lv_myMusic.setAdapter(adapter);
-
     }
+
+
 }
