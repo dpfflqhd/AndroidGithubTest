@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.FirebaseAuth;
+
 
 public class LoginDialog extends Dialog implements View.OnClickListener{
 
@@ -21,6 +24,7 @@ public class LoginDialog extends Dialog implements View.OnClickListener{
     private TextView btn_ok;
     private EditText edt_loginid, edt_loginpw;
     private String loginid, loginpw;
+    private FirebaseAuth mAuth;
 
 
 
@@ -34,14 +38,22 @@ public class LoginDialog extends Dialog implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_dialog);
 
+
+
         edt_loginid = findViewById(R.id.edt_loginid);
         edt_loginpw = findViewById(R.id.edt_login_pw);
+
+
 
         btn_cancel = (TextView) findViewById(R.id.btn_cancel);
         btn_ok = (TextView) findViewById(R.id.btn_ok);
 
         btn_cancel.setOnClickListener(this);
         btn_ok.setOnClickListener(this);
+
+
+
+
 
     }
 
@@ -57,7 +69,9 @@ public class LoginDialog extends Dialog implements View.OnClickListener{
             // 로그인버튼
             case R.id.btn_ok:
                 ((MainActivity) mContext).finish(); //메인 엑티비티 닫기
+
                 dismiss();
+
                 break;
 
         }

@@ -11,6 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <RelativeLayout
+            android:id="@+id/MapView"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginBottom="64dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.414"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_address"
+            app:layout_constraintVertical_bias="0.215">
+
+        </RelativeLayout>
+
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="412dp"

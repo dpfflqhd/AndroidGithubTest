@@ -10,6 +10,8 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.RelativeLayout;
 
+//import net.daum.mf.map.api.MapView;
+
 import net.daum.mf.map.api.MapView;
 
 import java.security.MessageDigest;
@@ -25,7 +27,7 @@ public class MapActivity extends AppCompatActivity {
 //        net.daum.mf.map.api.MapView mapView = new net.daum.mf.map.api.MapView(this);
 
 
-        /*try {
+        try {
             PackageInfo info = getPackageManager().getPackageInfo("com.example.myapplication", PackageManager.GET_SIGNATURES);
             for(Signature signature : info.signatures){
                 MessageDigest md = MessageDigest.getInstance("SHA");
@@ -34,7 +36,7 @@ public class MapActivity extends AppCompatActivity {
             }
         } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException e) {
             e.printStackTrace();
-        }*/
+        }
 
         getHashKey();
 

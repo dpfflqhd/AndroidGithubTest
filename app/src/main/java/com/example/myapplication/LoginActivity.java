@@ -41,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +85,8 @@ public class LoginActivity extends AppCompatActivity {
             Log.d("데이터조회 : ", id + "/" + pw + "/" + first_name + "/" + last_name + "/" + age);*/
 
             Intent main_intent = new Intent(getApplicationContext(), MainSwipeActivity.class);
+            main_intent.putExtra("id", login_id);
+            Log.d("로그인액티비티, id : ", login_id);
 
             /*main_intent.putExtra("first_name", first_name);
             main_intent.putExtra("last_name", last_name);*/

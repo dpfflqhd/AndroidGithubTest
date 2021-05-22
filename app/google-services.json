@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "661567235195",
+    "project_id": "finfooproject",
+    "storage_bucket": "finfooproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661567235195:android:967531ce75a5998cd9aede",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661567235195-fhqmqt70eugcpi0su1u3t5vmk1u4qipl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmdnxz4GLSG438UOzstUmt3jTTlW05Xyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661567235195-fhqmqt70eugcpi0su1u3t5vmk1u4qipl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

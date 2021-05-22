@@ -41,10 +41,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_srchResultImage" />
 
             <Button
+                android:id="@+id/btn_foodsave"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/like_state"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_review2"
+                app:layout_constraintStart_toEndOf="@+id/btn_review2"
+                app:layout_constraintTop_toTopOf="@+id/btn_review2" />
+
+            <Button
                 android:id="@+id/btn_review2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginBottom="4dp"
                 android:background="@drawable/bubble"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_foodLike"
                 app:layout_constraintStart_toEndOf="@+id/btn_foodLike"
@@ -61,7 +72,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/zambalaya" />
+                app:srcCompat="?attr/selectableItemBackgroundBorderless" />
 
             <ImageView
                 android:id="@+id/imageView12"
@@ -89,9 +100,9 @@
                 android:id="@+id/tv_howMuchLikes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
-                android:text="42명이 좋아합니다"
+                android:text="."
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_foodLike" />
 
@@ -101,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="음식명"
+                android:text="."
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="20sp"
                 android:typeface="normal"
@@ -112,7 +123,7 @@
                 android:id="@+id/tv_srchResultFoodPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="가격 12000원"
+                android:text="."
                 app:layout_constraintStart_toStartOf="@+id/tv_srchResultFoodName"
                 app:layout_constraintTop_toBottomOf="@+id/tv_srchResultFoodName" />
 
@@ -120,7 +131,7 @@
                 android:id="@+id/tv_srchResultResAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="서울특별시 용산구 한남동 이태원로49길 13"
+                android:text="."
                 app:layout_constraintStart_toStartOf="@+id/tv_srchResultResName"
                 app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResName" />
 
@@ -129,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="식당명"
+                android:text="."
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/tv_srchResultFoodPrice"
@@ -140,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="영업시간 12:00 - 24:00"
+                android:text="."
                 app:layout_constraintStart_toStartOf="@+id/tv_srchResultResAddress"
                 app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResAddress" />
 
@@ -148,7 +159,7 @@
                 android:id="@+id/tv_srchResultResTel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="연락처 02-797-8202"
+                android:text="."
                 app:layout_constraintStart_toStartOf="@+id/tv_srchResultResHour"
                 app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResHour" />
 

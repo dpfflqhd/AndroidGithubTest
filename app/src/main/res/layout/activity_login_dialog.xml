@@ -31,7 +31,8 @@
             android:backgroundTint="#F0882C"
             android:ems="10"
             android:hint="ID"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:text="test20@gmail.com" />
 
     </LinearLayout>
 
@@ -53,7 +54,8 @@
             android:backgroundTint="#F0882C"
             android:ems="10"
             android:hint="PW"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:text="rla1622442" />
     </LinearLayout>
 
     <TextView
