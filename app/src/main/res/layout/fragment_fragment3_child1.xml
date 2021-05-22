@@ -20,7 +20,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.414"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_address"
             app:layout_constraintVertical_bias="0.215">
 
         </RelativeLayout>
@@ -60,8 +59,8 @@
 
         <Button
             android:id="@+id/btn_jeonra"
-            android:layout_width="113dp"
-            android:layout_height="139dp"
+            android:layout_width="115dp"
+            android:layout_height="142dp"
             android:layout_marginStart="195dp"
             android:layout_marginTop="78dp"
             android:layout_marginEnd="2dp"
@@ -75,7 +74,7 @@
             android:id="@+id/btn_gangwon"
             android:layout_width="129dp"
             android:layout_height="93dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="55dp"
             android:layout_marginEnd="104dp"
             android:background="@drawable/gangwon"
             app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +126,7 @@
             android:layout_marginTop="19dp"
             android:layout_marginBottom="7dp"
             android:text="이색맛집지도"
-            android:textColor="#F0882C"
+            android:textColor="#F47210"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/imageView6"
@@ -141,7 +140,7 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="19dp"
             android:text="커뮤니티"
-            android:textColor="#636161"
+            android:textColor="#7B7A7A"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/textView18"

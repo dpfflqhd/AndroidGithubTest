@@ -23,20 +23,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SearchResultActivity">
+        <activity android:name=".MyMusicActivity"></activity>
+        <activity android:name=".SearchResultActivity"></activity>
+        <activity android:name=".MyLikeViewActivity" />
+        <activity android:name=".ResultActivity">
+        </activity>
+        <activity android:name=".StartActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MyLikeViewActivity" />
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".StartActivity" />
         <activity android:name=".MapActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".JoinActivity" />
-        <activity android:name=".PhotoActivity"></activity>
+        <activity android:name=".PhotoActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MainSwipeActivity">
 

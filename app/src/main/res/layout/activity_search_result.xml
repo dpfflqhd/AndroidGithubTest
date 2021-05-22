@@ -5,16 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <ImageView
+        android:id="@+id/img_logo3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="62dp"
+        android:layout_marginTop="21dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:srcCompat="@drawable/logocolor2" />
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="0dp"
+        android:layout_height="581dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -32,53 +42,69 @@
 
             <Button
                 android:id="@+id/btn_foodLike"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_width="32dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/like_state"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_srchResultImage" />
 
             <Button
-                android:id="@+id/btn_foodsave"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="20dp"
-                android:background="@drawable/like_state"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_review2"
-                app:layout_constraintStart_toEndOf="@+id/btn_review2"
-                app:layout_constraintTop_toTopOf="@+id/btn_review2" />
-
-            <Button
                 android:id="@+id/btn_review2"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="20dp"
+                android:layout_width="32dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/bubble"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_foodLike"
+                app:layout_constraintEnd_toStartOf="@+id/btn_foodsave"
                 app:layout_constraintStart_toEndOf="@+id/btn_foodLike"
-                app:layout_constraintTop_toTopOf="@+id/btn_foodLike" />
+                app:layout_constraintTop_toTopOf="@+id/btn_foodLike"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/iv_srchResultImage"
-                android:layout_width="350dp"
-                android:layout_height="300dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginEnd="30dp"
+                android:layout_width="345dp"
+                android:layout_height="259dp"
+                android:background="@drawable/salmon"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.352"
+                app:layout_constraintStart_toStartOf="@+id/btn_before2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="?attr/selectableItemBackgroundBorderless" />
+
+            <Button
+                android:id="@+id/btn_before2"
+                android:layout_width="15dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="115dp"
+                android:layout_marginEnd="3dp"
+                android:background="@drawable/next1"
+                app:layout_constraintEnd_toStartOf="@+id/iv_srchResultImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_after2"
+                android:layout_width="15dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="115dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/next2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_srchResultImage"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView12"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -86,104 +112,27 @@
                 app:srcCompat="@drawable/simple_line" />
 
             <ImageView
-                android:id="@+id/imageView13"
+                android:id="@+id/imageView9"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.474"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResTel"
+                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResHour"
                 app:srcCompat="@drawable/simple_line" />
-
-            <TextView
-                android:id="@+id/tv_howMuchLikes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:text="."
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_foodLike" />
-
-            <TextView
-                android:id="@+id/tv_srchResultFoodName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="."
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="20sp"
-                android:typeface="normal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView12" />
-
-            <TextView
-                android:id="@+id/tv_srchResultFoodPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="."
-                app:layout_constraintStart_toStartOf="@+id/tv_srchResultFoodName"
-                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultFoodName" />
-
-            <TextView
-                android:id="@+id/tv_srchResultResAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="."
-                app:layout_constraintStart_toStartOf="@+id/tv_srchResultResName"
-                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResName" />
-
-            <TextView
-                android:id="@+id/tv_srchResultResName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="."
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_srchResultFoodPrice"
-                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultFoodPrice" />
-
-            <TextView
-                android:id="@+id/tv_srchResultResHour"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="."
-                app:layout_constraintStart_toStartOf="@+id/tv_srchResultResAddress"
-                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResAddress" />
-
-            <TextView
-                android:id="@+id/tv_srchResultResTel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="."
-                app:layout_constraintStart_toStartOf="@+id/tv_srchResultResHour"
-                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResHour" />
-
-            <TextView
-                android:id="@+id/textView36"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="이런 음식은 어떠신가요?"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView13" />
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView"
-                android:layout_width="0dp"
-                android:layout_height="270dp"
+                android:layout_width="414dp"
+                android:layout_height="350dp"
+                android:background="#37F47210"
+                android:backgroundTint="#37F47210"
                 android:scrollbars="none"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView36">
+                app:layout_constraintTop_toBottomOf="@+id/imageView9">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
@@ -206,7 +155,7 @@
                         android:layout_width="200dp"
                         android:layout_height="200dp"
                         android:layout_marginStart="30dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="70dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:srcCompat="@tools:sample/avatars" />
@@ -254,17 +203,145 @@
                         app:layout_constraintEnd_toEndOf="@+id/iv_srchResultRelatedImage3"
                         app:layout_constraintStart_toStartOf="@+id/iv_srchResultRelatedImage3"
                         app:layout_constraintTop_toBottomOf="@+id/iv_srchResultRelatedImage3" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="26dp"
+                        android:text="이런 음식은 어떠세요?"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </HorizontalScrollView>
 
-            <ImageView
-                android:id="@+id/imageView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
+            <Button
+                android:id="@+id/btn_foodsave"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="255dp"
+                android:layout_marginBottom="11dp"
+                android:background="@drawable/star1"
+                app:layout_constraintBottom_toTopOf="@+id/textView5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_srchResultImage" />
+
+            <TextView
+                android:id="@+id/tv_howMuchLikes"
+                android:layout_width="21dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="9dp"
+                android:gravity="top"
+                android:text="12"
+                android:textColor="#323232"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView16"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_foodLike" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="115dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="242dp"
+                android:backgroundTint="#FFFFFF"
+                android:text="명이 좋아합니다"
+                android:textColor="#FF323232"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_howMuchLikes"
+                app:layout_constraintTop_toBottomOf="@+id/btn_foodLike" />
+
+            <TextView
+                android:id="@+id/tv_srchResultResName"
+                android:layout_width="351dp"
+                android:layout_height="33dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="bottom"
+                android:text="식당이름"
+                android:textColor="#444444"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_srchResultFoodName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.55"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+
+            <TextView
+                android:id="@+id/tv_srchResultFoodName"
+                android:layout_width="351dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="10dp"
+                android:text="메뉴이름"
+                android:textColor="#555555"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.55"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResName" />
+
+            <TextView
+                android:id="@+id/tv_price2"
+                android:layout_width="351dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="10dp"
+                android:text="가격"
+                android:textColor="#555555"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.55"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultFoodName" />
+
+            <TextView
+                android:id="@+id/tv_srchResultResTel"
+                android:layout_width="351dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="20dp"
+                android:text="전화"
+                android:textColor="#555555"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.55"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_price2" />
+
+            <TextView
+                android:id="@+id/tv_srchResultResAddress"
+                android:layout_width="351dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="10dp"
+                android:text="주소"
+                android:textColor="#555555"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.55"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResTel" />
+
+            <TextView
+                android:id="@+id/tv_srchResultResHour"
+                android:layout_width="351dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp"
+                android:text="시간"
+                android:textColor="#555555"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.55"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResAddress" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

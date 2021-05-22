@@ -5,14 +5,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,11 +23,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class ResultActivity extends AppCompatActivity {
@@ -69,7 +60,7 @@ public class ResultActivity extends AppCompatActivity {
         btn_like = findViewById(R.id.btn_like);   btn_review = findViewById(R.id.btn_review);
 
         tv_count = findViewById(R.id.tv_count);   tv_name = findViewById(R.id.tv_name);
-        tv_menu = findViewById(R.id.tv_menu);     tv_price = findViewById(R.id.tv_price);
+        tv_menu = findViewById(R.id.tv_menu);     tv_price = findViewById(R.id.tv_srchResultFoodPrice);
         tv_tell = findViewById(R.id.tv_tell);     tv_addr = findViewById(R.id.tv_addr);
         tv_time = findViewById(R.id.tv_time);
 
