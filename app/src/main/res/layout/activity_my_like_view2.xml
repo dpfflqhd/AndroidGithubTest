@@ -8,7 +8,7 @@
     tools:context=".MyLikeViewActivity">
 
     <ListView
-        android:id="@+id/lv_like"
+        android:id="@+id/lv_myMusic"
         android:layout_width="394dp"
         android:layout_height="601dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +25,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="20dp"
         android:text="좋아요 표시한 음식"
-        app:layout_constraintBottom_toTopOf="@+id/lv_like"
+        app:layout_constraintBottom_toTopOf="@+id/lv_myMusic"
         app:layout_constraintStart_toEndOf="@+id/iv_like_back" />
 
     <ImageView
@@ -34,7 +34,7 @@
         android:layout_height="43dp"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/lv_like"
+        app:layout_constraintBottom_toTopOf="@+id/lv_myMusic"
         app:layout_constraintStart_toStartOf="parent"
         tools:srcCompat="@drawable/next1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

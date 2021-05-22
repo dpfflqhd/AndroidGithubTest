@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,8 +29,6 @@ public class FirstFragment extends Fragment {
         args.putInt("someInt", page);
         args.putString("someTitle", title);
         fragment.setArguments(args);
-
-
         return fragment;
     }
 
@@ -41,12 +38,6 @@ public class FirstFragment extends Fragment {
         super.onCreate(savedInstanceState);
         page = getArguments().getInt("someInt", 0);
         title = getArguments().getString("someTitle");
-
-        String email = "";
-        Bundle bundle = getArguments(); //번들 안의 텍스트 불러오기
-        email = bundle.getString("id");
-
-        Log.d("1-1번째 email  : ", ""+email);
 
     }
 
@@ -58,11 +49,6 @@ public class FirstFragment extends Fragment {
 
         tv_likeview = view.findViewById(R.id.tv_likeview);
         profileImage = view.findViewById(R.id.profileImage);
-        String email = "";
-        Bundle bundle = getArguments(); //번들 안의 텍스트 불러오기
-        email = bundle.getString("id");
-
-        Log.d("1번째 email  : ", ""+email);
 
         Glide.with(getContext()).load(R.drawable.paddington).apply(new RequestOptions().circleCrop()).into(profileImage);
 

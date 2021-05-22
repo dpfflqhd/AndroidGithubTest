@@ -27,7 +27,8 @@ public class MyLikeViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_like_view2);
 
-        lv_like = findViewById(R.id.lv_like);
+        // 요소 초기화
+        lv_like = findViewById(R.id.lv_myMusic);
         iv_like_back = findViewById(R.id.iv_like_back);
         data = new ArrayList<LikeViewVO>();
 

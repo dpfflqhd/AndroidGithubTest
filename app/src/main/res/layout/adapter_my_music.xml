@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF">
+
+    <ImageView
+        android:id="@+id/iv_myMusicImg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/salmon" />
+
+    <TextView
+        android:id="@+id/tv_myMusicName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="AI 음악명"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintStart_toEndOf="@+id/iv_myMusicImg"
+        app:layout_constraintTop_toTopOf="@+id/iv_myMusicImg" />
+
+    <SeekBar
+        android:id="@+id/sbar_myMusicBar"
+        android:layout_width="280dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/iv_myMusicImg"
+        app:layout_constraintTop_toBottomOf="@+id/btn_myMusicPlay" />
+
+    <ImageButton
+        android:id="@+id/btn_myMusicPlay"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toEndOf="@+id/iv_myMusicImg"
+        app:layout_constraintTop_toBottomOf="@+id/tv_myMusicName"
+        app:srcCompat="@drawable/playbtn" />
+
+    <ImageButton
+        android:id="@+id/btn_myMusicPause"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_myMusicPlay"
+        app:layout_constraintStart_toEndOf="@+id/btn_myMusicPlay"
+        app:layout_constraintTop_toTopOf="@+id/btn_myMusicPlay"
+        app:srcCompat="@drawable/pausebtn" />
+
+    <ImageButton
+        android:id="@+id/btn_myMusicStop"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="150dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_myMusicPause"
+        app:layout_constraintStart_toEndOf="@+id/btn_myMusicPause"
+        app:layout_constraintTop_toTopOf="@+id/btn_myMusicPause"
+        app:srcCompat="@drawable/stopbtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
