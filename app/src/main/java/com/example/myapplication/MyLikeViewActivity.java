@@ -35,11 +35,11 @@ public class MyLikeViewActivity extends AppCompatActivity {
         iv_like_back.setImageResource(R.drawable.next1);
 
         // 데이터 생성 부분. 일단 임시로 아무거나 만듬.
-        for (int a=0; a<10; a++) {
+        for (int a=0; a<5; a++) {
             data.add(new LikeViewVO(R.drawable.zambalaya,"장소"+a, "장소명"+a, "음식명"+a, "별점"+a, "확인"));
         }
 
-        adapter = new MyLikeViewAdapter(MyLikeViewActivity.this, R.layout.activity_my_like_view, data);
+        adapter = new MyLikeViewAdapter(getApplicationContext(), R.layout.activity_my_like_view, data);
 
         // 어댑터 실행
         lv_like.setAdapter(adapter);

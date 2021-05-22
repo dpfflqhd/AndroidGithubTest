@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,7 @@ public class MyMusicAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+
         if (convertView == null) {
 
             convertView = inflater.inflate(layout, null);
@@ -60,87 +62,9 @@ public class MyMusicAdapter extends BaseAdapter {
 
             holder.tv_myMusicName.setText(data.get(position).getMusicName());
             holder.iv_myMusicImg.setImageResource(data.get(position).getMusicImg());
-
-            // 음악 플레이어
-
-            // MediaPlayer 객체가 재생할 음악 지정
-            mediaPlayer = MediaPlayer.create(context, data.get(position).getMusicId());
-            // 무한 반복 옵션
-            mediaPlayer.setLooping(true);
-
-            // 사용자의 Seekbar 임의 조절시 작동하는 코드
-            holder.sbar_myMusicBar.setMax(mediaPlayer.getDuration());
-            holder.sbar_myMusicBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if(fromUser)
-                        mediaPlayer.seekTo(progress);
-                }
-
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {
-
-                }
-
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-
-                }
-            });
-
-            // Seekbar 추적 쓰레드
-            class musicStartThread extends Thread {
-                @Override
-                public void run(){
-                    while(mediaPlayer.isPlaying()){
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        holder.sbar_myMusicBar.setProgress(mediaPlayer.getCurrentPosition());
-                    }
-                }
-            }
-
-            // 재생버튼 눌렀을때
-            holder.btn_myMusicPlay.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mediaPlayer.start();
-
-                    Thread musicStartThread = new musicStartThread();
-                    musicStartThread.start();
-                }
-            });
-
-
-
-
-
-            // 일시정지버튼 눌렀을때
-            holder.btn_myMusicPause.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mediaPlayer.pause();
-                }
-            });
-
-            // 정지버튼 눌렀을때
-            holder.btn_myMusicStop.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mediaPlayer.stop();
-                    try {
-                        mediaPlayer.prepare();
-                    } catch(IOException ie) {
-                        ie.printStackTrace();
-                    }
-                    mediaPlayer.seekTo(0);
-                }
-            });
-
-
+            holder.btn_myMusicPlay.setImageResource(R.drawable.playbtn);
+            holder.btn_myMusicStop.setImageResource(R.drawable.stopbtn);
+            holder.btn_myMusicPause.setImageResource(R.drawable.pausebtn);
 
             //Rounded-Circle
             RoundedCorners corners = new RoundedCorners(14);
@@ -152,6 +76,83 @@ public class MyMusicAdapter extends BaseAdapter {
             Glide.with(convertView).load(data.get(position).getMusicImg()).apply(options).into(holder.iv_myMusicImg);
 
         }
+
+        // 음악 플레이어
+
+        // MediaPlayer 객체가 재생할 음악 지정
+        mediaPlayer = MediaPlayer.create(context, data.get(position).getMusicId());
+        // 무한 반복 옵션
+        mediaPlayer.setLooping(true);
+
+        // 사용자의 Seekbar 임의 조절시 작동하는 코드
+        holder.sbar_myMusicBar.setMax(mediaPlayer.getDuration());
+        holder.sbar_myMusicBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if(fromUser)
+                    mediaPlayer.seekTo(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        // Seekbar 추적 쓰레드
+        class musicStartThread extends Thread {
+            @Override
+            public void run(){
+                while(mediaPlayer.isPlaying()){
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    holder.sbar_myMusicBar.setProgress(mediaPlayer.getCurrentPosition());
+                }
+            }
+        }
+
+        // 재생버튼 눌렀을때
+        holder.btn_myMusicPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.start();
+                Log.d("클릭한 리스트뷰 번호: ", String.valueOf(position));
+
+                Thread musicStartThread = new musicStartThread();
+                musicStartThread.start();
+            }
+        });
+
+        // 일시정지버튼 눌렀을때
+        holder.btn_myMusicPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.pause();
+            }
+        });
+
+        // 정지버튼 눌렀을때
+        holder.btn_myMusicStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.stop();
+                try {
+                    mediaPlayer.prepare();
+                } catch(IOException ie) {
+                    ie.printStackTrace();
+                }
+                mediaPlayer.seekTo(0);
+            }
+        });
+
 
         return convertView;
     }
