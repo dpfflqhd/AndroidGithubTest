@@ -152,7 +152,7 @@
                             android:id="@+id/tv_top_menu2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="3dp"
                             android:text="메뉴이름"
                             android:textColor="#404040"
                             android:textStyle="bold"
@@ -222,7 +222,7 @@
                             android:id="@+id/tv_top_menu1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="3dp"
                             android:text="메뉴이름"
                             android:textColor="#404040"
                             android:textStyle="bold"
@@ -300,7 +300,7 @@
                             android:id="@+id/tv_top_menu3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="3dp"
                             android:text="메뉴이름"
                             android:textColor="#404040"
                             android:textStyle="bold"
@@ -500,7 +500,7 @@
                     android:id="@+id/textView21"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="          이달의 핫한메뉴"
+                    android:text="          이달의 푸드매거진"
                     android:textColor="#373737"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -549,6 +549,108 @@
                             app:layout_constraintStart_toEndOf="@+id/img_month2"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0" />
+
+                        <TextView
+                            android:id="@+id/textView41"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="6dp"
+                            android:text="경남 통영 예곡마을"
+                            android:textColor="#404040"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@+id/img_month1"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView23" />
+
+                        <TextView
+                            android:id="@+id/textView44"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="바다내음 가득한 멍게비빔밥"
+                            android:textColor="#404040"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/textView41"
+                            app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+                        <ImageView
+                            android:id="@+id/imageView20"
+                            android:layout_width="274dp"
+                            android:layout_height="142dp"
+                            android:layout_marginTop="17dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/month1"
+                            app:layout_constraintEnd_toEndOf="@+id/img_month2"
+                            app:layout_constraintStart_toStartOf="@+id/img_month2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView45"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="6dp"
+                            android:text="전남 여수 외동마을"
+                            android:textColor="#404040"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@+id/img_month2"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView20" />
+
+                        <TextView
+                            android:id="@+id/textView46"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="바다 보양식의 끝판왕, 마라 장어매운탕"
+                            android:textColor="#404040"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/textView45"
+                            app:layout_constraintTop_toBottomOf="@+id/textView45" />
+
+                        <ImageView
+                            android:id="@+id/imageView21"
+                            android:layout_width="274dp"
+                            android:layout_height="142dp"
+                            android:layout_marginTop="17dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/month3"
+                            app:layout_constraintEnd_toEndOf="@+id/img_month3"
+                            app:layout_constraintStart_toStartOf="@+id/img_month3"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView48"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="6dp"
+                            android:text="전남 완도 북고마을"
+                            android:textColor="#404040"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@+id/img_month3"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView21" />
+
+                        <TextView
+                            android:id="@+id/textView49"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="라면에 전복을 쏙! 전복 해물라면"
+                            android:textColor="#404040"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/textView48"
+                            app:layout_constraintTop_toBottomOf="@+id/textView48" />
+
+                        <ImageView
+                            android:id="@+id/imageView23"
+                            android:layout_width="274dp"
+                            android:layout_height="142dp"
+                            android:layout_marginTop="17dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/month2"
+                            app:layout_constraintEnd_toEndOf="@+id/img_month1"
+                            app:layout_constraintStart_toStartOf="@+id/img_month1"
+                            app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>
 
@@ -610,7 +712,7 @@
                             app:layout_constraintVertical_bias="0.0" />
 
                         <ImageView
-                            android:id="@+id/imageView10"
+                            android:id="@+id/img_sea1"
                             android:layout_width="274dp"
                             android:layout_height="142dp"
                             android:layout_marginTop="17dp"
@@ -630,13 +732,13 @@
                             android:textColor="#404040"
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="@+id/img_sea11"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+                            app:layout_constraintTop_toBottomOf="@+id/img_sea1" />
 
                         <TextView
                             android:id="@+id/tv_sea_menu1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="3dp"
                             android:text="TextView"
                             android:textColor="#404040"
                             android:textStyle="bold"
@@ -670,7 +772,7 @@
                             android:id="@+id/tv_sea_menu2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="3dp"
                             android:text="TextView"
                             android:textColor="#404040"
                             android:textStyle="bold"
@@ -705,7 +807,7 @@
                             android:id="@+id/tv_sea_menu3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="3dp"
                             android:text="tv_sea_menu3"
                             android:textColor="#404040"
                             android:textStyle="bold"
