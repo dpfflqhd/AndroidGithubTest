@@ -88,7 +88,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView39" />
 
         <TextView
-            android:id="@+id/tv_likeview2"
+            android:id="@+id/tv_myMusciView2"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="15dp"
@@ -117,7 +117,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_likeview2" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_myMusciView2" />
 
         <ImageView
             android:id="@+id/imageView24"
@@ -135,9 +135,9 @@
             android:layout_height="25dp"
             android:layout_marginStart="15dp"
             android:src="@drawable/graymusic"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_likeview2"
-            app:layout_constraintStart_toStartOf="@+id/tv_likeview2"
-            app:layout_constraintTop_toTopOf="@+id/tv_likeview2" />
+            app:layout_constraintBottom_toBottomOf="@+id/tv_myMusciView2"
+            app:layout_constraintStart_toStartOf="@+id/tv_myMusciView2"
+            app:layout_constraintTop_toTopOf="@+id/tv_myMusciView2" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
