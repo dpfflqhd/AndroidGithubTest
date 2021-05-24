@@ -62,14 +62,12 @@ public class SecondFragment extends Fragment {
     private String title;
     private int page;
 
-    // 전역 변수 선언
     ImageView selectedImage;
     Button btn_searchImage, btn_resultimage;
     Drawable tempImg;
     Bitmap bm;
     RequestQueue requestQueue;
     int REQUEST_TAKE_ALBUM = 5000;
-    int REQUEST_CODE_PROFILE_IMAGE_PICK = 5001;
     private static final String TEMP_FOOD_IMAGE_NAME = "tempfoodimage.jpg";
     private Uri mTempImageUri;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -109,11 +107,7 @@ public class SecondFragment extends Fragment {
         args.putString("someTitle", title);
         fragment.setArguments(args);
 
-
-
         return fragment;
-
-
     }
 
     // Store instance variables based on arguments passed
@@ -215,120 +209,35 @@ public class SecondFragment extends Fragment {
 
     // 인텐트 결과 정의
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        try{
-            // 사진을 선택하고 왔을 때만 처리한다.
-            if(resultCode == RESULT_OK){
-                // 선택한 이미지를 지칭하는 Uri 객체를 얻어온다.
-                uri = data.getData();
-                // Uri 객체를 통해서 컨텐츠 프로바이더를 통해 이미지의 정보를 가져온다.
-                ContentResolver resolver = getActivity().getContentResolver();
-                Cursor cursor = resolver.query(uri, null, null, null, null);
-                cursor.moveToNext();
-
-                // 사용자가 선택한 이미지의 경로 데이터를 가져온다.
-                int index = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
-                String source = cursor.getString(index);
-
-                /*int currentPrice = cursor.getInt(index);
-                int currentQuantity = cursor.getInt(index);
-                String currentSupplierName = cursor.getString(index);
-                int currentSupplierPhone = cursor.getInt(index);*/
-
-
-                // 경로 데이터를 통해서 이미지 객체를 생성한다
-                Bitmap bitmap = BitmapFactory.decodeFile(source);
-
-                // 이미지의 크기를 조정한다.
-                Bitmap bitmap2 = resizeBitmap(1024, bitmap);
-
-                // 회전 각도 값을 가져온다.
-                float degree = getDegree(source);
-                Bitmap bitmap3 = rotateBitmap(bitmap2, degree);
-
-                selectedImage.setImageBitmap(bitmap3);
-                Log.d("이미지 url", "d"+uri);
-
-                // 여기부터 jsp 전송구간
-//                Toast.makeText(getBaseContext(), "resultCode : " + data, Toast.LENGTH_SHORT).show();
-
-
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-
-        // 크롭된 이미지를 클릭했을때의 코드
+        // 이미지 크롭으로 연결하는 코드
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-
-            try {
-
                 uri = data.getData();
-
-
-
-
-
                 Log.d("크롭", "크롭 사진 받기 성공");
 
                 // 크롭된 이미지 받아오는 코드
                 CropImage.ActivityResult result = CropImage.getActivityResult(data);
                 Uri resultUri = result.getUri();
                 selectedImage.setImageURI(resultUri);
-
-                // 끝 다듬는 코드
-//                RoundedCorners corners = new RoundedCorners(14);
-//                RequestOptions options = RequestOptions.bitmapTransform(corners)
-//                        .placeholder(R.mipmap.ic_launcher)
- //                       .skipMemoryCache(true) // Skip memory cache
-  //                      .diskCacheStrategy(DiskCacheStrategy.NONE);//Do not buffer disk hard disk
-
-//                Glide.with(getContext()).load(img).apply(options).into(selectedImage);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-
-
         } else if (requestCode == REQUEST_TAKE_ALBUM && resultCode ==RESULT_OK) {
             getCrop(data.getData());
         }
-
-
-
-
 
     }
 
     // 이미지 크롭하는 코드
     public void getCrop(Uri uri) {
-        CropImage.activity().start(getContext(), this);
+        CropImage.activity(uri).start(getContext(), this);
     }
 
     // 갤러리에 접근하는 코드
     public void getAlbum() {
-//        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        Intent intent=new Intent(Intent.ACTION_PICK);
+        Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setDataAndType(MediaStore.Images.Media.INTERNAL_CONTENT_URI, "image/*");
-
         intent.putExtra("crop", true);
-        startActivityForResult(intent, 1);
-
-        /*Connect connect = new Connect();
-        connect.cancel(true);*/
-
-
-
-
-
-
-
-        /*Intent intent=new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*"); //for image pick from gallery via intent
-        intent.setType("video/*"); //for video pick from gallery via intent*/
+        startActivityForResult(intent, REQUEST_TAKE_ALBUM);
     }
 
 

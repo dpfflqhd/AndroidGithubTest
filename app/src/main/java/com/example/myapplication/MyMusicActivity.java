@@ -31,9 +31,9 @@ public class MyMusicActivity extends AppCompatActivity {
         
         // 임의로 데이터셋 생성함. 여기에 DB를 받아오는 코드 필요
         for (int a=0; a<5; a++) {
-            data.add(new MyMusicVO(R.drawable.zambalaya, R.raw.like_a_hurricane, "AI 음악 "+a+"번째"));
+            data.add(new MyMusicVO(R.drawable.zambalaya, "https://jll.ijjiii.is/ef31c690634901ebf0d3a2f38bf48a0e/HHQXdILvsPE/eecvcnovoavuu", "AI 음악 "+a+"번째"));
             if (a==3) {
-                data.add(new MyMusicVO(R.drawable.salmon, R.raw.fifth_season, "AI 음악 "+a+"번째"));
+                data.add(new MyMusicVO(R.drawable.salmon, "https://www.youtube.com/watch?v=HHQXdILvsPE", "AI 음악 "+a+"번째"));
             }
         }
 

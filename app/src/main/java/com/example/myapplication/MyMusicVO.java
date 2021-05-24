@@ -3,10 +3,10 @@ package com.example.myapplication;
 public class MyMusicVO {
 
     private int musicImg;
-    private int musicId;
+    private String musicId;
     private String musicName;
 
-    public MyMusicVO(int musicImg, int musicId, String musicName) {
+    public MyMusicVO(int musicImg, String musicId, String musicName) {
         this.musicImg = musicImg;
         this.musicName = musicName;
         this.musicId = musicId;
@@ -28,11 +28,11 @@ public class MyMusicVO {
         this.musicName = musicName;
     }
 
-    public int getMusicId() {
+    public String getMusicId() {
         return musicId;
     }
 
-    public void setMusicId(int musicId) {
+    public void setMusicId(String musicId) {
         this.musicId = musicId;
     }
 }
