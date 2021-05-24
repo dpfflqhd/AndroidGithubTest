@@ -29,7 +29,7 @@
             android:layout_width="412dp"
             android:layout_height="215dp"
             android:scaleType="fitXY"
-            android:src="@drawable/foodimg"
+            android:src="@drawable/adv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />

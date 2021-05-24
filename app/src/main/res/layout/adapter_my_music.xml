@@ -11,6 +11,7 @@
         android:id="@+id/iv_myMusicImg"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/salmon" />
@@ -19,28 +20,28 @@
         android:id="@+id/tv_myMusicName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="AI 음악명"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:text="메뉴이름"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toEndOf="@+id/iv_myMusicImg"
-        app:layout_constraintTop_toTopOf="@+id/iv_myMusicImg" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
         android:id="@+id/sbar_myMusicBar"
-        android:layout_width="280dp"
+        android:layout_width="180dp"
         android:layout_height="22dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/iv_myMusicImg"
-        app:layout_constraintTop_toBottomOf="@+id/btn_myMusicPlay" />
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="51dp"
+        app:layout_constraintStart_toEndOf="@+id/btn_myMusicStop"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/btn_myMusicPlay"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="12dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:scaleType="centerInside"
@@ -65,13 +66,12 @@
         android:id="@+id/btn_myMusicStop"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginStart="150dp"
+        android:layout_marginStart="10dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_myMusicPause"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_myMusicPlay"
         app:layout_constraintStart_toEndOf="@+id/btn_myMusicPause"
-        app:layout_constraintTop_toTopOf="@+id/btn_myMusicPause"
         app:srcCompat="@drawable/stopbtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

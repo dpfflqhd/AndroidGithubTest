@@ -78,7 +78,7 @@
             android:layout_marginTop="15dp"
             android:background="#FFFFFF"
             android:gravity="center_vertical"
-            android:text="              즐겨찾는 음식"
+            android:text="               즐겨찾는 음식"
             android:textColor="#FF7D7C7C"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -94,7 +94,7 @@
             android:layout_marginTop="15dp"
             android:background="#FFFFFF"
             android:gravity="center_vertical"
-            android:text="              AI의 음식노래 작곡"
+            android:text="               AI의 음식노래 작곡"
             android:textColor="#FF7D7C7C"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -110,7 +110,7 @@
             android:layout_marginTop="15dp"
             android:background="#FFFFFF"
             android:gravity="center_vertical"
-            android:text="              고객센터"
+            android:text="               고객센터"
             android:textColor="#FF7D7C7C"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -138,6 +138,46 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_myMusciView2"
             app:layout_constraintStart_toStartOf="@+id/tv_myMusciView2"
             app:layout_constraintTop_toTopOf="@+id/tv_myMusciView2" />
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/cscenter"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_likeview3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_likeview3" />
+
+        <ImageView
+            android:id="@+id/imageView26"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/graynext"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_likeview"
+            app:layout_constraintEnd_toEndOf="@+id/tv_likeview"
+            app:layout_constraintTop_toTopOf="@+id/tv_likeview" />
+
+        <ImageView
+            android:id="@+id/imageView27"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/graynext"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_myMusciView2"
+            app:layout_constraintEnd_toEndOf="@+id/tv_myMusciView2"
+            app:layout_constraintTop_toTopOf="@+id/tv_myMusciView2" />
+
+        <ImageView
+            android:id="@+id/imageView28"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/graynext"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_likeview3"
+            app:layout_constraintEnd_toEndOf="@+id/tv_likeview3"
+            app:layout_constraintTop_toTopOf="@+id/tv_likeview3" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

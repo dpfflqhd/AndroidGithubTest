@@ -40,16 +40,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageView16"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
-                app:srcCompat="@drawable/simple_line" />
-
             <Button
                 android:id="@+id/btn_foodLike"
                 android:layout_width="32dp"
@@ -231,9 +221,8 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="255dp"
-                android:layout_marginBottom="11dp"
                 android:background="@drawable/star1"
-                app:layout_constraintBottom_toTopOf="@+id/textView5"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_foodLike"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_srchResultImage" />
 
@@ -261,7 +250,7 @@
                 android:backgroundTint="#FFFFFF"
                 android:text="명이 좋아합니다"
                 android:textColor="#FF323232"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_howMuchLikes"
                 app:layout_constraintTop_toBottomOf="@+id/btn_foodLike" />
@@ -290,20 +279,20 @@
                 android:layout_marginTop="10dp"
                 android:text="메뉴이름"
                 android:textColor="#555555"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.55"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResName" />
 
             <TextView
-                android:id="@+id/tv_price2"
+                android:id="@+id/tv_srchResultFoodPrice"
                 android:layout_width="351dp"
                 android:layout_height="22dp"
                 android:layout_marginTop="10dp"
                 android:text="가격"
                 android:textColor="#555555"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.55"
                 app:layout_constraintStart_toStartOf="parent"
@@ -316,11 +305,11 @@
                 android:layout_marginTop="20dp"
                 android:text="전화"
                 android:textColor="#555555"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.55"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_price2" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultFoodPrice" />
 
             <TextView
                 android:id="@+id/tv_srchResultResAddress"
@@ -329,7 +318,7 @@
                 android:layout_marginTop="10dp"
                 android:text="주소"
                 android:textColor="#555555"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.55"
                 app:layout_constraintStart_toStartOf="parent"
@@ -342,7 +331,7 @@
                 android:layout_marginTop="10dp"
                 android:text="시간"
                 android:textColor="#555555"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.55"
                 app:layout_constraintStart_toStartOf="parent"

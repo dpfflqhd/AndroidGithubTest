@@ -23,12 +23,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ReviewActivity"></activity>
-        <activity android:name=".SearchResultActivity" />
+        <activity android:name=".SearchResultActivity">
+
+        </activity>
+        <activity android:name=".MyMusicActivity"/>
         <activity android:name=".MyLikeViewActivity" />
         <activity android:name=".ResultActivity" />
-        <activity android:name=".MyMusicActivity" />
-        <activity android:name=".StartActivity">
+        <activity android:name=".StartActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,11 +37,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".MapActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".JoinActivity" />
-        <activity android:name=".PhotoActivity" />
+        <activity android:name=".PhotoActivity"></activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".MainSwipeActivity" />
+        <activity android:name=".MainSwipeActivity">
+
+        </activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />

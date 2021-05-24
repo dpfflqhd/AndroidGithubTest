@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".Fragment3Child2">
 
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="18dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="39dp"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="#F47210"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/img_top11"
+        app:layout_constraintTop_toBottomOf="@+id/img_top1" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/child_fragment"
         android:layout_width="match_parent"
@@ -28,25 +40,11 @@
 
 
         <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="119dp"
-            android:layout_height="7dp"
-            android:layout_marginTop="48dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/color"
-            app:layout_constraintBottom_toTopOf="@+id/scrollView3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.791"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-
-        <ImageView
             android:id="@+id/imageView2"
             android:layout_width="412dp"
             android:layout_height="215dp"
             android:scaleType="fitXY"
-            android:src="@drawable/foodimg"
+            android:src="@drawable/adv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,23 +65,24 @@
             android:id="@+id/imageView13"
             android:layout_width="0dp"
             android:layout_height="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/simple_line"
-            tools:layout_editor_absoluteY="84dp" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:srcCompat="@drawable/simple_line" />
 
         <ScrollView
             android:id="@+id/scrollView3"
             android:layout_width="0dp"
             android:layout_height="314dp"
-            android:layout_marginTop="10dp"
             android:background="#E0E0E0"
             android:backgroundTint="#D3D3D3"
+            android:scrollbars="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView27">
+            app:layout_constraintTop_toBottomOf="@+id/imageView5">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -107,49 +106,217 @@
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/img_top3"
+                            android:id="@+id/img_top33"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginStart="12dp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/category2"
+                            android:src="@drawable/category"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/img_top2"
+                            app:layout_constraintStart_toEndOf="@+id/img_top22"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0" />
 
                         <ImageView
-                            android:id="@+id/img_top2"
+                            android:id="@+id/img_top22"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/category2"
+                            android:src="@drawable/category"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/img_top3"
-                            app:layout_constraintStart_toEndOf="@+id/img_top1"
+                            app:layout_constraintEnd_toStartOf="@+id/img_top33"
+                            app:layout_constraintStart_toEndOf="@+id/img_top11"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0" />
 
                         <ImageView
-                            android:id="@+id/img_top1"
+                            android:id="@+id/imageView22"
+                            android:layout_width="20dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="230dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/tag"
+                            app:layout_constraintStart_toStartOf="@+id/tv_top_name2"
+                            app:layout_constraintTop_toBottomOf="@+id/img_top2" />
+
+                        <TextView
+                            android:id="@+id/tv_top_menu2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="메뉴이름"
+                            android:textColor="#404040"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/tv_top_name2"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_top_name2" />
+
+                        <TextView
+                            android:id="@+id/tv_top_name2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="6dp"
+                            android:text="식당이름"
+                            android:textColor="#404040"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@+id/img_top22"
+                            app:layout_constraintTop_toBottomOf="@+id/img_top2" />
+
+                        <ImageView
+                            android:id="@+id/img_top11"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginStart="22dp"
                             android:layout_marginEnd="16dp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/category2"
+                            android:src="@drawable/category"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/img_top2"
+                            app:layout_constraintEnd_toStartOf="@+id/img_top22"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/img_top1"
+                            android:layout_width="274dp"
+                            android:layout_height="142dp"
+                            android:layout_marginTop="17dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/salmon"
+                            app:layout_constraintEnd_toEndOf="@+id/img_top11"
+                            app:layout_constraintStart_toStartOf="@+id/img_top11"
+                            app:layout_constraintTop_toTopOf="@+id/img_top11" />
+
+                        <ImageView
+                            android:id="@+id/img_top2"
+                            android:layout_width="274dp"
+                            android:layout_height="142dp"
+                            android:layout_marginTop="17dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/salmon"
+                            app:layout_constraintEnd_toEndOf="@+id/img_top22"
+                            app:layout_constraintStart_toStartOf="@+id/img_top22"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_top_name1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="6dp"
+                            android:text="식당이름"
+                            android:textColor="#404040"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@+id/img_top11"
+                            app:layout_constraintTop_toBottomOf="@+id/img_top1" />
+
+                        <TextView
+                            android:id="@+id/tv_top_menu1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="메뉴이름"
+                            android:textColor="#404040"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/tv_top_name1"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_top_name1" />
+
+                        <ImageView
+                            android:id="@+id/imageView15"
+                            android:layout_width="20dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="184dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/tag"
+                            app:layout_constraintStart_toEndOf="@+id/tv_top_name1"
+                            app:layout_constraintTop_toBottomOf="@+id/img_top1" />
+
+                        <TextView
+                            android:id="@+id/textView14"
+                            android:layout_width="18dp"
+                            android:layout_height="16dp"
+                            android:layout_marginEnd="39dp"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="#F47210"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/img_top11"
+                            app:layout_constraintTop_toBottomOf="@+id/img_top1" />
+
+                        <TextView
+                            android:id="@+id/textView43"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginEnd="38dp"
+                            android:gravity="center"
+                            android:text="2"
+                            android:textColor="#F47210"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/img_top22"
+                            app:layout_constraintTop_toBottomOf="@+id/img_top2" />
+
+                        <ImageView
+                            android:id="@+id/img_top3"
+                            android:layout_width="274dp"
+                            android:layout_height="142dp"
+                            android:layout_marginTop="17dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/salmon"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/img_top33"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imageView29"
+                            android:layout_width="20dp"
+                            android:layout_height="25dp"
+                            android:layout_marginEnd="39dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/tag"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/img_top3" />
+
+                        <TextView
+                            android:id="@+id/tv_top_name3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="6dp"
+                            android:text="식당이름"
+                            android:textColor="#404040"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@+id/img_top33"
+                            app:layout_constraintTop_toBottomOf="@+id/img_top3" />
+
+                        <TextView
+                            android:id="@+id/tv_top_menu3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="메뉴이름"
+                            android:textColor="#404040"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/tv_top_name3"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_top_name3" />
+
+                        <TextView
+                            android:id="@+id/textView47"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="26dp"
+                            android:text="3"
+                            android:textColor="#F47210"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/img_top3"
+                            app:layout_constraintTop_toBottomOf="@+id/img_top3" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>
@@ -174,6 +341,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    android:scrollbars="none"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView10">
@@ -183,18 +351,18 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/img_ai2"
+                            android:id="@+id/img_ai22"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginEnd="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/category"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/img_ai3"
+                            app:layout_constraintEnd_toStartOf="@+id/img_ai33"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/img_ai3"
+                            android:id="@+id/img_ai33"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginBottom="1dp"
@@ -205,7 +373,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/img_ai1"
+                            android:id="@+id/img_ai11"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginStart="22dp"
@@ -213,9 +381,111 @@
                             android:scaleType="fitXY"
                             android:src="@drawable/category"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/img_ai2"
+                            app:layout_constraintEnd_toStartOf="@+id/img_ai22"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/img_ai1"
+                            android:layout_width="274dp"
+                            android:layout_height="142dp"
+                            android:layout_marginTop="17dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/foodimg"
+                            app:layout_constraintEnd_toEndOf="@+id/img_ai11"
+                            app:layout_constraintStart_toStartOf="@+id/img_ai11"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_ai_name1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="6dp"
+                            android:text="TextView"
+                            android:textColor="#404040"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@+id/img_ai11"
+                            app:layout_constraintTop_toBottomOf="@+id/img_ai1" />
+
+                        <TextView
+                            android:id="@+id/tv_ai_menu1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="TextView"
+                            android:textColor="#404040"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/tv_ai_name1"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_ai_name1" />
+
+                        <ImageView
+                            android:id="@+id/img_ai2"
+                            android:layout_width="274dp"
+                            android:layout_height="142dp"
+                            android:layout_marginTop="17dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/foodimg"
+                            app:layout_constraintEnd_toEndOf="@+id/img_ai22"
+                            app:layout_constraintStart_toStartOf="@+id/img_ai22"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_ai_name2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="6dp"
+                            android:text="TextView"
+                            android:textColor="#404040"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@+id/img_ai22"
+                            app:layout_constraintTop_toBottomOf="@+id/img_ai2" />
+
+                        <TextView
+                            android:id="@+id/tv_ai_menu2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="TextView"
+                            android:textColor="#404040"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/tv_ai_name2"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_ai_name2" />
+
+                        <TextView
+                            android:id="@+id/tv_ai_name3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="6dp"
+                            android:text="TextView"
+                            android:textColor="#404040"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@+id/img_ai33"
+                            app:layout_constraintTop_toBottomOf="@+id/img_ai3" />
+
+                        <ImageView
+                            android:id="@+id/img_ai3"
+                            android:layout_width="274dp"
+                            android:layout_height="142dp"
+                            android:layout_marginTop="17dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/foodimg"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/img_ai33"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_ai_menu3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="TextView"
+                            android:textColor="#404040"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/tv_ai_name3"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_ai_name3" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>
@@ -230,7 +500,7 @@
                     android:id="@+id/textView21"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="          이달의 추천음식"
+                    android:text="          이달의 핫한메뉴"
                     android:textColor="#373737"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -238,6 +508,7 @@
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:scrollbars="none"
                     tools:layout_editor_absoluteX="2dp"
                     tools:layout_editor_absoluteY="329dp">
 
@@ -288,7 +559,7 @@
                     android:textSize="30sp" />
 
                 <TextView
-                    android:id="@+id/tv_myMusciView"
+                    android:id="@+id/tv_season"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="          계절별 추천음식"
@@ -298,44 +569,148 @@
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/img_sea3"
+                            android:id="@+id/img_sea33"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
-                            android:layout_marginStart="19dp"
+                            android:layout_marginStart="16dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/category"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/img_sea2"
+                            app:layout_constraintStart_toEndOf="@+id/img_sea22"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/img_sea2"
+                            android:id="@+id/img_sea22"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginStart="17dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/category"
-                            app:layout_constraintStart_toEndOf="@+id/img_sea1"
+                            app:layout_constraintStart_toEndOf="@+id/img_sea11"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/img_sea1"
+                            android:id="@+id/img_sea11"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
-                            android:layout_marginStart="22dp"
+                            android:layout_marginStart="16dp"
                             android:layout_marginBottom="17dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/category"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <ImageView
+                            android:id="@+id/imageView10"
+                            android:layout_width="274dp"
+                            android:layout_height="142dp"
+                            android:layout_marginTop="17dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/zambalaya"
+                            app:layout_constraintEnd_toEndOf="@+id/img_sea11"
+                            app:layout_constraintStart_toStartOf="@+id/img_sea11"
                             app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_sea_name1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="6dp"
+                            android:text="TextView"
+                            android:textColor="#404040"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@+id/img_sea11"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+                        <TextView
+                            android:id="@+id/tv_sea_menu1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="TextView"
+                            android:textColor="#404040"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/tv_sea_name1"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_sea_name1" />
+
+                        <ImageView
+                            android:id="@+id/img_sea2"
+                            android:layout_width="274dp"
+                            android:layout_height="142dp"
+                            android:layout_marginTop="17dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/zambalaya"
+                            app:layout_constraintEnd_toEndOf="@+id/img_sea22"
+                            app:layout_constraintStart_toStartOf="@+id/img_sea22"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_sea_name2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="6dp"
+                            android:text="TextView"
+                            android:textColor="#404040"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@+id/img_sea22"
+                            app:layout_constraintTop_toBottomOf="@+id/img_sea2" />
+
+                        <TextView
+                            android:id="@+id/tv_sea_menu2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="TextView"
+                            android:textColor="#404040"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/tv_sea_name2"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_sea_name2" />
+
+                        <ImageView
+                            android:id="@+id/img_sea3"
+                            android:layout_width="274dp"
+                            android:layout_height="142dp"
+                            android:layout_marginTop="17dp"
+                            android:scaleType="fitXY"
+                            android:scrollbars="none"
+                            android:src="@drawable/zambalaya"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/img_sea33"
+                            app:layout_constraintTop_toTopOf="@+id/img_sea33" />
+
+                        <TextView
+                            android:id="@+id/tv_sea_name3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="6dp"
+                            android:text="TextView"
+                            android:textColor="#404040"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@+id/img_sea33"
+                            app:layout_constraintTop_toBottomOf="@+id/img_sea3" />
+
+                        <TextView
+                            android:id="@+id/tv_sea_menu3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="tv_sea_menu3"
+                            android:textColor="#404040"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/tv_sea_name3"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_sea_name3" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>
@@ -354,6 +729,18 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/textView27"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="119dp"
+            android:layout_height="7dp"
+            android:layout_marginTop="48dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.791"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

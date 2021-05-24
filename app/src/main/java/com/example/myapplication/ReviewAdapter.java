@@ -60,27 +60,7 @@ public class ReviewAdapter extends BaseAdapter {
             holder.iv_reviewWriteImage.setImageResource(data.get(position).getReviewImage());
             holder.iv_reviewProfileImage.setImageResource(data.get(position).getProfileImage());
 
-            holder.tv_myMusicName.setText(data.get(position).getMusicName());
-            holder.iv_myMusicImg.setImageResource(data.get(position).getMusicImg());
-
-
-            //Rounded-Circle
-            RoundedCorners corners = new RoundedCorners(14);
-            RequestOptions options = RequestOptions.bitmapTransform(corners)
-                    .placeholder(R.mipmap.ic_launcher)
-                    .skipMemoryCache(true) // Skip memory cache
-                    .diskCacheStrategy(DiskCacheStrategy.NONE);//Do not buffer disk hard disk
-
-            Glide.with(convertView).load(data.get(position).getMusicImg()).apply(options).into(holder.iv_myMusicImg);
-
         }
-
-
-
-
-
-
-
 
         return convertView;
     }
@@ -92,11 +72,9 @@ public class ReviewAdapter extends BaseAdapter {
 
         public ViewHolder(View itemView) {
             iv_reviewProfileImage = itemView.findViewById(R.id.iv_reviewProfileImage);
-            iv_reviewWriteImage = itemView.findViewById(R.id.iv_reviewWriteImage);
             tv_reviewUserID = itemView.findViewById(R.id.tv_reviewUserID);
             tv_reviewWriteDate = itemView.findViewById(R.id.tv_reviewWriteDate);
             tv_reviewWriteText = itemView.findViewById(R.id.tv_reviewWriteText);
-            tv_reviewStarPoint = itemView.findViewById(R.id.tv_reviewStarPoint);
         }
 
     }
