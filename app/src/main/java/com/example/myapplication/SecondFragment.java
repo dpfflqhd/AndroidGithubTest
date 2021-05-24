@@ -267,25 +267,12 @@ public class SecondFragment extends Fragment {
 
                 uri = data.getData();
 
-
-
-
-
                 Log.d("크롭", "크롭 사진 받기 성공");
 
                 // 크롭된 이미지 받아오는 코드
                 CropImage.ActivityResult result = CropImage.getActivityResult(data);
                 Uri resultUri = result.getUri();
                 selectedImage.setImageURI(resultUri);
-
-                // 끝 다듬는 코드
-//                RoundedCorners corners = new RoundedCorners(14);
-//                RequestOptions options = RequestOptions.bitmapTransform(corners)
-//                        .placeholder(R.mipmap.ic_launcher)
- //                       .skipMemoryCache(true) // Skip memory cache
-  //                      .diskCacheStrategy(DiskCacheStrategy.NONE);//Do not buffer disk hard disk
-
-//                Glide.with(getContext()).load(img).apply(options).into(selectedImage);
 
             } catch (Exception e) {
                 e.printStackTrace();

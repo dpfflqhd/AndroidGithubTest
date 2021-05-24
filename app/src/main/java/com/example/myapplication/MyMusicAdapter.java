@@ -192,10 +192,10 @@ public class MyMusicAdapter extends BaseAdapter {
 
 
     class ViewHolder {
-        final ImageView iv_myMusicImg;
-        final TextView tv_myMusicName;
-        final ImageButton btn_myMusicPlay, btn_myMusicPause, btn_myMusicStop;
-        final SeekBar sbar_myMusicBar;
+        ImageView iv_myMusicImg;
+        TextView tv_myMusicName;
+        ImageButton btn_myMusicPlay, btn_myMusicPause, btn_myMusicStop;
+        SeekBar sbar_myMusicBar;
 
         public ViewHolder(View itemView) {
             iv_myMusicImg = itemView.findViewById(R.id.iv_myMusicImg);

@@ -3,8 +3,6 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -23,7 +21,7 @@ public class MyMusicActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_music);
 
         // 요소 초기화
-        lv_myMusic = findViewById(R.id.lv_myMusic);
+        lv_myMusic = findViewById(R.id.lv_reviewList);
         iv_myMusic_back = findViewById(R.id.iv_myMusic_back);
         data = new ArrayList<MyMusicVO>();
 
