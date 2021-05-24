@@ -21,7 +21,7 @@ public class MyMusicActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_music);
 
         // 요소 초기화
-        lv_myMusic = findViewById(R.id.lv_reviewList);
+        lv_myMusic = findViewById(R.id.lv_reviewAllList);
         iv_myMusic_back = findViewById(R.id.iv_myMusic_back);
         data = new ArrayList<MyMusicVO>();
 

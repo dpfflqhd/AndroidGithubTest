@@ -13,7 +13,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="20dp"
         android:text="마음에 들어요 표시한 음악"
-        app:layout_constraintBottom_toTopOf="@+id/lv_reviewList"
+        app:layout_constraintBottom_toTopOf="@+id/lv_reviewAllList"
         app:layout_constraintStart_toEndOf="@+id/iv_myMusic_back" />
 
     <ImageView
@@ -22,12 +22,12 @@
         android:layout_height="43dp"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/lv_reviewList"
+        app:layout_constraintBottom_toTopOf="@+id/lv_reviewAllList"
         app:layout_constraintStart_toStartOf="parent"
         tools:srcCompat="@drawable/next1" />
 
     <ListView
-        android:id="@+id/lv_reviewList"
+        android:id="@+id/lv_reviewAllList"
         android:layout_width="394dp"
         android:layout_height="601dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -28,7 +28,7 @@ public class MyLikeViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_like_view2);
 
         // 요소 초기화
-        lv_like = findViewById(R.id.lv_reviewList);
+        lv_like = findViewById(R.id.lv_reviewAllList);
         iv_like_back = findViewById(R.id.iv_like_back);
         data = new ArrayList<LikeViewVO>();
 
