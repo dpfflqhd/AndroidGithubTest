@@ -63,6 +63,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/simple_line"
+            tools:layout_editor_absoluteY="84dp" />
+
         <ScrollView
             android:id="@+id/scrollView3"
             android:layout_width="0dp"
@@ -140,19 +150,6 @@
                             app:layout_constraintEnd_toStartOf="@+id/img_top2"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/img_top1pic"
-                            android:layout_width="254dp"
-                            android:layout_height="123dp"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/salmon"
-                            app:layout_constraintBottom_toBottomOf="@+id/img_top1"
-                            app:layout_constraintEnd_toEndOf="@+id/img_top1"
-                            app:layout_constraintHorizontal_bias="0.508"
-                            app:layout_constraintStart_toStartOf="@+id/img_top1"
-                            app:layout_constraintTop_toTopOf="@+id/img_top1"
-                            app:layout_constraintVertical_bias="0.252" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>

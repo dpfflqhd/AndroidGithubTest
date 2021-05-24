@@ -3,15 +3,8 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,15 +19,12 @@ import com.google.firebase.storage.UploadTask;
 
 import android.Manifest;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -42,7 +32,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -52,17 +41,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.HashMap;
@@ -115,7 +97,7 @@ public class ImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_image);
 
 
-        image1 = findViewById(R.id.selectedImage);
+        image1 = findViewById(R.id.selectedImage2);
         searchImage = findViewById(R.id.searchImage);
         edt_url = findViewById(R.id.edt_image_url);
         btn_image_send = findViewById(R.id.btn_image_send);
@@ -140,7 +122,7 @@ public class ImageActivity extends AppCompatActivity {
         // 요소 초기화
 //        selectedImage = findViewById(R.id.selectedImage);
 //        searchImage = findViewById(R.id.searchImage);
-        image1 = findViewById(R.id.selectedImage);
+        image1 = findViewById(R.id.selectedImage2);
         searchImage = findViewById(R.id.searchImage);
         edt_url = findViewById(R.id.edt_image_url);
         btn_image_send = findViewById(R.id.btn_image_send);

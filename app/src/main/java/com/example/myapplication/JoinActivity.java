@@ -87,7 +87,7 @@ public class JoinActivity extends AppCompatActivity {
 
         aSpinner = findViewById(R.id.spinner3);
         String[] models = getResources().getStringArray(R.array.sizes);
-        img_id = findViewById(R.id.img_id);
+        /*img_id = findViewById(R.id.img_id);
         img_pw = findViewById(R.id.img_pw);
         img_name = findViewById(R.id.img_name);
         img_age = findViewById(R.id.img_age);
@@ -99,7 +99,7 @@ public class JoinActivity extends AppCompatActivity {
         img_name.setImageResource(R.drawable.ic_launcher_name_foreground);
         img_age.setImageResource(R.drawable.ic_launcher_age_foreground);
         img_sex.setImageResource(R.drawable.ic_launcher_sex_foreground);
-        img_addr.setImageResource(R.drawable.ic_launcher_adr_foreground);
+        img_addr.setImageResource(R.drawable.ic_launcher_adr_foreground);*/
 
 
 
@@ -362,7 +362,7 @@ public class JoinActivity extends AppCompatActivity {
         edt_join_id = findViewById(R.id.edt_join_id);
         edt_join_pw = findViewById(R.id.edt_join_pw);
         edt_join_age = findViewById(R.id.edt_join_age);
-        edt_join_address = findViewById(R.id.edt_address);
+        /*edt_join_address = findViewById(R.id.edt_address);*/
 
 
         btn_join_go = findViewById(R.id.btn_join_go);

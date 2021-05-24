@@ -4,52 +4,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2DFF5722"
+    android:backgroundTint="#61FF5722"
     android:padding="5dp"
     tools:context=".ImageActivity">
 
+
+    <Button
+        android:id="@+id/btn_resultimage"
+        android:layout_width="114dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="72dp"
+        android:background="@drawable/rounded"
+        android:backgroundTint="#F47210"
+        android:text="검색하기"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_searchImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_searchImage"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_searchImage"
+        android:layout_width="114dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="63dp"
+        android:layout_marginEnd="43dp"
+        android:background="@drawable/rounded"
+        android:backgroundTint="#F47210"
+        android:text="사진 가져오기"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btn_resultimage"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectedImage" />
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="267dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="18dp"
+        android:text="Tip ! 음식만 나오도록 사진을 크롭 해주세요"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+    <TextView
+        android:id="@+id/textView37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:text="음식 사진을 넣어주세요"
+        android:textColor="#2F2F2F"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/selectedImage"
-        android:layout_width="339dp"
-        android:layout_height="343dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginTop="44dp"
         android:background="@drawable/round_backgroud_border_black"
         android:padding="5dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:srcCompat="@drawable/camera" />
+        app:layout_constraintTop_toBottomOf="@+id/textView36"
+        app:srcCompat="@drawable/searchimg"
+        tools:srcCompat="@drawable/searchimg" />
 
-    <Button
-        android:id="@+id/btn_searchImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="60dp"
-        android:text="이미지 검색"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectedImage" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="39dp"
-        android:layout_marginTop="76dp"
-        android:text="사진을 넣어주세요"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_resultimage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:text="결과확인"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_searchImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_searchImage"
-        app:layout_constraintTop_toTopOf="@+id/btn_searchImage" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logocolor2" />
 
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo3"
+        app:srcCompat="@drawable/simple_line" />
+
     <ScrollView
         android:id="@+id/scrollView4"
         android:layout_width="0dp"
@@ -54,7 +64,7 @@
                 android:id="@+id/btn_review2"
                 android:layout_width="32dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="9dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/bubble"
@@ -70,9 +80,8 @@
                 android:layout_height="259dp"
                 android:background="@drawable/salmon"
                 android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.352"
-                app:layout_constraintStart_toStartOf="@+id/btn_before2"
+                app:layout_constraintEnd_toStartOf="@+id/btn_after2"
+                app:layout_constraintStart_toEndOf="@+id/btn_before2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="?attr/selectableItemBackgroundBorderless" />
 
@@ -80,11 +89,9 @@
                 android:id="@+id/btn_before2"
                 android:layout_width="15dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="7dp"
                 android:layout_marginTop="115dp"
-                android:layout_marginEnd="3dp"
                 android:background="@drawable/next1"
-                app:layout_constraintEnd_toStartOf="@+id/iv_srchResultImage"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -92,12 +99,10 @@
                 android:id="@+id/btn_after2"
                 android:layout_width="15dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="4dp"
                 android:layout_marginTop="115dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="7dp"
                 android:background="@drawable/next2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iv_srchResultImage"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -211,6 +216,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="26dp"
                         android:text="이런 음식은 어떠세요?"
+                        android:textColor="#454545"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
