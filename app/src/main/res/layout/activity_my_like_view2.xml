@@ -8,7 +8,7 @@
     tools:context=".MyLikeViewActivity">
 
     <ListView
-        android:id="@+id/lv_reviewList"
+        android:id="@+id/lv_reviewAllList"
         android:layout_width="379dp"
         android:layout_height="550dp"
         android:layout_marginTop="108dp"

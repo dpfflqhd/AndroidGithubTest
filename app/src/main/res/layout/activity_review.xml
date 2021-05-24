@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".ReviewActivity">
 
+    <Button
+        android:id="@+id/btn_writeReview"
+        android:layout_width="108dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/round_backgroud_border_black"
+        android:backgroundTint="#FFFFFF"
+        android:text="리뷰 쓰기"
+        android:textColor="#F47210"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/iv_like_back2"
         android:layout_width="29dp"
@@ -18,7 +33,7 @@
         tools:srcCompat="@drawable/next1" />
 
     <ListView
-        android:id="@+id/lv_reviewList"
+        android:id="@+id/lv_reviewAllList"
         android:layout_width="379dp"
         android:layout_height="550dp"
         android:layout_marginTop="108dp"

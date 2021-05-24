@@ -41,7 +41,7 @@
         app:srcCompat="@drawable/star2" />
 
     <ImageView
-        android:id="@+id/imageView17"
+        android:id="@+id/iv_reviewWriteImage"
         android:layout_width="370dp"
         android:layout_height="370dp"
         android:layout_marginTop="10dp"
@@ -51,7 +51,7 @@
         app:srcCompat="@drawable/foodimg" />
 
     <TextView
-        android:id="@+id/textView43"
+        android:id="@+id/tv_reviewStarPoint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -80,5 +80,5 @@
         android:layout_marginTop="10dp"
         android:text="리뷰를 입력하는 곳입니다."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView17" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_reviewWriteImage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
