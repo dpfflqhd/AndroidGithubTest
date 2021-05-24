@@ -8,7 +8,7 @@
     tools:context=".ImageActivity">
 
     <ImageView
-        android:id="@+id/selectedImage"
+        android:id="@+id/selectedImage2"
         android:layout_width="339dp"
         android:layout_height="0dp"
         android:layout_marginTop="152dp"
@@ -33,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.275"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectedImage"
+        app:layout_constraintTop_toBottomOf="@+id/selectedImage2"
         app:layout_constraintVertical_bias="0.326" />
 
     <TextView
@@ -57,7 +57,7 @@
         android:text="결과 확인"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/searchImage"
-        app:layout_constraintTop_toBottomOf="@+id/selectedImage"
+        app:layout_constraintTop_toBottomOf="@+id/selectedImage2"
         app:layout_constraintVertical_bias="0.802" />
 
     <EditText
@@ -71,7 +71,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectedImage" />
+        app:layout_constraintTop_toBottomOf="@+id/selectedImage2" />
 
     <TextView
         android:id="@+id/send_textView"

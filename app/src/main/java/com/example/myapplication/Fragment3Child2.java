@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,7 +9,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 
 public class Fragment3Child2 extends Fragment {
@@ -30,8 +31,9 @@ public class Fragment3Child2 extends Fragment {
         ImageView img_month2 = view.findViewById(R.id.img_month2);
         ImageView img_month3 = view.findViewById(R.id.img_month3);
 
-
-
+        ImageView img_sea1 = view.findViewById(R.id.img_sea1);
+        ImageView img_sea2 = view.findViewById(R.id.img_sea2);
+        ImageView img_sea3 = view.findViewById(R.id.img_sea3);
 
 
 

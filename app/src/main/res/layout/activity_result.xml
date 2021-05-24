@@ -9,9 +9,12 @@
     tools:context=".ResultActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="wrap_content"
+        android:layout_height="645dp"
+        android:layout_marginTop="22dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/img_logo"
@@ -26,7 +29,7 @@
             <ImageView
                 android:id="@+id/img_food"
                 android:layout_width="329dp"
-                android:layout_height="313dp"
+                android:layout_height="270dp"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +44,7 @@
                 android:layout_marginEnd="248dp"
                 android:backgroundTint="#FFFFFF"
                 android:text="명이 좋아합니다"
+                android:textColor="#FF323232"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_count"
@@ -53,6 +57,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="10dp"
                 android:text="12"
+                android:textColor="#323232"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/textView3"
@@ -62,8 +67,8 @@
 
             <Button
                 android:id="@+id/btn_after"
-                android:layout_width="24dp"
-                android:layout_height="47dp"
+                android:layout_width="15dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="134dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="132dp"
@@ -72,26 +77,28 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
+            출처: https://croute.me/288 [식탁 위의 프로그래머]
+
             <Button
                 android:id="@+id/btn_before"
-                android:layout_width="24dp"
-                android:layout_height="47dp"
+                android:layout_width="15dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="134dp"
                 android:layout_marginBottom="132dp"
                 android:background="@drawable/next1"
                 app:layout_constraintBottom_toBottomOf="@+id/img_food"
                 app:layout_constraintEnd_toStartOf="@+id/btn_after"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.002"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btn_like"
-                android:layout_width="40dp"
-                android:layout_height="34dp"
-                android:layout_marginStart="24dp"
+                android:layout_width="32dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="28dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/like_state"
@@ -99,34 +106,41 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_food" />
 
-
-
-            출처: https://croute.me/288 [식탁 위의 프로그래머]
-
             <Button
                 android:id="@+id/btn_review"
-                android:layout_width="40dp"
-                android:layout_height="34dp"
-                android:layout_marginStart="14dp"
+                android:layout_width="32dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="296dp"
+                android:layout_marginEnd="12dp"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/bubble"
                 app:layout_constraintBottom_toTopOf="@+id/textView3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.052"
+                app:layout_constraintEnd_toStartOf="@+id/btn_favorite"
+                app:layout_constraintHorizontal_bias="0.4"
                 app:layout_constraintStart_toEndOf="@+id/btn_like"
+                app:layout_constraintTop_toBottomOf="@+id/img_food"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/btn_favorite"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="256dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/star1"
+                app:layout_constraintBottom_toTopOf="@+id/textView3"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_food"
                 app:layout_constraintVertical_bias="0.0" />
 
             <ScrollView
                 android:id="@+id/scrollView2"
-                android:layout_width="367dp"
-                android:layout_height="225dp"
-                android:layout_marginTop="1dp"
+                android:layout_width="348dp"
+                android:layout_height="207dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="1dp"
-                android:layout_marginBottom="40dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.511"
                 app:layout_constraintStart_toStartOf="parent"
@@ -142,7 +156,8 @@
                         android:layout_width="366dp"
                         android:layout_height="30dp"
                         android:gravity="bottom"
-                        android:text=" 식당이름"
+                        android:text="식당이름"
+                        android:textColor="#444444"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -156,14 +171,16 @@
                         android:id="@+id/tv_menu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="  메뉴이름"
+                        android:text="메뉴이름"
+                        android:textColor="#555555"
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/tv_price"
+                        android:id="@+id/tv_srchResultFoodPrice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="  100,000원"
+                        android:text="가격"
+                        android:textColor="#555555"
                         android:textSize="18sp" />
 
                     <TextView
@@ -175,97 +192,124 @@
                         android:id="@+id/tv_tell"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="  062-123-4567"
+                        android:text="전화"
+                        android:textColor="#555555"
                         android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tv_addr"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="  광주광역시 서구 송암로 00길"
+                        android:text="주소"
+                        android:textColor="#555555"
                         android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tv_time"
                         android:layout_width="match_parent"
                         android:layout_height="52dp"
-                        android:text="  매일 9:00 - 20:00  주말 10:00 - 21:00 "
+                        android:text="시간"
+                        android:textColor="#555555"
                         android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/textView17"
-                        android:layout_width="166dp"
-                        android:layout_height="25dp"
-                        android:text="   이런 음식은 어때요??"
-                        android:textColor="#F0882C"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
 
                     <HorizontalScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="168dp">
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#1EF47210">
 
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/textView14"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/textView23"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="    " />
-
-                            <ImageView
-                                android:id="@+id/img_reco1"
-                                android:layout_width="150dp"
-                                android:layout_height="150dp"
-                                android:layout_weight="1"
-                                android:scaleType="fitXY"
-                                app:srcCompat="@drawable/salmon" />
+                                android:background="#1EF47210"
+                                android:text=" "
+                                android:textSize="8sp" />
 
                             <TextView
-                                android:id="@+id/textView15"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="     " />
-
-                            <ImageView
-                                android:id="@+id/img_reco2"
-                                android:layout_width="150dp"
-                                android:layout_height="150dp"
-                                android:scaleType="fitXY"
-                                app:srcCompat="@drawable/foodimg" />
+                                android:id="@+id/textView17"
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:background="#1EF47210"
+                                android:text="   이런 음식은 어때요??"
+                                android:textColor="#3C3C3C"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/textView16"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/textView33"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="     " />
+                                android:background="#1EF47210"
+                                android:text=" "
+                                android:textSize="8sp" />
 
-                            <ImageView
-                                android:id="@+id/img_reco3"
-                                android:layout_width="150dp"
-                                android:layout_height="150dp"
-                                android:layout_weight="1"
-                                android:scaleType="fitXY"
-                                app:srcCompat="@drawable/menu" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#37F47210"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView14"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="    " />
+
+                                <ImageView
+                                    android:id="@+id/img_reco1"
+                                    android:layout_width="150dp"
+                                    android:layout_height="150dp"
+                                    android:layout_weight="1"
+                                    android:scaleType="fitXY"
+                                    app:srcCompat="@drawable/salmon" />
+
+                                <TextView
+                                    android:id="@+id/textView15"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="     " />
+
+                                <ImageView
+                                    android:id="@+id/img_reco2"
+                                    android:layout_width="150dp"
+                                    android:layout_height="150dp"
+                                    android:scaleType="fitXY"
+                                    app:srcCompat="@drawable/foodimg" />
+
+                                <TextView
+                                    android:id="@+id/textView16"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="     " />
+
+                                <ImageView
+                                    android:id="@+id/img_reco3"
+                                    android:layout_width="150dp"
+                                    android:layout_height="150dp"
+                                    android:layout_weight="1"
+                                    android:scaleType="fitXY"
+                                    app:srcCompat="@drawable/menu" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/textView6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#1EF47210"
+                                android:text=" "
+                                android:textSize="14sp" />
 
                         </LinearLayout>
                     </HorizontalScrollView>
-
-                    <View
-                        android:id="@+id/view2"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="11dp"
-                        android:layout_marginBottom="26dp"
-                        android:background="#8E8D8D" />
 
                 </LinearLayout>
             </ScrollView>

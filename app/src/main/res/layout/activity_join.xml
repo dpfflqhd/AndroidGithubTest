@@ -26,6 +26,13 @@
                 android:layout_weight="0"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="92dp"
+                    android:layout_weight="0"
+                    app:srcCompat="@drawable/logocolor2" />
+
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="match_parent"
@@ -34,22 +41,15 @@
                     android:background="#FFFFFF"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/img_id"
-                        android:layout_width="5dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        tools:srcCompat="@drawable/ic_launcher_person2_foreground" />
-
                     <EditText
                         android:id="@+id/edt_join_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
+                        android:backgroundTint="#F47210"
                         android:ems="10"
-                        android:hint="아이디를 입력해주세요."
+                        android:hint="아이디"
                         android:inputType="textPersonName" />
 
                 </LinearLayout>
@@ -86,22 +86,15 @@
                     android:background="#FFFAFA"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/img_pw"
-                        android:layout_width="5dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        tools:srcCompat="@drawable/ic_launcher_pw_foreground" />
-
                     <EditText
                         android:id="@+id/edt_join_pw"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
+                        android:backgroundTint="#F47210"
                         android:ems="10"
-                        android:hint="비밀번호를 입력해주세요."
+                        android:hint="비밀번호"
                         android:inputType="textPassword" />
                 </LinearLayout>
 
@@ -137,22 +130,15 @@
                     android:background="#FFFFFF"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/img_name"
-                        android:layout_width="5dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        tools:srcCompat="@drawable/ic_launcher_name_foreground" />
-
                     <EditText
                         android:id="@+id/edt_join_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
+                        android:backgroundTint="#F47210"
                         android:ems="10"
-                        android:hint="이름을 입력해주세요."
+                        android:hint="이름"
                         android:inputType="textPersonName" />
                 </LinearLayout>
             </LinearLayout>
@@ -187,14 +173,6 @@
                     android:layout_weight="0"
                     android:background="#FFFFFF"
                     android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/img_age"
-                        android:layout_width="5dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        tools:srcCompat="@drawable/ic_launcher_age_foreground" />
 
                     <EditText
                         android:id="@+id/edt_join_age"
@@ -202,8 +180,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
+                        android:backgroundTint="#F47210"
                         android:ems="10"
-                        android:hint="나이를 입력해주세요."
+                        android:hint="나이"
                         android:inputType="textPersonName" />
                 </LinearLayout>
             </LinearLayout>
@@ -239,17 +218,19 @@
                     android:background="#FFFFFF"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/img_sex"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="0"
-                        android:background="#FFFFFF"
-                        tools:srcCompat="@drawable/ic_launcher_sex_foreground" />
+                    <TextView
+                        android:id="@+id/textView34"
+                        android:layout_width="18dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="fill_horizontal|center_vertical"
+                        android:text=" 성별"
+                        android:textColor="#F0A09F9F"
+                        android:textSize="18sp" />
 
                     <Spinner
                         android:id="@+id/spinner3"
-                        android:layout_width="100dp"
+                        android:layout_width="195dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
@@ -287,24 +268,23 @@
                     android:background="#FFFFFF"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/img_addr"
-                        android:layout_width="5dp"
-                        android:layout_height="50dp"
+                    <TextView
+                        android:id="@+id/textView35"
+                        android:layout_width="18dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        tools:srcCompat="@drawable/ic_launcher_adr_foreground" />
+                        android:gravity="fill_horizontal|center_vertical"
+                        android:text=" 지역"
+                        android:textColor="#F0A09F9F"
+                        android:textSize="18sp" />
 
-                    <EditText
-                        android:id="@+id/edt_address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="195dp"
+                        android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:clickable="true"
-                        android:ems="10"
-                        android:hint="주소를 선택해주세요."
-                        android:inputType="textPersonName" />
+                        android:entries="@array/city" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -317,9 +297,13 @@
         android:id="@+id/btn_join_go"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_gravity="center"
-        android:text="가입하기" />
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded"
+        android:backgroundTint="#F47210"
+        android:text="가입하기"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
 </LinearLayout>
 

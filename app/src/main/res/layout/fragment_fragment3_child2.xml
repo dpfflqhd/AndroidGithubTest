@@ -17,14 +17,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="71dp"
             android:layout_marginTop="19dp"
-            android:layout_marginBottom="7dp"
+            android:layout_marginEnd="100dp"
             android:text="이색맛집지도"
-            android:textColor="#636161"
+            android:textColor="#7B7A7A"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/imageView6"
+            app:layout_constraintEnd_toStartOf="@+id/textView28"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
 
         <ImageView
             android:id="@+id/imageView5"
@@ -38,6 +39,7 @@
             app:layout_constraintHorizontal_bias="0.791"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
 
         <ImageView
             android:id="@+id/imageView2"
@@ -61,21 +63,96 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ScrollView
-            android:id="@+id/scrollView3"
-            android:layout_width="411dp"
-            android:layout_height="300dp"
-            android:background="#E0E0E0"
-            android:backgroundTint="#E3E2E2"
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5">
+            app:srcCompat="@drawable/simple_line"
+            tools:layout_editor_absoluteY="84dp" />
+
+        <ScrollView
+            android:id="@+id/scrollView3"
+            android:layout_width="0dp"
+            android:layout_height="314dp"
+            android:layout_marginTop="10dp"
+            android:background="#E0E0E0"
+            android:backgroundTint="#D3D3D3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView27">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView31"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/textView32"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="          주간 리뷰 순위 TOP3"
+                    android:textColor="#373737"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/img_top3"
+                            android:layout_width="311dp"
+                            android:layout_height="226dp"
+                            android:layout_marginStart="12dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/category2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/img_top2"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <ImageView
+                            android:id="@+id/img_top2"
+                            android:layout_width="311dp"
+                            android:layout_height="226dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/category2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/img_top3"
+                            app:layout_constraintStart_toEndOf="@+id/img_top1"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <ImageView
+                            android:id="@+id/img_top1"
+                            android:layout_width="311dp"
+                            android:layout_height="226dp"
+                            android:layout_marginStart="22dp"
+                            android:layout_marginEnd="16dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/category2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/img_top2"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </HorizontalScrollView>
 
                 <TextView
                     android:id="@+id/textView24"
@@ -87,7 +164,8 @@
                     android:id="@+id/textView20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="          주간 리뷰 순위 TOP3"
+                    android:text="          AI가 추천하는 음식"
+                    android:textColor="#373737"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -105,18 +183,18 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/img_top2"
+                            android:id="@+id/img_ai2"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginEnd="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/category"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/img_top3"
+                            app:layout_constraintEnd_toStartOf="@+id/img_ai3"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/img_top3"
+                            android:id="@+id/img_ai3"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginBottom="1dp"
@@ -127,7 +205,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/img_top1"
+                            android:id="@+id/img_ai1"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginStart="22dp"
@@ -135,7 +213,7 @@
                             android:scaleType="fitXY"
                             android:src="@drawable/category"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/img_top2"
+                            app:layout_constraintEnd_toStartOf="@+id/img_ai2"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -152,7 +230,8 @@
                     android:id="@+id/textView21"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="          AI가 추천하는 음식"
+                    android:text="          이달의 추천음식"
+                    android:textColor="#373737"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -167,18 +246,18 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/img_ai2"
+                            android:id="@+id/img_month2"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginStart="17dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/category"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/img_ai1"
+                            app:layout_constraintStart_toEndOf="@+id/img_month1"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/img_ai1"
+                            android:id="@+id/img_month1"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginStart="22dp"
@@ -189,14 +268,14 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/img_ai3"
+                            android:id="@+id/img_month3"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginStart="15dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/category"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/img_ai2"
+                            app:layout_constraintStart_toEndOf="@+id/img_month2"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -212,7 +291,8 @@
                     android:id="@+id/tv_myMusciView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="          이달의 이색 맛집"
+                    android:text="          계절별 추천음식"
+                    android:textColor="#373737"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -225,28 +305,28 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/img_month3"
+                            android:id="@+id/img_sea3"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginStart="19dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/category"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/img_month2"
+                            app:layout_constraintStart_toEndOf="@+id/img_sea2"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/img_month2"
+                            android:id="@+id/img_sea2"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginStart="17dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/category"
-                            app:layout_constraintStart_toEndOf="@+id/img_month1"
+                            app:layout_constraintStart_toEndOf="@+id/img_sea1"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/img_month1"
+                            android:id="@+id/img_sea1"
                             android:layout_width="311dp"
                             android:layout_height="226dp"
                             android:layout_marginStart="22dp"
@@ -256,6 +336,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>
 
@@ -269,7 +350,7 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="19dp"
             android:text="커뮤니티"
-            android:textColor="#F0882C"
+            android:textColor="#F47210"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/textView27"
