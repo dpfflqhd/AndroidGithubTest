@@ -6,22 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".MyLikeViewAdapter">
 
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="5sp"
+        app:layout_constraintBottom_toTopOf="@+id/iv_dishImg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/iv_dishImg"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/zambalaya" />
 
     <TextView
-        android:id="@+id/tv_resLoc"
+        android:id="@+id/tv_starScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="이태원"
-        android:textSize="10sp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="51dp"
+        android:text="4.3"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_dishName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="67dp"
+        android:text="곱창잠발라야"
+        android:textColor="#4B4B4B"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tv_starScore"
         app:layout_constraintStart_toEndOf="@+id/iv_dishImg"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,28 +56,32 @@
         android:id="@+id/tv_resName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="236dp"
         android:text="테이스팅룸"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_resLoc"
-        app:layout_constraintTop_toBottomOf="@+id/tv_resLoc" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_dishImg"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_starScore"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView38"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="4.3"
-        app:layout_constraintStart_toStartOf="@+id/tv_resName"
-        app:layout_constraintTop_toBottomOf="@+id/tv_resName" />
+        android:textSize="4sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_dishImg" />
 
-    <TextView
-        android:id="@+id/tv_dishName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="40dp"
-        android:text="곱창잠발라야"
-        app:layout_constraintStart_toEndOf="@+id/tv_resName"
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="2dp"
+        android:src="@drawable/star2"
+        app:layout_constraintEnd_toStartOf="@+id/tv_starScore"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,7 +52,7 @@ public class MyLikeViewAdapter extends BaseAdapter {
             convertView = inflater.inflate(layout, null);
             holder = new MyLikeViewAdapter.ViewHolder(convertView);
 
-            holder.tv_resLoc.setText(data.get(position).getResLoc());
+            //holder.tv_resLoc.setText(data.get(position).getResLoc());
             holder.tv_resName.setText(data.get(position).getResName());
             holder.tv_dishName.setText(data.get(position).getDishName());
             holder.tv_starScore.setText(data.get(position).getStarScore());
@@ -73,11 +73,12 @@ public class MyLikeViewAdapter extends BaseAdapter {
 
     class ViewHolder {
         ImageView iv_dishImg;
-        TextView tv_resLoc, tv_resName, tv_dishName, tv_starScore;
+        TextView tv_resName, tv_dishName, tv_starScore;
+        //TextView tv_resLoc;
 
         public ViewHolder(View itemView) {
             iv_dishImg = itemView.findViewById(R.id.iv_dishImg);
-            tv_resLoc = itemView.findViewById(R.id.tv_resLoc);
+            //tv_resLoc = itemView.findViewById(R.id.tv_resLoc);
             tv_resName = itemView.findViewById(R.id.tv_resName);
             tv_dishName = itemView.findViewById(R.id.tv_dishName);
             tv_starScore = itemView.findViewById(R.id.tv_starScore);
