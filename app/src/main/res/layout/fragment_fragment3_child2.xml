@@ -311,7 +311,7 @@
                             android:id="@+id/textView47"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="26dp"
+                            android:layout_marginEnd="32dp"
                             android:text="3"
                             android:textColor="#F47210"
                             android:textStyle="bold"

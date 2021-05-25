@@ -17,7 +17,7 @@ public class Fragment3Child2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_fragment3_child1, container, false);
+        View view = inflater.inflate(R.layout.fragment_fragment3_child2, container, false);
 
         ImageView img_top1 = view.findViewById(R.id.img_top1);
         ImageView img_top2 = view.findViewById(R.id.img_top2);
@@ -36,9 +36,6 @@ public class Fragment3Child2 extends Fragment {
         ImageView img_sea3 = view.findViewById(R.id.img_sea3);
 
 
-
-
-
-        return inflater.inflate(R.layout.fragment_fragment3_child1, container, false);
+        return inflater.inflate(R.layout.fragment_fragment3_child2, container, false);
     }
 }
