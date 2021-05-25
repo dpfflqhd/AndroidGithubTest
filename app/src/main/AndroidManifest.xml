@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -23,19 +24,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".WriteReviewActivity">
+        <activity android:name=".WriteReviewActivity"></activity>
+        <activity android:name=".ReviewActivity">
+        </activity>
+        <activity android:name=".SearchResultActivity">
+        </activity>
+        <activity android:name=".MyLikeViewActivity" >
+        </activity>
+        <activity android:name=".MyMusicActivity" >
+        </activity>
+        <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ReviewActivity"></activity>
-        <activity android:name=".SearchResultActivity" />
-        <activity android:name=".MyLikeViewActivity" />
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".MyMusicActivity" />
-        <activity android:name=".StartActivity"></activity>
         <activity android:name=".MapActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".JoinActivity" />
@@ -50,12 +54,16 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.myapplication.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true"
+            android:permission="com.example.myapplication.provider.READ_WRITE">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDlxBF5XFLoEC-IQ6DxPFNdGi5FTVgHs1U" />
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="70dc925e75196f959f1957432c8cfdef" />

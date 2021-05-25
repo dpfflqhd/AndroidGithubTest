@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.io.IOException;
 
 public class AudioTestActivity extends AppCompatActivity {
-    public static String url = "https://firebasestorage.googleapis.com/v0/b/finfooproject.appspot.com/o/How_it_Began.mp3?alt=media&token=07cdd186-a125-4322-ad4a-06c783ca2d76";
+    public static String url = "/storage/emulated/0/Download/hello.mp3";
 
     MediaPlayer player;
     int position = 0; // 다시 시작 기능을 위한 현재 재생 위치 확인 변수

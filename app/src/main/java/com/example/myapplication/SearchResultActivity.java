@@ -74,6 +74,7 @@ public class SearchResultActivity extends AppCompatActivity {
     String img = "";
     String foodsave_id = "";
     String foodsave_name = "";
+    int real_like = 0;
     int cnt = 0;
     int like = 0;
     int save_cnt = 0;
@@ -134,8 +135,10 @@ public class SearchResultActivity extends AppCompatActivity {
                                 Log.d("현재 음식점 이름", email + "/" + store);
 
                                 if(email.equals(foodsave_id) && store.equals(foodsave_name)){
-                                    btn_foodsave.setBackgroundResource(R.drawable.heart2);
+                                    btn_foodsave.setBackgroundResource(R.drawable.star2);
                                     save_cnt++;
+                                } else {
+                                    Log.d("찜 목록 없음", "");
                                 }
                             }
 
@@ -145,10 +148,6 @@ public class SearchResultActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
-
-
 
         db.collection("store")
                 .get()
@@ -158,64 +157,52 @@ public class SearchResultActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
+//                                    Log.d("문서리스트 :", document.getId());
+                                    name = document.getString("name");
+                                    menu = document.getString("menu");
+                                    price = document.getString("price");
+                                    phone = document.getString("phone");
+                                    addr = document.getString("addr");
+                                    time = document.getString("time");
+                                    like2 = document.getString("like");
+                                    if (like2 != null) {
+                                        try {
+                                            like = Integer.parseInt(like2);
+                                        } catch (NumberFormatException e) {
+                                            // Deal with the situation like
+                                            like = 0;
+                                        }
+                                    }
 
-                                Log.d("문서리스트 :", document.getId());
-                                name = document.getString("name");
-                                menu = document.getString("menu");
-                                price = document.getString("price");
-                                phone = document.getString("phone");
-                                addr = document.getString("addr");
-                                time = document.getString("time");
-                                like2 = document.getString("like");
-                                like = Integer.parseInt(like2);
-                                img = document.getString("img");
+                                    img = document.getString("img");
 
-                                //결과 이미지뷰를 데이터베이스에서 가져온 url로 띄우기
-                                /*String image_url = img;
+                                    //이미지액티비티에서 받아온 결과값(음식점이름)에 해당되는 데이터베이스 불러오기
+                                    if (store.equals(document.getId())) {
+                                        real_like = like;
 
-                                Glide.with(this).load(image_url).into(iv_srchResultImage);*/
-                                /*loadImageTask imageTask = new loadImageTask();
-                                Log.d("가져온 url", img);
-                                imageTask.execute();*/
+                                        tv_srchResultFoodName.setText(menu);
+                                        Log.d("tv_result", ""+ menu);
+                                        tv_srchResultFoodPrice.setText(price);
+                                        tv_srchResultResAddress.setText(addr);
+                                        tv_srchResultResHour.setText(time);
+                                        tv_srchResultResTel.setText(phone);
+                                        tv_srchResultResName.setText(name);
+                                        Log.d("음식점 :", store + "/ 이름 : " + name + "/메뉴 :" + menu + "/가격 :" + price + "/전화번호 :" + phone + "/주소 :" + addr + "/운영시간 :" +
+                                                time + "/좋아요 수 :" + like + "/이미지url :" + img);
 
-                                tv_howMuchLikes.setText(String.valueOf(like) + "명이 좋아합니다");
-                                tv_srchResultFoodName.setText(menu);
-                                tv_srchResultFoodPrice.setText(price);
-                                tv_srchResultResAddress.setText(addr);
-                                tv_srchResultResHour.setText(time);
-                                tv_srchResultResTel.setText(phone);
-                                tv_srchResultResName.setText(name);
-
-
-                                //이미지액티비티에서 받아온 결과값(음식점이름)에 해당되는 데이터베이스 불러오기
-                                if(store.equals(document.getId())){
-                                    Log.d("음식점 :", store + "/ 이름 : " + name + "/메뉴 :" + menu + "/가격 :" + price + "/전화번호 :" + phone + "/주소 :" + addr + "/운영시간 :" +
-                                            time + "/좋아요 수 :" + like + "/이미지url :" + img);
-                                    String image_url = img;
-                                    Log.d("불러온 img url :" , img);
-
-                                    Glide.with(SearchResultActivity.this).load(image_url).into(iv_srchResultImage);
-
-
+                                        tv_howMuchLikes.setText(String.valueOf(like) + "명이 좋아합니다");
+                                        String image_url = img;
+                                        Log.d("불러온 img url :", img);
+                                        Glide.with(SearchResultActivity.this).load(image_url).into(iv_srchResultImage);
+                                    }
+                                    Log.d("받아오기 실패1", "");
                                 }
-//                                Log.d("음식점 :", store + "/ 이름 : " + name + "/메뉴 :" + menu + "/가격 :" + price + "/전화번호 :" + phone + "/주소 :" + addr + "/운영시간 :" + time );
-//                                Log.d("받아온 데이터 :", document.getId() + " => " + food);
-                                Log.d("받아오기 실패1", "");
-
-                            }
 
                         } else {
                             Log.w("받아오기실패", "Error getting documents.", task.getException());
-
                         }
-
-
-
                     }
                 });
-
-
-
 
         String db_url = "https://finfooproject-default-rtdb.firebaseio.com/";
         // 파이어베이스 DB에 접근하는 객체(=Connection)
@@ -227,24 +214,23 @@ public class SearchResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //좋아요버튼 취소할때
                 if (btn_foodLike.isSelected()) {
                     btn_foodLike.setSelected(false);
 
-                    if(like > 0){
-                        like--;
-                    }
+                    real_like--;
 
-                    tv_howMuchLikes.setText(String.valueOf(like) + "명이 좋아합니다");
+                    tv_howMuchLikes.setText(String.valueOf(real_like) + "명이 좋아합니다");
 
                     DocumentReference washingtonRef = db.collection("store").document(store);
 
-                    // Set the "isCapital" field of the city 'DC'
+                    //좋아요 수 업데이트 (데이터베이스)
                     washingtonRef
-                            .update("like", String.valueOf(like))
+                            .update("like", String.valueOf(real_like))
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Log.d("좋아요 수 감소", "DocumentSnapshot successfully updated!");
+                                    Log.d("좋아요 수 감소", "like- successfully updated!");
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -253,25 +239,27 @@ public class SearchResultActivity extends AppCompatActivity {
                                     Log.w("좋아요 실패", "Error updating document", e);
                                 }
                             });
-
                 } else {
+                    //좋아요 클릭한다면 (최초)
                     btn_foodLike.setSelected(true);
 
                     //좋아요 수 증가
-                    like++;
+                    real_like++;
+                    String tv_like_update = String.valueOf(real_like);
 
                     //00 명이 좋아합니다. 텍스트 변경
-                    tv_howMuchLikes.setText(String.valueOf(like) + "명이 좋아합니다");
+                    tv_howMuchLikes.setText(tv_like_update + "명이 좋아합니다");
 
                     DocumentReference washingtonRef = db.collection("store").document(store);
 
                     // Set the "isCapital" field of the city 'DC'
                     washingtonRef
-                            .update("like", String.valueOf(like))
+                            .update("like", String.valueOf(real_like))
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Log.d("좋아요 수 증가", "DocumentSnapshot successfully updated!");
+                                    Log.d("좋아요 수 증가", "like+ successfully updated!");
+                                    Log.d("좋아요 수 몇?", ""+real_like);
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -281,17 +269,8 @@ public class SearchResultActivity extends AppCompatActivity {
                                 }
                             });
 
-
-
-
-
-
-
-
-
-
                     //파이어베이스DB에 저장된 내용을 읽어온 후 ArrayList<ChatVO>에 저장
-                    myRef.addChildEventListener(new ChildEventListener() {
+                    /*myRef.addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                             //데이터가 추가되었을 때 실행되는 메소드
@@ -318,12 +297,8 @@ public class SearchResultActivity extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
-                    });
-
-
+                    });*/
                 }
-
-
             }
         });
 
@@ -331,16 +306,11 @@ public class SearchResultActivity extends AppCompatActivity {
         btn_foodsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(save_cnt < 1){
                     Map<String, Object> foodsave_map = new HashMap<>();
-
                     foodsave_map.put("id", email);
                     foodsave_map.put("foodsave", store);
-
                     Log.d("찜 확인", store + "/" + email);
-
-                    // Add a new document with a generated ID
 
                     db.collection("foodsave")
                             .add(foodsave_map)
@@ -354,8 +324,6 @@ public class SearchResultActivity extends AppCompatActivity {
                                     save_cnt++;
 
                                     Log.d("savecnt :", "" + save_cnt);
-
-
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -387,63 +355,21 @@ public class SearchResultActivity extends AppCompatActivity {
                                                 Toast.makeText(getApplicationContext(), "이미 찜하신 음식점입니다.", Toast.LENGTH_SHORT).show();
                                                 Log.d("이미 찜하신 목록입니다.", "");
                                             }*/
-                                                Toast.makeText(SearchResultActivity.this, "이미 찜하신 음식점입니다.", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(SearchResultActivity.this, "찜 목록에 추가되었습니다.", Toast.LENGTH_SHORT).show();
                                                 btn_foodsave.setBackgroundResource(R.drawable.heart2);
-                                                Log.d("확인ㅇㅀ", "/");
+                                                Log.d("확인", "/");
                                             } else{
 
-
                                             }
-
-                                            //이미지액티비티에서 받아온 결과값(음식점이름)에 해당되는 데이터베이스 불러오기
-                                        /*if(foodsave_name.equals(store) && foodsave_id.equals(email)){
-                                            Toast.makeText(getApplicationContext(), "이미 찜하신 음식점입니다.", Toast.LENGTH_SHORT).show();
-                                            Log.d("이미 찜하신 목록입니다.", "");
-                                        } else if(foodsave_id.equals(email)) {
-                                            if (foodsave_id.equals(email) && !foodsave_name.equals(store)) {
-
-                                                Map<String, Object> foodsave_map = new HashMap<>();
-
-                                                foodsave_map.put("id", email);
-                                                foodsave_map.put("foodsave", store);
-
-                                                Log.d("찜 확인", store + "/" + email);
-
-                                                // Add a new document with a generated ID
-                                                db.collection("foodsave")
-                                                        .add(foodsave_map)
-                                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                                            @Override
-                                                            public void onSuccess(DocumentReference documentReference) {
-
-//                                            document_id = documentReference.getId();
-                                                                Log.d("찜 목록 추가 성공:", "DocumentSnapshot added with ID: " + documentReference.getId());
-
-                                                            }
-                                                        })
-                                                        .addOnFailureListener(new OnFailureListener() {
-                                                            @Override
-                                                            public void onFailure(@NonNull Exception e) {
-                                                                Log.w("찜 목록 추가 실패:", "Error adding document", e);
-                                                            }
-                                                        });
-                                            }
-                                        }*/
-
                                         }
-
                                     } else {
                                         Log.w("받아오기실패", "Error getting documents.", task.getException());
-
                                     }
                                 }
                             });
+                } else {
+                    Toast.makeText(SearchResultActivity.this, "이미 찜하신 음식점입니다.", Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
-
             }
         });
     }

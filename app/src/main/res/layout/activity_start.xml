@@ -8,6 +8,8 @@
     android:orientation="vertical"
     tools:context=".StartActivity">
 
+
+
     <Button
         android:id="@+id/btn_start_login"
         android:layout_width="258dp"

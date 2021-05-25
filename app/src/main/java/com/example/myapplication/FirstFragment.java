@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +55,7 @@ public class FirstFragment extends Fragment {
         profileImage = view.findViewById(R.id.profileImage);
         tv_myMusciView2 = view.findViewById(R.id.tv_myMusciView2);
 
+        Log.d("firstfrag title:", title);
         Glide.with(getContext()).load(R.drawable.paddington).apply(new RequestOptions().circleCrop()).into(profileImage);
 
 
@@ -61,6 +63,7 @@ public class FirstFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), MyLikeViewActivity.class);
+                intent.putExtra("id", title);
                 startActivity(intent);
             }
         });

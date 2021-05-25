@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -10,6 +11,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -21,11 +23,17 @@ public class MyLikeViewActivity extends AppCompatActivity {
     ArrayList<LikeViewVO> data;
     ListView lv_like;
     ImageView iv_like_back;
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_like_view2);
+
+        Intent read_intent = getIntent();
+
+        email = read_intent.getStringExtra("id");
+        Log.d("result액티비티, 받아온 데이터 : ", email);
 
         // 요소 초기화
         lv_like = findViewById(R.id.lv_reviewAllList);

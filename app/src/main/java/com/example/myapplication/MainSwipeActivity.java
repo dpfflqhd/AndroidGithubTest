@@ -19,16 +19,13 @@ public class MainSwipeActivity extends AppCompatActivity {
 
     FragmentPagerAdapter adapterViewPager;
     Fragment Home;
-    String email = "";
-
     SecondFragment secondFragment;
-
+    public static String email = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_swipe);
 
-        String email = "asdfsdf";
 
        /* Bundle arguments = new Bundle();
         arguments.putString("id", email);
@@ -47,6 +44,7 @@ public class MainSwipeActivity extends AppCompatActivity {
         email = read_intent.getStringExtra("id");
 
         Log.d("result액티비티, 받아온 데이터 : ", email);
+
 
 
 
@@ -85,6 +83,7 @@ public class MainSwipeActivity extends AppCompatActivity {
 
 
 
+
         public MyPagerAdapter(FragmentManager fragmentManager) {
 
             super(fragmentManager);
@@ -102,13 +101,15 @@ public class MainSwipeActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
 
-            String email  = "test";
 
+
+
+            Log.d("getItem email", email);
             switch (position) {
                 case 0:
-                    return FirstFragment.newInstance(0, "Page # 1");
+                    return FirstFragment.newInstance(0, email);
                 case 1:
-                    return SecondFragment.newInstance(1, "Page # 2");
+                    return SecondFragment.newInstance(1, email);
                 case 2:
                     return ThirdFragment.newInstance(2, "Page # 3");
                 default:

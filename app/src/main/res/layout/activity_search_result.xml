@@ -40,6 +40,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/imageView16"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+                app:srcCompat="@drawable/simple_line" />
+
             <Button
                 android:id="@+id/btn_foodLike"
                 android:layout_width="32dp"
@@ -55,14 +65,12 @@
                 android:layout_width="32dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="9dp"
-                android:layout_marginEnd="9dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/bubble"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_foodLike"
                 app:layout_constraintEnd_toStartOf="@+id/btn_foodsave"
                 app:layout_constraintStart_toEndOf="@+id/btn_foodLike"
-                app:layout_constraintTop_toTopOf="@+id/btn_foodLike"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_srchResultImage" />
 
             <ImageView
                 android:id="@+id/iv_srchResultImage"
@@ -126,7 +134,7 @@
                 android:backgroundTint="#37F47210"
                 android:scrollbars="none"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView9">
 
@@ -220,17 +228,16 @@
                 android:id="@+id/btn_foodsave"
                 android:layout_width="28dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="255dp"
-                android:background="@drawable/tagcolor"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_foodLike"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/star1"
+                app:layout_constraintStart_toEndOf="@+id/btn_review2"
                 app:layout_constraintTop_toBottomOf="@+id/iv_srchResultImage" />
 
             <TextView
                 android:id="@+id/tv_howMuchLikes"
-                android:layout_width="21dp"
-                android:layout_height="30dp"
+                android:layout_width="341dp"
+                android:layout_height="28dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="9dp"
                 android:gravity="top"
@@ -251,7 +258,7 @@
                 android:backgroundTint="#FFFFFF"
                 android:text="명이 좋아합니다"
                 android:textColor="#FF323232"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_howMuchLikes"
                 app:layout_constraintTop_toBottomOf="@+id/btn_foodLike" />
@@ -280,7 +287,7 @@
                 android:layout_marginTop="10dp"
                 android:text="메뉴이름"
                 android:textColor="#555555"
-                android:textSize="17sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.55"
                 app:layout_constraintStart_toStartOf="parent"
@@ -290,10 +297,10 @@
                 android:id="@+id/tv_srchResultFoodPrice"
                 android:layout_width="351dp"
                 android:layout_height="22dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="10dp"
                 android:text="가격"
                 android:textColor="#555555"
-                android:textSize="17sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.55"
                 app:layout_constraintStart_toStartOf="parent"
@@ -306,7 +313,7 @@
                 android:layout_marginTop="20dp"
                 android:text="전화"
                 android:textColor="#555555"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.55"
                 app:layout_constraintStart_toStartOf="parent"
@@ -319,7 +326,7 @@
                 android:layout_marginTop="10dp"
                 android:text="주소"
                 android:textColor="#555555"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.55"
                 app:layout_constraintStart_toStartOf="parent"
@@ -332,7 +339,7 @@
                 android:layout_marginTop="10dp"
                 android:text="시간"
                 android:textColor="#555555"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.55"
                 app:layout_constraintStart_toStartOf="parent"
