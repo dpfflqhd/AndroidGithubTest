@@ -48,10 +48,10 @@
             android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="23dp"
             android:text="사용자이름"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -151,8 +151,8 @@
 
         <ImageView
             android:id="@+id/imageView26"
-            android:layout_width="25dp"
-            android:layout_height="20dp"
+            android:layout_width="20dp"
+            android:layout_height="15dp"
             android:layout_marginEnd="15dp"
             android:src="@drawable/graynext"
             app:layout_constraintBottom_toBottomOf="@+id/tv_likeview"
@@ -161,8 +161,8 @@
 
         <ImageView
             android:id="@+id/imageView27"
-            android:layout_width="25dp"
-            android:layout_height="20dp"
+            android:layout_width="20dp"
+            android:layout_height="15dp"
             android:layout_marginEnd="15dp"
             android:src="@drawable/graynext"
             app:layout_constraintBottom_toBottomOf="@+id/tv_myMusciView2"
@@ -171,8 +171,8 @@
 
         <ImageView
             android:id="@+id/imageView28"
-            android:layout_width="25dp"
-            android:layout_height="20dp"
+            android:layout_width="20dp"
+            android:layout_height="15dp"
             android:layout_marginEnd="15dp"
             android:src="@drawable/graynext"
             app:layout_constraintBottom_toBottomOf="@+id/tv_likeview3"

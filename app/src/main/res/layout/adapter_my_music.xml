@@ -9,8 +9,9 @@
 
     <ImageView
         android:id="@+id/iv_myMusicImg"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="5dp"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -73,5 +74,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/btn_myMusicPlay"
         app:layout_constraintStart_toEndOf="@+id/btn_myMusicPause"
         app:srcCompat="@drawable/stopbtn" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

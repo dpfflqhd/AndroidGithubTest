@@ -99,9 +99,9 @@
                     android:id="@+id/textView32"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="          주간 리뷰 순위 TOP3"
+                    android:text="        주간 리뷰 순위 TOP3"
                     android:textColor="#373737"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <HorizontalScrollView
@@ -186,9 +186,9 @@
 
                         <ImageView
                             android:id="@+id/img_top1"
-                            android:layout_width="274dp"
+                            android:layout_width="285dp"
                             android:layout_height="142dp"
-                            android:layout_marginTop="17dp"
+                            android:layout_marginTop="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/salmon"
                             app:layout_constraintEnd_toEndOf="@+id/img_top11"
@@ -197,9 +197,9 @@
 
                         <ImageView
                             android:id="@+id/img_top2"
-                            android:layout_width="274dp"
+                            android:layout_width="285dp"
                             android:layout_height="142dp"
-                            android:layout_marginTop="17dp"
+                            android:layout_marginTop="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/salmon"
                             app:layout_constraintEnd_toEndOf="@+id/img_top22"
@@ -265,9 +265,9 @@
 
                         <ImageView
                             android:id="@+id/img_top3"
-                            android:layout_width="274dp"
+                            android:layout_width="285dp"
                             android:layout_height="142dp"
-                            android:layout_marginTop="17dp"
+                            android:layout_marginTop="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/salmon"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -331,9 +331,9 @@
                     android:id="@+id/textView20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="          AI가 추천하는 음식"
+                    android:text="        AI가 추천하는 음식"
                     android:textColor="#373737"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <HorizontalScrollView
@@ -387,9 +387,9 @@
 
                         <ImageView
                             android:id="@+id/img_ai1"
-                            android:layout_width="274dp"
+                            android:layout_width="285dp"
                             android:layout_height="142dp"
-                            android:layout_marginTop="17dp"
+                            android:layout_marginTop="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/foodimg"
                             app:layout_constraintEnd_toEndOf="@+id/img_ai11"
@@ -421,9 +421,9 @@
 
                         <ImageView
                             android:id="@+id/img_ai2"
-                            android:layout_width="274dp"
+                            android:layout_width="285dp"
                             android:layout_height="142dp"
-                            android:layout_marginTop="17dp"
+                            android:layout_marginTop="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/foodimg"
                             app:layout_constraintEnd_toEndOf="@+id/img_ai22"
@@ -467,9 +467,9 @@
 
                         <ImageView
                             android:id="@+id/img_ai3"
-                            android:layout_width="274dp"
+                            android:layout_width="285dp"
                             android:layout_height="142dp"
-                            android:layout_marginTop="17dp"
+                            android:layout_marginTop="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/foodimg"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -500,9 +500,9 @@
                     android:id="@+id/textView21"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="          이달의 푸드매거진"
+                    android:text="        이달의 푸드매거진"
                     android:textColor="#373737"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <HorizontalScrollView
@@ -575,9 +575,9 @@
 
                         <ImageView
                             android:id="@+id/imageView20"
-                            android:layout_width="274dp"
+                            android:layout_width="285dp"
                             android:layout_height="142dp"
-                            android:layout_marginTop="17dp"
+                            android:layout_marginTop="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/month1"
                             app:layout_constraintEnd_toEndOf="@+id/img_month2"
@@ -609,9 +609,9 @@
 
                         <ImageView
                             android:id="@+id/imageView21"
-                            android:layout_width="274dp"
+                            android:layout_width="285dp"
                             android:layout_height="142dp"
-                            android:layout_marginTop="17dp"
+                            android:layout_marginTop="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/month3"
                             app:layout_constraintEnd_toEndOf="@+id/img_month3"
@@ -643,9 +643,9 @@
 
                         <ImageView
                             android:id="@+id/imageView23"
-                            android:layout_width="274dp"
+                            android:layout_width="285dp"
                             android:layout_height="142dp"
-                            android:layout_marginTop="17dp"
+                            android:layout_marginTop="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/month2"
                             app:layout_constraintEnd_toEndOf="@+id/img_month1"
@@ -664,9 +664,9 @@
                     android:id="@+id/tv_season"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="          계절별 추천음식"
+                    android:text="        계절별 추천음식"
                     android:textColor="#373737"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <HorizontalScrollView
@@ -713,9 +713,9 @@
 
                         <ImageView
                             android:id="@+id/img_sea1"
-                            android:layout_width="274dp"
+                            android:layout_width="285dp"
                             android:layout_height="142dp"
-                            android:layout_marginTop="17dp"
+                            android:layout_marginTop="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/zambalaya"
                             app:layout_constraintEnd_toEndOf="@+id/img_sea11"
@@ -747,9 +747,9 @@
 
                         <ImageView
                             android:id="@+id/img_sea2"
-                            android:layout_width="274dp"
+                            android:layout_width="285dp"
                             android:layout_height="142dp"
-                            android:layout_marginTop="17dp"
+                            android:layout_marginTop="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/zambalaya"
                             app:layout_constraintEnd_toEndOf="@+id/img_sea22"
@@ -781,9 +781,9 @@
 
                         <ImageView
                             android:id="@+id/img_sea3"
-                            android:layout_width="274dp"
+                            android:layout_width="285dp"
                             android:layout_height="142dp"
-                            android:layout_marginTop="17dp"
+                            android:layout_marginTop="12dp"
                             android:scaleType="fitXY"
                             android:scrollbars="none"
                             android:src="@drawable/zambalaya"

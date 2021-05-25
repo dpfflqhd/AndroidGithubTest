@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="55dp"
         android:layout_marginEnd="266dp"
         android:text="즐겨찾는 음식"
         android:textSize="16sp"
@@ -33,12 +33,12 @@
     <ImageView
         android:id="@+id/iv_like_back"
         android:layout_width="29dp"
-        android:layout_height="30dp"
+        android:layout_height="25dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="53dp"
         android:layout_marginEnd="9dp"
         app:layout_constraintEnd_toStartOf="@+id/textView27"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/next1" />
+        tools:src="@drawable/next1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

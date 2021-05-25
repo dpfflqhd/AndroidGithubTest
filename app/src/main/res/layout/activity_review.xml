@@ -4,33 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#33FF5722"
+    android:backgroundTint="#56FF5722"
     tools:context=".ReviewActivity">
 
     <Button
         android:id="@+id/btn_writeReview"
         android:layout_width="108dp"
         android:layout_height="37dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="52dp"
         android:background="@drawable/round_backgroud_border_black"
         android:backgroundTint="#FFFFFF"
         android:text="리뷰 쓰기"
         android:textColor="#F47210"
         android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/iv_like_back2"
-        android:layout_width="29dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="53dp"
-        android:layout_marginEnd="9dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/next1" />
 
     <ListView
         android:id="@+id/lv_reviewAllList"
@@ -45,11 +37,21 @@
         android:id="@+id/textView42"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="55dp"
         android:text="리뷰와 별점"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_like_back2"
-        app:layout_constraintStart_toEndOf="@+id/iv_like_back2"
-        app:layout_constraintTop_toTopOf="@+id/iv_like_back2" />
+        app:layout_constraintStart_toEndOf="@+id/imageView17"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="29dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="53dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/next1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

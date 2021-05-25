@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2DFF5722"
-    android:backgroundTint="#61FF5722"
+    android:background="#56FF5722"
+    android:backgroundTint="#24FF5722"
     android:padding="5dp"
     tools:context=".ImageActivity">
 

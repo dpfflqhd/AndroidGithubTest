@@ -3,11 +3,13 @@ package com.example.myapplication;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ViewFlipper;
 
 public class Fragment3Child2 extends Fragment {
 
@@ -35,6 +37,8 @@ public class Fragment3Child2 extends Fragment {
 
 
 
-        return inflater.inflate(R.layout.fragment_fragment3_child2, container, false);
+
+
+        return inflater.inflate(R.layout.fragment_fragment3_child1, container, false);
     }
 }
