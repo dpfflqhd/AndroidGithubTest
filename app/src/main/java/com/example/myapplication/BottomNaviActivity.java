@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -14,6 +16,9 @@ public class BottomNaviActivity extends AppCompatActivity {
     BottomNavigationView navi;
     FirstFragment frag1;
     SecondFragment frag2;
+    public static String email = "";
+    public static String email1 = "";
+    public static String email2 = "";
 
     // 이 부분은 재이씨 프래그먼트 전역변수 선언하는 곳입니다.
     ThirdFragment frag3;
@@ -25,18 +30,56 @@ public class BottomNaviActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navi);
-        
+
+        Intent get_intent = getIntent();
+        email = get_intent.getStringExtra("id");
+        email1 = get_intent.getStringExtra("id");
+        email2 = get_intent.getStringExtra("id");
+        Log.d("bottom intent id", email);
+        Log.d("bottom1 intent id", email1);
+        Log.d("bottom2 intent id", email2);
+
+
+
+
+
+
+
+
+
+
+
+
+        //        tran.replace(R.id.fragment_test, fragment).commit();
+
+
         // 요소 초기화
         navi = findViewById(R.id.b_navi);
         
         // frag1은 마이페이지 프래그먼트입니다.
         frag1 = new FirstFragment();
+        Bundle bundle = new Bundle();
+        String sendstr = email;
+        bundle.putString("send", sendstr );
+        frag1.setArguments(bundle);
         
         // frag2는 검색 프래그먼트입니다.
+        // frag2 데이터 전달 추가 -김승환
         frag2 = new SecondFragment();
+        Bundle bundle1 = new Bundle();
+        String sendstr1 = email1;
+        Log.d("sendstr1", sendstr1);
+        bundle1.putString("send", sendstr1);
+        frag2.setArguments(bundle1);
 
         // 이부분은 재이씨 프래그먼트 초기화하는 곳입니다.
         frag3 = new ThirdFragment();
+        Bundle bundle2 = new Bundle();
+        String sendstr2 = email2;
+        bundle2.putString("send", sendstr2);
+        frag3.setArguments(bundle2);
+
+
         frag4 = new Fragment3Child1();
         frag5 = new Fragment3Child2();
 
@@ -54,11 +97,12 @@ public class BottomNaviActivity extends AppCompatActivity {
                 
                     // 지도 프래그먼트를 띄워줍니다. exeFrag()의 매개변수에 지도 프래그먼트를 넣어주세요.
                 } else if (item.getItemId() == R.id.item_foodMap) {
+
                     exeFrag(frag3);
 
                     // 커뮤니티 프래그먼트를 띄워줍니다. exeFrag()의 매개변수에 커뮤니티 프래그먼트를 넣어주세요.
                 } else if (item.getItemId() == R.id.item_foodCommunity) {
-                    exeFrag(frag4);
+                    exeFrag(frag5);
                     
                     // 마이페이지 프래그먼트를 띄워줍니다. exeFrag()의 매개변수에 마이페이지 프래그먼트를 넣어주세요.
                 } else if (item.getItemId() == R.id.item_foodMypage) {

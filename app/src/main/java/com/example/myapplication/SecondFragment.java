@@ -121,11 +121,11 @@ public class SecondFragment extends Fragment {
     // newInstance constructor for creating fragment with arguments
     public static SecondFragment newInstance(int page, String title) {
         SecondFragment fragment = new SecondFragment();
-        Bundle args = new Bundle();
+        /*Bundle args = new Bundle();
         args.putInt("someInt", page);
         args.putString("someTitle", title);
         Log.d("secondefrag newIns", title + page);
-        fragment.setArguments(args);
+        fragment.setArguments(args);*/
 
 
 
@@ -156,6 +156,11 @@ public class SecondFragment extends Fragment {
         btn_resultimage = view.findViewById(R.id.btn_resultimage);
         selectedImage.setImageResource(R.drawable.camera);
         tempImg = selectedImage.getDrawable();
+
+
+        Bundle bundle = getArguments(); //번들 안의 텍스트 불러오기
+        title = bundle.getString("send"); //fragment1의 TextView에 전달 받은 text 띄우기
+        Log.d("secondfrag title", title);
 
 
         //권한 설정
