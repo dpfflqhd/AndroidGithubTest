@@ -6,27 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".BottomNaviActivity">
 
+    <FrameLayout
+        android:id="@+id/b_frame"
+        android:layout_width="400dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/b_navi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    </FrameLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/b_navi"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="406dp"
+        android:layout_height="109dp"
+        android:layout_marginBottom="36dp"
         android:background="#F5FCFCFC"
         app:itemIconTint="@drawable/bottom_nav_color"
         app:itemTextColor="@drawable/bottom_nav_color"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_frame"
         app:menu="@menu/bottom_navi_item" />
-
-    <FrameLayout
-        android:id="@+id/b_frame"
-        android:layout_width="0dp"
-        android:layout_height="640dp"
-        app:layout_constraintBottom_toTopOf="@+id/b_navi"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

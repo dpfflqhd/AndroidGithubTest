@@ -29,10 +29,10 @@ public class FirstFragment extends Fragment {
     // newInstance constructor for creating fragment with arguments
     public static FirstFragment newInstance(int page, String title) {
         FirstFragment fragment = new FirstFragment();
-        Bundle args = new Bundle();
+        /*Bundle args = new Bundle();
         args.putInt("someInt", page);
         args.putString("someTitle", title);
-        fragment.setArguments(args);
+        fragment.setArguments(args);*/
         return fragment;
     }
 
@@ -53,6 +53,11 @@ public class FirstFragment extends Fragment {
         profileImage = view.findViewById(R.id.profileImage);
         tv_myMusciView2 = view.findViewById(R.id.tv_myMusciView2);
         tv_firstfrag_name = view.findViewById(R.id.tv_firstfrag_name);
+
+
+        Bundle bundle = getArguments(); //번들 안의 텍스트 불러오기
+        title = bundle.getString("send"); //fragment1의 TextView에 전달 받은 text 띄우기
+        Log.d("firstfrag title", title);
 
         tv_firstfrag_name.setText(title);
 

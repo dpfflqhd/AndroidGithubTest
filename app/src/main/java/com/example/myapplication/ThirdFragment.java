@@ -44,10 +44,10 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
     // newInstance constructor for creating fragment with arguments
     public static ThirdFragment newInstance(int page, String title) {
         ThirdFragment fragment = new ThirdFragment();
-        Bundle args = new Bundle();
+        /*Bundle args = new Bundle();
         args.putInt("someInt", page);
         args.putString("someTitle", title);
-        fragment.setArguments(args);
+        fragment.setArguments(args);*/
         return fragment;
     }
 
@@ -55,8 +55,8 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        page = getArguments().getInt("someInt", 0);
-        title = getArguments().getString("someTitle");
+        /*page = getArguments().getInt("someInt", 0);
+        title = getArguments().getString("someTitle");*/
 
     }
 
@@ -72,6 +72,8 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
         btn_geungsang = view.findViewById(R.id.btn_geungsang);
         btn_gwang = view.findViewById(R.id.btn_gwang);
         btn_jeju = view.findViewById(R.id.btn_jeju);
+
+        title = getArguments().getString("send");
 
         context = container.getContext();
         //처음 childfragment 지정
