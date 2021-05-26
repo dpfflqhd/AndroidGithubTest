@@ -55,8 +55,10 @@ public class MyLikeViewAdapter extends BaseAdapter {
             //holder.tv_resLoc.setText(data.get(position).getResLoc());
             holder.tv_resName.setText(data.get(position).getResName());
             holder.tv_dishName.setText(data.get(position).getDishName());
-            //holder.tv_starScore.setText(data.get(position).getStarScore());
-            holder.iv_dishImg.setImageResource(data.get(position).getDishImg());
+            holder.tv_starScore.setText(data.get(position).getStarScore());
+
+
+//            holder.iv_dishImg.setImageResource(data.get(position).getDishImg());
 
             //Rounded-Circle
             RoundedCorners corners = new RoundedCorners(14);
@@ -66,6 +68,10 @@ public class MyLikeViewAdapter extends BaseAdapter {
                     .diskCacheStrategy(DiskCacheStrategy.NONE);//Do not buffer disk hard disk
 
             Glide.with(convertView).load(data.get(position).getDishImg()).apply(options).into(holder.iv_dishImg);
+
+            /*String image_url = img;
+        Log.d("불러온 img url :", img);
+        Glide.with(SearchResultActivity.this).load(image_url).into(iv_srchResultImage);*/
 
         }
         return convertView;
@@ -81,7 +87,7 @@ public class MyLikeViewAdapter extends BaseAdapter {
             //tv_resLoc = itemView.findViewById(R.id.tv_resLoc);
             tv_resName = itemView.findViewById(R.id.tv_resName);
             tv_dishName = itemView.findViewById(R.id.tv_dishName);
-            //tv_starScore = itemView.findViewById(R.id.tv_starScore);
+            tv_starScore = itemView.findViewById(R.id.tv_starScore);
         }
 
     }

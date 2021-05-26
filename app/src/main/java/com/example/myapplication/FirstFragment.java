@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +23,7 @@ public class FirstFragment extends Fragment {
     private String title;
     private int page;
 
-    TextView tv_likeview, tv_myMusciView2;
+    TextView tv_likeview, tv_myMusciView2, tv_firstfrag_name;
     ImageView profileImage;
 
     // newInstance constructor for creating fragment with arguments
@@ -53,15 +54,28 @@ public class FirstFragment extends Fragment {
         tv_likeview = view.findViewById(R.id.tv_likeview);
         profileImage = view.findViewById(R.id.profileImage);
         tv_myMusciView2 = view.findViewById(R.id.tv_myMusciView2);
+        tv_firstfrag_name = view.findViewById(R.id.tv_firstfrag_name);
 
+        tv_firstfrag_name.setText(title);
+
+        Log.d("firstfrag title:", title);
         Glide.with(getContext()).load(R.drawable.paddington).apply(new RequestOptions().circleCrop()).into(profileImage);
 
 
         tv_likeview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), MyLikeViewActivity.class);
-                startActivity(intent);
+
+
+                try {
+                    Intent intent = new Intent(getContext(), MyLikeViewActivity.class);
+                    intent.putExtra("id", title);
+                    Thread.sleep(10);
+                    startActivity(intent);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 

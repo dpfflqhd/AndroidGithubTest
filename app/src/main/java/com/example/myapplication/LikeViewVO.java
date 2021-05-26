@@ -2,14 +2,14 @@ package com.example.myapplication;
 
 public class LikeViewVO {
 
-    private int dishImg;
+    private String dishImg;
     private String resLoc;
     private String resName;
     private String dishName;
     private String starScore;
     private String memo;
 
-    public LikeViewVO(int dishImg, String resLoc, String resName, String dishName, String starScore, String memo) {
+    public LikeViewVO(String dishImg, String resLoc, String resName, String dishName, String starScore, String memo) {
         this.dishImg = dishImg;
         this.resLoc = resLoc;
         this.resName = resName;
@@ -34,11 +34,11 @@ public class LikeViewVO {
         this.starScore = starScore;
     }
 
-    public int getDishImg() {
+    public String getDishImg() {
         return dishImg;
     }
 
-    public void setDishImg(int dishImg) {
+    public void setDishImg(String dishImg) {
         this.dishImg = dishImg;
     }
 

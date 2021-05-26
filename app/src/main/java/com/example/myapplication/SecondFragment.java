@@ -2,8 +2,11 @@ package com.example.myapplication;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,6 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -32,6 +36,7 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.google.android.gms.common.api.Result;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -49,16 +54,23 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
 
 public class SecondFragment extends Fragment {
-    // Store instance variables
+
+
+    private Context context;
     private String title;
     private int page;
 
@@ -79,12 +91,18 @@ public class SecondFragment extends Fragment {
             Manifest.permission.READ_EXTERNAL_STORAGE
     };
     Uri uri;
+    Uri resultUri;
+    String imageName;
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageRef = storage.getReference();
 
     String image_url = "";
     String email = "";
     private static String CONNECT_MSG = "connect";
+    Intent result_intent;
+    String audio = "";
+
+    String[] receive_split;
 //    private DataOutputStream dataOutput;
 
    /* private static String SERVER_IP = "192.168.128.1";
@@ -93,7 +111,6 @@ public class SecondFragment extends Fragment {
     private static int BUF_SIZE = 100;
     String image_url = "";
     String email = "";*/
-    private String imageName;
 //    Connect connect = new Connect();
     int cnt = 0;
 
@@ -107,6 +124,7 @@ public class SecondFragment extends Fragment {
         Bundle args = new Bundle();
         args.putInt("someInt", page);
         args.putString("someTitle", title);
+        Log.d("secondefrag newIns", title + page);
         fragment.setArguments(args);
 
 
@@ -120,19 +138,10 @@ public class SecondFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (page != 0) {
-            page = getArguments().getInt("someInt", 0);
-            title = getArguments().getString("someTitle");
-        }
 
-        try{
-            EventBus.getDefault().register(this);
-        }catch (Exception e){}
-
-
-
-
-
+        page = getArguments().getInt("someInt", 0);
+        title = getArguments().getString("someTitle");
+        Log.d("secondfrag 받아온 title", title);
 
     }
 
@@ -142,6 +151,8 @@ public class SecondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
+        context = container.getContext();
+
 
         // 요소 초기화. view를 통해 접근해야 id 찾기가 가능.
         selectedImage = view.findViewById(R.id.selectedImage);
@@ -149,26 +160,6 @@ public class SecondFragment extends Fragment {
         btn_resultimage = view.findViewById(R.id.btn_resultimage);
         selectedImage.setImageResource(R.drawable.camera);
         tempImg = selectedImage.getDrawable();
-
-        /*Intent second_intent = getActivity().getIntent();
-        email = second_intent.getStringExtra("id");*/
-
-
-
-
-        Bundle bundle = getArguments(); //번들 안의 텍스트 불러오기
-        email = bundle.getString("id");
-        Log.d("2번째 email 데이터 프래그먼트 받아오기 : ", ""+ email);
-
-        /*bundle*/
-
-       /* Bundle bundle = this.getArguments();
-        if (getArguments() != null) {
-            email = bundle.getString("id");
-            Log.d("2번째 email 데이터 프래그먼트 받아오기 : ", ""+email);
-        }*/
-
-
 
 
         //권한 설정
@@ -192,21 +183,19 @@ public class SecondFragment extends Fragment {
             }
         });
 
+        //이미지 검색 버튼 클릭시 앨범으로 이동
         btn_searchImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getAlbum();
-//                Connect connect = new Connect();
-
             }
         });
 
+        //결과 확인 버튼 클릭시 결과페이지로 이동
         btn_resultimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 dataSend();
-
             }
         });
 
@@ -215,145 +204,47 @@ public class SecondFragment extends Fragment {
 
     // 인텐트 결과 정의
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        try{
-            // 사진을 선택하고 왔을 때만 처리한다.
-            if(resultCode == RESULT_OK){
-                // 선택한 이미지를 지칭하는 Uri 객체를 얻어온다.
-                uri = data.getData();
-                // Uri 객체를 통해서 컨텐츠 프로바이더를 통해 이미지의 정보를 가져온다.
-                ContentResolver resolver = getActivity().getContentResolver();
-                Cursor cursor = resolver.query(uri, null, null, null, null);
-                cursor.moveToNext();
-
-                // 사용자가 선택한 이미지의 경로 데이터를 가져온다.
-                int index = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
-                String source = cursor.getString(index);
-
-                /*int currentPrice = cursor.getInt(index);
-                int currentQuantity = cursor.getInt(index);
-                String currentSupplierName = cursor.getString(index);
-                int currentSupplierPhone = cursor.getInt(index);*/
-
-
-                // 경로 데이터를 통해서 이미지 객체를 생성한다
-                Bitmap bitmap = BitmapFactory.decodeFile(source);
-
-                // 이미지의 크기를 조정한다.
-                Bitmap bitmap2 = resizeBitmap(1024, bitmap);
-
-                // 회전 각도 값을 가져온다.
-                float degree = getDegree(source);
-                Bitmap bitmap3 = rotateBitmap(bitmap2, degree);
-
-                selectedImage.setImageBitmap(bitmap3);
-                Log.d("이미지 url", "d"+uri);
-
-                // 여기부터 jsp 전송구간
-//                Toast.makeText(getBaseContext(), "resultCode : " + data, Toast.LENGTH_SHORT).show();
-
-
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-
-        // 크롭된 이미지를 클릭했을때의 코드
+        // 이미지 크롭으로 연결하는 코드
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            resultUri = data.getData();
+            Log.d("크롭", "크롭 사진 받기 성공");
 
-            try {
-
-                uri = data.getData();
-
-                Log.d("크롭", "크롭 사진 받기 성공");
-
-                // 크롭된 이미지 받아오는 코드
-                CropImage.ActivityResult result = CropImage.getActivityResult(data);
-                Uri resultUri = result.getUri();
-                selectedImage.setImageURI(resultUri);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-
+            // 크롭된 이미지 받아오는 코드
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            resultUri = result.getUri();
+            selectedImage.setImageURI(resultUri);
+            Log.d("resultUri : ", resultUri.toString());
 
         } else if (requestCode == REQUEST_TAKE_ALBUM && resultCode ==RESULT_OK) {
             getCrop(data.getData());
+            resultUri = data.getData();
+            uri = resultUri;
+            Log.d("onActivit을때 uri", uri.toString());
         }
-
-
-
-
-
     }
 
     // 이미지 크롭하는 코드
     public void getCrop(Uri uri) {
-        CropImage.activity().start(getContext(), this);
+        CropImage.activity(uri).start(getContext(), this);
     }
 
     // 갤러리에 접근하는 코드
     public void getAlbum() {
-//        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        Intent intent=new Intent(Intent.ACTION_PICK);
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.setDataAndType(MediaStore.Images.Media.INTERNAL_CONTENT_URI, "image/*");
-
         intent.putExtra("crop", true);
-        startActivityForResult(intent, 1);
-
-        /*Connect connect = new Connect();
-        connect.cancel(true);*/
-
-
-
-
-
-
-
-        /*Intent intent=new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*"); //for image pick from gallery via intent
-        intent.setType("video/*"); //for video pick from gallery via intent*/
+        startActivityForResult(intent, REQUEST_TAKE_ALBUM);
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //여기부터 ImageActivity에서 가져온 코드
-
+    //이미지의 경로를 구한 뒤 데이터베이스에 저장한다
     private void dataSend() {
         String path = getImagePathToUri(uri);
+        Log.d("uri dataSend", resultUri.toString());
 
         Uri file = Uri.fromFile(new File(path));
         StorageReference riversRef = storageRef.child("images/" + file.getLastPathSegment());
@@ -373,39 +264,27 @@ public class SecondFragment extends Fragment {
         });
 
         String data1 = path.replaceAll("/storage/emulated/0/Pictures/|/storage/emulated/0/Download/", "");
-//                        String data2 = path.replace("/storage/emulated/0/Download/", "");
         Log.d("저장된 파일 경로 :", path);
         Log.d("data1 : ", data1);
-//                        /storage/emulated/0/Download/
-
 
         storageRef.child("images/" + data1).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
 
                 image_url = uri.toString();
-                Log.d("처음받아온 image_url", image_url);
-
-                // Got the download URL for 'users/me/profile.png'
-                Log.d("받아온 url : ", "" + uri);
-
-
-                Log.d("imgae_url : ", image_url);
-
-
+                Log.d("받아온 url : ", image_url);
 
 
                 //파이어베이스에 url 저장
-                // Create a new user with a first and last name
                 Map<String, Object> user1 = new HashMap<>();
-
+                email = title;
+                Log.d("secondfragment title ", title);
                 user1.put("id", email);
                 user1.put("url", image_url);
+                Log.d("id + url 데이터베이스 저장", email + "/" + image_url);
 
-                Log.d("넣었냐?", image_url);
-
-                // Add a new document with a generated ID
-                db.collection("users")
+                //파이베이스 imageurl 컬렉션에 데이터 넣기
+                db.collection("imageurl")
                         .add(user1)
                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
@@ -414,18 +293,9 @@ public class SecondFragment extends Fragment {
                                 document_id = documentReference.getId();
                                 Log.d("데이터베이스 추가:", "DocumentSnapshot added with ID: " + documentReference.getId());
 
-//                               Connect connect = new Connect();
-//
+                                //Connect 함수를 통해 파이썬과 안드로이드 통신 GO !!
                                 Connect connect = new Connect();
                                 connect.execute(CONNECT_MSG);
-
-
-//                                new Connect().execute(CONNECT_MSG);
-
-//                                new Connect().cancel(true);
-
-
-
 
                             }
                         })
@@ -435,22 +305,6 @@ public class SecondFragment extends Fragment {
                                 Log.w("데이터베이스 추가실패:", "Error adding document", e);
                             }
                         });
-
-
-//                        String data1 = image_url.replace("&", "asdf");
-//                        String data2 = data1.replace("%", "zxcv");
-//                        Log.d("& 제거", data1);
-//                        Log.d("% 제거", data2);
-//                        edt_url.setText(image_url);
-                /*try {
-                    JSONObject a = buidJsonObject();
-                    String b = a.getString("user");
-                    Log.d("플라스크에서 받아온 이미지 url : ", b);
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }*/
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -461,153 +315,70 @@ public class SecondFragment extends Fragment {
     }
 
 
-
-    public void getImageBtn(View view){
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
-        startActivityForResult(intent, 1);
-
-        /*searchImage.setVisibility(View.INVISIBLE);
-        btn_image_send.setVisibility(View.VISIBLE);*/
-
-
-    }
-
-    //플라스크에서 결과 이미지url 받아오기
-    /*private JSONObject buidJsonObject() throws JSONException {
-
-        JSONObject jsonObject = new JSONObject();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        byte[] imageInByte = baos.toByteArray();
-        String img_array = Base64.encodeToString(imageInByte, Base64.DEFAULT);
-
-//        Log.d("플라스크에서 받아온 이미지 url : ", a);
-        // String img_array = new String(imageInByte);
-        try {
-            baos.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-        jsonObject.accumulate("user",img_array);
-
-        return jsonObject;
-    }*/
-
-    public Bitmap resizeBitmap(int targetWith, Bitmap source){
-        double ratio = (double)targetWith / (double)source.getWidth();
-
-        int targetHeight = (int)(source.getHeight() * ratio);
-
-        Bitmap result = Bitmap.createScaledBitmap(source, targetWith, targetHeight, false);
-
-        if(result != source){
-            source.recycle();
-        }
-        return result;
-    }
-
-    public float getDegree(String source){
-        try{
-            ExifInterface exif = new ExifInterface(source);
-
-            int degree = 0;
-
-            int ori = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, -1);
-            switch (ori){
-                case ExifInterface.ORIENTATION_ROTATE_90 :
-                    degree = 90;
-                    break;
-                case ExifInterface.ORIENTATION_ROTATE_180 :
-                    degree = 180;
-                    break;
-                case ExifInterface.ORIENTATION_ROTATE_270 :
-                    degree = 270;
-                    break;
-            }
-            return (float)degree;
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        return 0.0f;
-    }
-
-    public Bitmap rotateBitmap(Bitmap bitmap, float degree){
-        try{
-
-            int width = bitmap.getWidth();
-            int height = bitmap.getHeight();
-
-            Matrix matrix = new Matrix();
-            matrix.postRotate(degree);
-
-            Bitmap bitmap2 = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
-            bitmap.recycle();
-
-
-            return bitmap2;
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        return null;
-    }// 갤러리에서 이미지 선택해서 이미지뷰에 듸우기
-
+    //이미지의 경로값을 가져온다~
     public String getImagePathToUri(Uri data) {
-        String[] proj = {MediaStore.Images.Media.DATA};
 
-        ContentResolver resolver = getActivity().getContentResolver();
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Log.d("받아온 데이터", data.toString());
+        ContentResolver resolver = context.getContentResolver();
+
+        //Cursor query문을 통해서 안드로이드 앱 내에 저장되어 있는 이미지의 경로 값을 얻어온다. (데이터베이스 쿼리문과 유사)
         Cursor cursor = resolver.query(data, null, null, null, null);
         cursor.moveToNext();
-
-
         int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
-
-        //이미지의 경로 값
+        //이미지의 경로 값 imgPath에 저장
         String imgPath = cursor.getString(column_index);
-
         Log.d("test", imgPath);
 
         //이미지의 이름 값
         String imgName = imgPath.substring(imgPath.lastIndexOf("/") + 1);
-//        Toast.makeText(ImageActivity.this, "이미지 이름 : " + imgName, Toast.LENGTH_SHORT).show();
         this.imageName = imgName;
-
-//        DoFileUpload("http://localhost:8085/AndroidServer/FileReceive.jsp", imgPath);
 
         return imgPath;
     }
 
+
+
+    //파이썬 서버와 통신하는 부분 AsyncTask는 비동기 통신을 하는데 사용
     private class Connect extends AsyncTask< String , String,Void > {
+
+        //통신을 위한 변수선언 및 서버 IP를 설정한다(파이썬의 IP주소를 입력)
         private String output_message;
         private String input_message;
         private DataOutputStream dataOutput;
         private DataInputStream dataInput;
-        private String SERVER_IP = "192.168.128.1";
+        private String SERVER_IP = "220.93.169.14";
         private String STOP_MSG = "stop";
         private int BUF_SIZE = 100;
         private Socket client;
-
-
-
 
 
         @Override
         protected Void doInBackground(String... strings) {
 
             try {
-                client = new Socket(SERVER_IP, 8086);
+                //소켓에 서버 IP와 PORT 번호를 담아 통신한다.
+                client = new Socket(SERVER_IP, 8088);
                 dataOutput = new DataOutputStream(client.getOutputStream());
                 dataInput = new DataInputStream(client.getInputStream());
+
 //                output_message = strings[0];
-                output_message = "1"+ "/" + email + "/" + document_id;
+
+                //output_message는 파이썬으로 보낼 데이터, a는 a,b,c 로 이미지 분류모델, 음악파일, 추천분류 모델을 구분하기 위해서 넣음
+                //ex) a 면 파이썬에서 이미지 분류~ b 면 음악파일~ c면 추천분류~
+                //이전 코드를 보면 파이어베이스에 imageurl 이란 컬렉션에 id 와 url 을 저장했다.
+                //컬렉션 : 데이터베이스 이름, 문서(document) : 테이블 이름, id, url : 변수 이름
+                //파이썬으로 id 와 문서이름을 보낸다. 파이썬에서는 document_id 로 테이블을 찾고 받은 id와 일치하는 변수 값을 찾는다.
+
+                //정리해보면 안드로이드에서 id와 url을 저장하고 document값을 파이썬으로 보냄
+                //파이썬에서는 document값과 id를 기반으로 특정 테이블을 찾고 그 url을 가져온다.
+                //그 url을 가지고 이미지 파일을 저장한 다음 음식분류 모델을 돌린다.
+                //분류가 끝나면 해당 음식이름을 안드로이드로 return한다.
+                //안드로이드에서는 그 음식이름을 기반으로 결과페이지에서 음식점 정보를 가져와 뿌려준다.
+                output_message = " a " + email + "/" + document_id;
                 Log.d("document_id 어디갔냐", document_id);
-
-
                 dataOutput.writeUTF(output_message);
-
 
             } catch (UnknownHostException e) {
                 String str = e.getMessage().toString();
@@ -620,15 +391,137 @@ public class SecondFragment extends Fragment {
             while (true){
                 try {
                     byte[] buf = new byte[BUF_SIZE];
+                    Log.d("buf", buf.toString());
                     int read_Byte  = dataInput.read(buf);
                     input_message = new String(buf, 0, read_Byte);
+
                     if (!input_message.equals(STOP_MSG)){
                         publishProgress(input_message);
-                    }
-                    else{
+                    } else{
                         break;
                     }
-                    Thread.sleep(2);
+
+                    String path = "/storage/emulated/0/Download/";
+                    //path에는 "sdcard/ImageList/" 와 같은 값이 들어갑니다.
+                    // 2. 경로를 이용해 File 객체를 생성한다.
+                    File list = new File(path);
+                    //3. list객체에서 이미지목록만 추려 낸다.
+
+                    String[] fileList = list.list(new FilenameFilter() {
+                        public boolean accept(File dir, String filename) {
+                            Boolean bOK = false;
+                            if(filename.toLowerCase().endsWith(".mp3")) bOK = true;
+                            if(filename.toLowerCase().endsWith(".mp4")) bOK = true;
+                            return bOK;
+                        }
+                    });
+
+                    for(int i = 0; i < fileList.length; i++){
+                        Log.d("fileList", fileList[i]);
+                    }
+
+                    List<String> userAudioList = new ArrayList<String>();
+                    String test = "";
+                    String tes = email.replace("@gmail.com", ""); //test20
+
+                    int test_int = 0;
+                    //만약에 hello.mp3, test20_1.mp3, test20_2.mp3, test20_3.mp3 가 저장되어 있다면 = fileList
+                    //fileList에 있는 파일 중 사용자 아이디와 일치하는 파일만을 추출해서 userAudioList에 저장
+
+                    if(fileList[0] != null) {
+                        for (int i = 0; i < fileList.length; i++) {
+                            if (fileList[i].contains(tes)) {
+                                test = fileList[i];
+                            }
+                            if (test != null) {
+                                userAudioList.add(test);
+                            } else {
+                                userAudioList.add("a");
+                            }
+                        }
+                    }
+
+                    if(userAudioList != null && !userAudioList.isEmpty()){
+                        for(int i = 0; i < userAudioList.size(); i++){
+                            Log.d("userAudioList", "" + userAudioList.get(i));
+                        }
+                    } else {
+                        Log.d("userAudioList is ", "null");
+                    }
+                    //userAudioList에는 test20_1.mp3, test20_2.mp3, test20_3.mp3 파일이 저장되어 있다.
+                    //여기서 숫자 1,2,3 만을 추출하여 서로를 비교하고 가장 높은 숫자를 저장한다.
+
+                    int audio_replace_int = 0;
+                    String audio_replace = "";
+
+                    if(userAudioList != null && !userAudioList.isEmpty()){
+                        for (int i = 0; i < userAudioList.size(); i++) {
+                            //test20_1.mp3, test20_2.mp3, test20_3.mp3 or 아무 파일이 없을떄
+                            //audio_cnt = 1,2,3
+                            String audi = email.replace("@gmail.com","");
+                            Log.d("audi", ""+audi);
+
+                            Log.d("user audi", ""+userAudioList.get(i));
+
+                            String audi_user = userAudioList.get(i);
+                            audio_replace = audi_user.replace(audi + "_", "").replace(".mp3", "").replace(" ","");
+                            Log.d("audio_replace string", ""+audio_replace);
+
+                            if(!audio_replace.equals("")){
+                                int audio_cnt = Integer.parseInt(audio_replace);
+                                Log.d("audio_cnt", ""+audio_cnt);
+                                if(audio_cnt > test_int){
+                                    test_int = audio_cnt;
+                                }
+                            }
+                        }
+                    } else {
+                        Log.d("audio_replace is ", "null");
+                    }
+
+                    if(audio_replace != null){
+                        audio_replace_int = Integer.parseInt(audio_replace);
+                        Log.d("a = ", ""+String.valueOf(audio_replace_int));
+                    }
+
+
+                    Log.d("receive 확인", receive_split[0]);
+                    Log.d("receive 1확인", receive_split[1]);
+
+                    audio = tes + "_" + String.valueOf(test_int + 1);
+                    Log.d("audio", audio);
+
+                    result_intent= new Intent(getActivity(), SearchResultActivity.class);
+                    result_intent.putExtra("data", receive_split[0]);
+                    result_intent.putExtra("acc", receive_split[1]);
+                    result_intent.putExtra("email", email);
+                    result_intent.putExtra("audio", audio);
+                    startActivity(result_intent);
+
+                    File file = new  File("/storage/emulated/0/Download/"+ audio +".mp3");
+
+                    InputStream is = client.getInputStream();
+                    FileOutputStream fos = new FileOutputStream(file);
+
+                    int readBytes;
+                    byte[] buffer = new byte[1024];
+                    while ((readBytes = is.read(buffer)) != -1) {
+                        fos.write(buffer, 0, readBytes);
+                        Log.d("fos write", fos.toString());
+                    }
+
+
+
+
+
+                    is.close();
+                    fos.close();
+
+                    Thread.sleep(10);
+
+
+
+
                 } catch (IOException | InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -638,25 +531,18 @@ public class SecondFragment extends Fragment {
 
         @Override
         protected void onProgressUpdate(String... params){
-            /*send_textView.append("보낸 메세지: " + output_message );
-            read_textView.append("받은 메세지: " + params[0]);*/
             Log.d("보낸 메세지: " , output_message);
             Log.d("받은 메세지: " , params[0]);
 
-            Intent result_intent = new Intent(getActivity(), SearchResultActivity.class);
-            result_intent.putExtra("data", params[0]);
-            result_intent.putExtra("email", email);
-            startActivity(result_intent);
+            receive_split = params[0].split("/");
+            Log.d("receive_split[0]", receive_split[0]);
+            Log.d("receive_split[1]", receive_split[1]);
+            Log.d("secondfrag audio", audio);
+
+
+
+
             selectedImage.setImageResource(R.drawable.camera);
-
-            /*send_textView.setText(""); // Clear the chat box
-            send_textView.append("보낸 메세지: " + output_message );
-            read_textView.setText(""); // Clear the chat box
-            read_textView.append("받은 메세지: " + params[0]);*/
         }
-
-
-
     }
-
 }
