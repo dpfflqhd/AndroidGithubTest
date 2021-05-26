@@ -37,36 +37,23 @@ public class MainSwipeActivity extends AppCompatActivity {
                     .replace(R.id.vpPager, secondFragment)
                     .commit();*/
 
-
-
         Intent read_intent = getIntent();
-
         email = read_intent.getStringExtra("id");
-
         Log.d("result액티비티, 받아온 데이터 : ", email);
 
 
 
 
         ViewPager vpPager = (ViewPager) findViewById(R.id.vpPager);
-
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
 
-
-
         vpPager.setAdapter(adapterViewPager);
-
         vpPager.setCurrentItem(1);
 
 
 
         CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
-
         indicator.setViewPager(vpPager);
-
-
-
-
 
 
 //        Home = new SecondFragment();
@@ -77,18 +64,8 @@ public class MainSwipeActivity extends AppCompatActivity {
     public static class MyPagerAdapter extends FragmentPagerAdapter {
         private static int NUM_ITEMS = 3;
 
-
-
-
-
-
-
-
         public MyPagerAdapter(FragmentManager fragmentManager) {
-
             super(fragmentManager);
-
-
         }
 
         // Returns total number of pages
@@ -100,10 +77,6 @@ public class MainSwipeActivity extends AppCompatActivity {
         // Returns the fragment to display for that page
         @Override
         public Fragment getItem(int position) {
-
-
-
-
             Log.d("getItem email", email);
             switch (position) {
                 case 0:
@@ -115,7 +88,6 @@ public class MainSwipeActivity extends AppCompatActivity {
                 default:
                     return null;
             }
-
 
         }
 

@@ -139,10 +139,6 @@ public class SecondFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        page = getArguments().getInt("someInt", 0);
-        title = getArguments().getString("someTitle");
-        Log.d("secondfrag 받아온 title", title);
-
     }
 
     // Inflate the view for the fragment based on layout XML
