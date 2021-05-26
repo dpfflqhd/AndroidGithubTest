@@ -11,6 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:srcCompat="@drawable/simple_line" />
+
         <RelativeLayout
             android:id="@+id/MapView"
             android:layout_width="300dp"
@@ -25,16 +35,6 @@
         </RelativeLayout>
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="412dp"
-            android:layout_height="215dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/adv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-        <ImageView
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="62dp"
@@ -44,18 +44,6 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="119dp"
-            android:layout_height="7dp"
-            android:layout_marginTop="48dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.195"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <Button
             android:id="@+id/btn_jeonra"
@@ -74,26 +62,25 @@
             android:id="@+id/btn_gangwon"
             android:layout_width="129dp"
             android:layout_height="93dp"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="268dp"
             android:layout_marginEnd="104dp"
             android:background="@drawable/gangwon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/btn_gyeonggi"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
         <Button
             android:id="@+id/btn_choong"
             android:layout_width="153dp"
             android:layout_height="83dp"
             android:layout_marginStart="162dp"
-            android:layout_marginTop="84dp"
             android:layout_marginEnd="3dp"
             android:background="@drawable/choong"
             app:layout_constraintEnd_toStartOf="@+id/btn_gyeongsang"
             app:layout_constraintHorizontal_bias="0.517"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_gangwon" />
 
         <Button
             android:id="@+id/btn_gyeongsang"
@@ -113,38 +100,9 @@
             android:layout_width="99dp"
             android:layout_height="89dp"
             android:layout_marginStart="114dp"
-            android:layout_marginTop="10dp"
             android:background="@drawable/gyeonggi"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
-
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="71dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginBottom="7dp"
-            android:text="이색맛집지도"
-            android:textColor="#F47210"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/imageView6"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="19dp"
-            android:text="커뮤니티"
-            android:textColor="#7B7A7A"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintBottom_toTopOf="@+id/btn_choong"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

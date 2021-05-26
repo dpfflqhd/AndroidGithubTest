@@ -55,7 +55,7 @@ public class MyLikeViewAdapter extends BaseAdapter {
             //holder.tv_resLoc.setText(data.get(position).getResLoc());
             holder.tv_resName.setText(data.get(position).getResName());
             holder.tv_dishName.setText(data.get(position).getDishName());
-            holder.tv_starScore.setText(data.get(position).getStarScore());
+            //holder.tv_starScore.setText(data.get(position).getStarScore());
             holder.iv_dishImg.setImageResource(data.get(position).getDishImg());
 
             //Rounded-Circle
@@ -81,7 +81,7 @@ public class MyLikeViewAdapter extends BaseAdapter {
             //tv_resLoc = itemView.findViewById(R.id.tv_resLoc);
             tv_resName = itemView.findViewById(R.id.tv_resName);
             tv_dishName = itemView.findViewById(R.id.tv_dishName);
-            tv_starScore = itemView.findViewById(R.id.tv_starScore);
+            //tv_starScore = itemView.findViewById(R.id.tv_starScore);
         }
 
     }

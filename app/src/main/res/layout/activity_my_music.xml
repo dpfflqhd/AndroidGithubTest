@@ -13,6 +13,7 @@
         android:layout_marginStart="9dp"
         android:layout_marginTop="55dp"
         android:text="좋아하는 음악"
+        android:textColor="#414141"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/iv_myMusic_back"

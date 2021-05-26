@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/paddington" />
+        tools:src="@drawable/profile" />
 
     <TextView
         android:id="@+id/tv_reviewUserID"
@@ -23,12 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
         android:text="사용자 아이디"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tv_reviewStarPoint"
         app:layout_constraintStart_toEndOf="@+id/iv_reviewProfileImage"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,23 +34,11 @@
         android:id="@+id/iv_reviewWriteImage"
         android:layout_width="203dp"
         android:layout_height="200dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_reviewProfileImage"
         app:srcCompat="@drawable/foodimg" />
-
-    <TextView
-        android:id="@+id/tv_reviewStarPoint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="8dp"
-        android:text="4.5"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/tv_reviewUserID" />
 
     <TextView
         android:id="@+id/tv_reviewWriteDate"
@@ -74,7 +60,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
-        android:text="리뷰를 입력하는 곳입니다."
+        android:text="리뷰 출력 어쩌고"
         android:textColor="#525252"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_reviewWriteImage" />
@@ -85,24 +71,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
         android:layout_marginEnd="177dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_reviewWriteText" />
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="13dp"
+    <RatingBar
+        android:id="@+id/rb_reviewscore"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="7dp"
-        android:foreground="@drawable/star2"
-        app:layout_constraintEnd_toStartOf="@+id/tv_reviewStarPoint"
+        android:numStars="5"
+        android:progressTint="#F4F47210"
+        android:rating="3.5"
         app:layout_constraintStart_toEndOf="@+id/iv_reviewProfileImage"
-        app:layout_constraintTop_toBottomOf="@+id/tv_reviewUserID"
-        android:background="@drawable/star2" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_reviewUserID" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

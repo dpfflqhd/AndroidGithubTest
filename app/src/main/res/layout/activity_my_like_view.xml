@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MyLikeViewAdapter">
 
+    <ImageView
+        android:id="@+id/imageView33"
+        android:layout_width="20dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/graynext"
+        app:layout_constraintBottom_toTopOf="@+id/textView38"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView40"
         android:layout_width="0dp"
@@ -27,42 +39,30 @@
         tools:srcCompat="@drawable/zambalaya" />
 
     <TextView
-        android:id="@+id/tv_starScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:layout_marginEnd="15dp"
-        android:text="4.3"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/tv_dishName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="67dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="6dp"
         android:text="곱창잠발라야"
         android:textColor="#4B4B4B"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tv_starScore"
         app:layout_constraintStart_toEndOf="@+id/iv_dishImg"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_resName" />
 
     <TextView
         android:id="@+id/tv_resName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="236dp"
         android:text="테이스팅룸"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/iv_dishImg"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,13 +75,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_dishImg" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="17dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="2dp"
-        android:src="@drawable/star2"
-        app:layout_constraintEnd_toStartOf="@+id/tv_starScore"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RatingBar
+        android:id="@+id/ratingBar2"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:numStars="5"
+        android:progressTint="#F4F47210"
+        android:rating="4"
+        app:layout_constraintStart_toStartOf="@+id/tv_dishName"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dishName" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

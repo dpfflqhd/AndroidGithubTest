@@ -6,49 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".Fragment3Child2">
 
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="18dp"
-        android:layout_height="16dp"
-        android:layout_marginEnd="39dp"
-        android:gravity="center"
-        android:text="1"
-        android:textColor="#F47210"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/img_top11"
-        app:layout_constraintTop_toBottomOf="@+id/img_top1" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/child_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView27"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="71dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginEnd="100dp"
-            android:text="이색맛집지도"
-            android:textColor="#7B7A7A"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/textView28"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="412dp"
-            android:layout_height="215dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/adv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -65,7 +27,6 @@
             android:id="@+id/imageView13"
             android:layout_width="0dp"
             android:layout_height="2dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,14 +36,16 @@
         <ScrollView
             android:id="@+id/scrollView3"
             android:layout_width="0dp"
-            android:layout_height="314dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="100dp"
             android:background="#E0E0E0"
             android:backgroundTint="#D3D3D3"
             android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5">
+            app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -819,31 +782,6 @@
 
             </LinearLayout>
         </ScrollView>
-
-        <TextView
-            android:id="@+id/textView28"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="19dp"
-            android:text="커뮤니티"
-            android:textColor="#F47210"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/textView27"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="119dp"
-            android:layout_height="7dp"
-            android:layout_marginTop="48dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.791"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
