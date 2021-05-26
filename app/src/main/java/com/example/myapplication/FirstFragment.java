@@ -40,8 +40,6 @@ public class FirstFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        page = getArguments().getInt("someInt", 0);
-        title = getArguments().getString("someTitle");
 
     }
 
@@ -58,7 +56,6 @@ public class FirstFragment extends Fragment {
 
         tv_firstfrag_name.setText(title);
 
-        Log.d("firstfrag title:", title);
         Glide.with(getContext()).load(R.drawable.paddington).apply(new RequestOptions().circleCrop()).into(profileImage);
 
 

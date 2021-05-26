@@ -24,23 +24,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".WriteReviewActivity"></activity>
-        <activity android:name=".ReviewActivity">
-        </activity>
-        <activity android:name=".SearchResultActivity">
-        </activity>
-        <activity android:name=".MyLikeViewActivity" >
-        </activity>
-        <activity android:name=".MyMusicActivity" >
-        </activity>
-        <activity android:name=".StartActivity">
+        <activity android:name=".BottomNaviActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MapActivity" />
+        <activity android:name=".WriteReviewActivity" />
+        <activity android:name=".ReviewActivity"></activity>
+        <activity android:name=".SearchResultActivity"></activity>
+        <activity android:name=".MyLikeViewActivity"></activity>
+        <activity android:name=".MyMusicActivity"></activity>
+        <activity android:name=".StartActivity">
+
+        </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".JoinActivity" />
         <activity android:name=".PhotoActivity" />

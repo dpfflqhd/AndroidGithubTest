@@ -16,6 +16,6 @@
         android:title="Culture" />
     <item
         android:id="@+id/item_talk"
-        android:icon="@android:drawable/stat_sys_phone_call"
+        android:icon="@drawable/person1"
         android:title="Talk" />
 </menu>
