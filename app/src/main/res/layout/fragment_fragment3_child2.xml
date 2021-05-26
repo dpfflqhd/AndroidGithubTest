@@ -497,7 +497,7 @@
                     android:textSize="30sp" />
 
                 <TextView
-                    android:id="@+id/textView21"
+                    android:id="@+id/tv_firstfrag_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="        이달의 푸드매거진"

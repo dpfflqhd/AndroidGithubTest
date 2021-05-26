@@ -99,6 +99,10 @@ public class SecondFragment extends Fragment {
     String image_url = "";
     String email = "";
     private static String CONNECT_MSG = "connect";
+    Intent result_intent;
+    String audio = "";
+
+    String[] receive_split;
 //    private DataOutputStream dataOutput;
 
    /* private static String SERVER_IP = "192.168.128.1";
@@ -292,6 +296,7 @@ public class SecondFragment extends Fragment {
                                 //Connect 함수를 통해 파이썬과 안드로이드 통신 GO !!
                                 Connect connect = new Connect();
                                 connect.execute(CONNECT_MSG);
+
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -357,6 +362,7 @@ public class SecondFragment extends Fragment {
                 client = new Socket(SERVER_IP, 8088);
                 dataOutput = new DataOutputStream(client.getOutputStream());
                 dataInput = new DataInputStream(client.getInputStream());
+
 //                output_message = strings[0];
 
                 //output_message는 파이썬으로 보낼 데이터, a는 a,b,c 로 이미지 분류모델, 음악파일, 추천분류 모델을 구분하기 위해서 넣음
@@ -468,9 +474,6 @@ public class SecondFragment extends Fragment {
                                     test_int = audio_cnt;
                                 }
                             }
-
-
-
                         }
                     } else {
                         Log.d("audio_replace is ", "null");
@@ -482,7 +485,18 @@ public class SecondFragment extends Fragment {
                     }
 
 
-                    String audio = tes + "_" + String.valueOf(test_int + 1);
+                    Log.d("receive 확인", receive_split[0]);
+                    Log.d("receive 1확인", receive_split[1]);
+
+                    audio = tes + "_" + String.valueOf(test_int + 1);
+                    Log.d("audio", audio);
+
+                    result_intent= new Intent(getActivity(), SearchResultActivity.class);
+                    result_intent.putExtra("data", receive_split[0]);
+                    result_intent.putExtra("acc", receive_split[1]);
+                    result_intent.putExtra("email", email);
+                    result_intent.putExtra("audio", audio);
+                    startActivity(result_intent);
 
                     File file = new  File("/storage/emulated/0/Download/"+ audio +".mp3");
 
@@ -496,10 +510,18 @@ public class SecondFragment extends Fragment {
                         Log.d("fos write", fos.toString());
                     }
 
+
+
+
+
                     is.close();
                     fos.close();
 
                     Thread.sleep(10);
+
+
+
+
                 } catch (IOException | InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -512,10 +534,14 @@ public class SecondFragment extends Fragment {
             Log.d("보낸 메세지: " , output_message);
             Log.d("받은 메세지: " , params[0]);
 
-            Intent result_intent = new Intent(getActivity(), SearchResultActivity.class);
-            result_intent.putExtra("data", params[0]);
-            result_intent.putExtra("email", email);
-            startActivity(result_intent);
+            receive_split = params[0].split("/");
+            Log.d("receive_split[0]", receive_split[0]);
+            Log.d("receive_split[1]", receive_split[1]);
+            Log.d("secondfrag audio", audio);
+
+
+
+
             selectedImage.setImageResource(R.drawable.camera);
         }
     }

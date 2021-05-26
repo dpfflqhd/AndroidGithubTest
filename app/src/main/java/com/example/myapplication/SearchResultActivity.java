@@ -7,8 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +39,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -47,9 +52,10 @@ public class SearchResultActivity extends AppCompatActivity {
     ImageView iv_srchResultImage,
               iv_srchResultRelatedImage1,
               iv_srchResultRelatedImage2,
-              iv_srchResultRelatedImage3;
+              iv_srchResultRelatedImage3,
+              iv_music;
 
-    Button btn_foodLike, btn_foodsave;
+    Button btn_foodLike, btn_foodsave, btn_music;
 
     TextView tv_howMuchLikes,
             tv_srchResultFoodName,
@@ -60,7 +66,9 @@ public class SearchResultActivity extends AppCompatActivity {
             tv_srchResultResTel,
             tv_srchResultRelatedImage1,
             tv_srchResultRelatedImage2,
-            tv_srchResultRelatedImage3;
+            tv_srchResultRelatedImage3,
+            tv_acc,
+            tv_acc2;
 
     String store = "";
     String email = "";
@@ -72,6 +80,7 @@ public class SearchResultActivity extends AppCompatActivity {
     String addr = "";
     String time = "";
     String img = "";
+    String audio = "";
     String foodsave_id = "";
     String foodsave_name = "";
     int real_like = 0;
@@ -79,8 +88,14 @@ public class SearchResultActivity extends AppCompatActivity {
     int like = 0;
     int save_cnt = 0;
     String like2 = "";
+    String acc = "";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseFirestore foodsave_db = FirebaseFirestore.getInstance();
+
+    MediaPlayer player;
+    int position = 0; // 다시 시작 기능을 위한 현재 재생 위치 확인 변수
+    public static String url;
+
 
     ArrayList<LikeVO> data;
     int data1 = 0;
@@ -95,16 +110,24 @@ public class SearchResultActivity extends AppCompatActivity {
         Intent read_intent = getIntent();
         store = read_intent.getStringExtra("data");
         email = read_intent.getStringExtra("email");
-        Log.d("result액티비티, 받아온 데이터 : ", store);
+        acc = read_intent.getStringExtra("acc");
+        audio = read_intent.getStringExtra("audio");
+        Log.d("result액티비티, 받아온 데이터 : ", store + "/" + email + "/" + acc);
+        Log.d("searchresult audio", audio);
+        url = "/storage/emulated/0/Download/"+ audio +".mp3";
+
 
         // 요소를 초기화합니다.
         btn_foodLike = findViewById(R.id.btn_foodLike);
         btn_foodsave = findViewById(R.id.btn_foodsave);
+        btn_music = findViewById(R.id.btn_result_music);
 
         iv_srchResultImage = findViewById(R.id.iv_srchResultImage);
         iv_srchResultRelatedImage1 = findViewById(R.id.iv_srchResultRelatedImage1);
         iv_srchResultRelatedImage2 = findViewById(R.id.iv_srchResultRelatedImage2);
         iv_srchResultRelatedImage3 = findViewById(R.id.iv_srchResultRelatedImage3);
+        iv_music = findViewById(R.id.img_music);
+        iv_music.setImageResource(R.drawable.ic_launcher_music_foreground);
 
         tv_howMuchLikes = findViewById(R.id.tv_howMuchLikes);
         tv_srchResultFoodName = findViewById(R.id.tv_srchResultFoodName);
@@ -116,6 +139,21 @@ public class SearchResultActivity extends AppCompatActivity {
         tv_srchResultRelatedImage1 = findViewById(R.id.tv_srchResultRelatedImage1);
         tv_srchResultRelatedImage2 = findViewById(R.id.tv_srchResultRelatedImage2);
         tv_srchResultRelatedImage3 = findViewById(R.id.tv_srchResultRelatedImage3);
+        tv_acc = findViewById(R.id.tv_acc);
+        tv_acc2 = findViewById(R.id.tv_acc2);
+
+        //정확도 출력
+
+
+        btn_music.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Log.d("playAudio 클릭", "yes");
+                playAudio();
+            }
+        });
 
         //이미 찜한거면 색깔칠한 하트 나오게
         Log.d("찜 클릭", "");
@@ -180,17 +218,19 @@ public class SearchResultActivity extends AppCompatActivity {
                                     if (store.equals(document.getId())) {
                                         real_like = like;
 
-                                        tv_srchResultFoodName.setText(menu);
+                                        tv_srchResultFoodName.setText("메뉴 : " + menu);
                                         Log.d("tv_result", ""+ menu);
-                                        tv_srchResultFoodPrice.setText(price);
-                                        tv_srchResultResAddress.setText(addr);
-                                        tv_srchResultResHour.setText(time);
-                                        tv_srchResultResTel.setText(phone);
-                                        tv_srchResultResName.setText(name);
+                                        tv_srchResultFoodPrice.setText("가격 : " + price);
+                                        tv_srchResultResAddress.setText("주소 : " + addr);
+                                        tv_srchResultResHour.setText("운영시간 : " + time);
+                                        tv_srchResultResTel.setText("전화번호 : " + phone);
+                                        tv_srchResultResName.setText( name);
                                         Log.d("음식점 :", store + "/ 이름 : " + name + "/메뉴 :" + menu + "/가격 :" + price + "/전화번호 :" + phone + "/주소 :" + addr + "/운영시간 :" +
                                                 time + "/좋아요 수 :" + like + "/이미지url :" + img);
 
-                                        tv_howMuchLikes.setText(String.valueOf(like) + "명이 좋아합니다");
+                                        tv_howMuchLikes.setText("좋아요 " + String.valueOf(like) + "개" );
+                                        tv_acc.setText("-" + name + " 음식점의 "+ menu + "와(과) ");
+                                        tv_acc2.setText(acc + "% 일치합니다.");
                                         String image_url = img;
                                         Log.d("불러온 img url :", img);
                                         Glide.with(SearchResultActivity.this).load(image_url).into(iv_srchResultImage);
@@ -220,7 +260,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
                     real_like--;
 
-                    tv_howMuchLikes.setText(String.valueOf(real_like) + "명이 좋아합니다");
+                    tv_howMuchLikes.setText("좋아요 " + String.valueOf(real_like) + "개");
 
                     DocumentReference washingtonRef = db.collection("store").document(store);
 
@@ -248,7 +288,7 @@ public class SearchResultActivity extends AppCompatActivity {
                     String tv_like_update = String.valueOf(real_like);
 
                     //00 명이 좋아합니다. 텍스트 변경
-                    tv_howMuchLikes.setText(tv_like_update + "명이 좋아합니다");
+                    tv_howMuchLikes.setText("좋아요 " + tv_like_update + "개" );
 
                     DocumentReference washingtonRef = db.collection("store").document(store);
 
@@ -372,6 +412,100 @@ public class SearchResultActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+    }
+
+    //음악 재생
+    private void playAudio() {
+        try {
+            closePlayer();
+
+            Log.d("playAudio", url);
+            player = new MediaPlayer();
+            player.setDataSource(url);
+            player.prepare();
+            player.start();
+
+            Thread myThread = new SearchResultActivity.TimerThread();
+            myThread.start(); // start() -> run() 한 번 호출
+
+            Toast.makeText(this, "음악 재생!", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void closePlayer() {
+        if (player != null) {
+            player.release();
+            player = null;
+        }
+    }
+
+    private void stopAudio() {
+        if(player != null && player.isPlaying()){
+            player.stop();
+
+//            Toast.makeText(this, "중지됨.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    Handler myHandler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+
+
+            int number = msg.arg1;
+            /* TextView tv = (TextView)msg.obj;*/
+//            tv_timer.setText(String.valueOf(number));
+            if(number == 0){
+                Toast.makeText(getApplicationContext(), "더 듣고 싶으시다면 마이페이지 확인!", Toast.LENGTH_LONG).show();
+            }
+        }
+    };
+
+    class TimerThread extends Thread{
+        TextView tv;
+
+        /*public TimerThread(TextView tv){
+            this.tv = tv;
+        }*/
+
+
+        @Override
+        public void run() {
+            try {
+
+                for(int i=10; i>=0; i--){
+                    Thread.sleep(1000);
+
+                    Message message = new Message();
+
+                    message.arg1 = i;
+                    /*message.obj = tv;*/
+
+
+                    myHandler.sendMessage(message);
+                }
+
+
+
+                Handler mHandler = new Handler(Looper.getMainLooper());
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // 사용하고자 하는 코드
+                        stopAudio();
+//                        Toast.makeText(getApplicationContext(), "중지", Toast.LENGTH_SHORT).show();
+                    }
+                }, 0);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public class loadImageTask extends AsyncTask<Bitmap, Void, Bitmap> {

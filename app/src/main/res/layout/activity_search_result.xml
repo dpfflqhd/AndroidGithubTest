@@ -40,6 +40,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/tv_acc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="15dp"
+                android:text="정확도 : 96.5%"
+                android:textColor="#171717"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+
+            <TextView
+                android:id="@+id/tv_acc2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:text="정확도 : 96.5%"
+                android:textColor="#FF9800"
+                android:textSize="24sp"
+                android:textStyle="bold|italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_acc" />
+
             <ImageView
                 android:id="@+id/imageView16"
                 android:layout_width="0dp"
@@ -64,9 +90,9 @@
                 android:id="@+id/btn_review2"
                 android:layout_width="32dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="9dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="4dp"
                 android:background="@drawable/bubble"
                 app:layout_constraintEnd_toStartOf="@+id/btn_foodsave"
                 app:layout_constraintStart_toEndOf="@+id/btn_foodLike"
@@ -76,7 +102,7 @@
                 android:id="@+id/iv_srchResultImage"
                 android:layout_width="345dp"
                 android:layout_height="259dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/salmon"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toStartOf="@+id/btn_after2"
@@ -89,20 +115,20 @@
                 android:layout_width="15dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="7dp"
-                android:layout_marginTop="120dp"
                 android:background="@drawable/next1"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_srchResultImage"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/iv_srchResultImage" />
 
             <Button
                 android:id="@+id/btn_after2"
                 android:layout_width="15dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="120dp"
                 android:layout_marginEnd="7dp"
                 android:background="@drawable/next2"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_srchResultImage"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/iv_srchResultImage" />
 
             <ImageView
                 android:id="@+id/imageView12"
@@ -116,10 +142,31 @@
                 app:srcCompat="@drawable/simple_line" />
 
             <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_howMuchLikes"
+                app:srcCompat="@drawable/simple_line" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResHour"
+                app:srcCompat="@drawable/simple_line" />
+
+            <ImageView
                 android:id="@+id/imageView9"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="130dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -226,10 +273,10 @@
 
             <Button
                 android:id="@+id/btn_foodsave"
-                android:layout_width="28dp"
+                android:layout_width="32dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="14dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/star1"
                 app:layout_constraintStart_toEndOf="@+id/btn_review2"
                 app:layout_constraintTop_toBottomOf="@+id/iv_srchResultImage" />
@@ -267,7 +314,7 @@
                 android:id="@+id/tv_srchResultResName"
                 android:layout_width="351dp"
                 android:layout_height="33dp"
-                android:layout_marginTop="21dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="12dp"
                 android:gravity="bottom"
                 android:text="식당이름"
@@ -278,7 +325,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.55"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
             <TextView
                 android:id="@+id/tv_srchResultFoodName"
@@ -310,7 +357,7 @@
                 android:id="@+id/tv_srchResultResTel"
                 android:layout_width="351dp"
                 android:layout_height="22dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="전화"
                 android:textColor="#555555"
                 android:textSize="18sp"
@@ -349,7 +396,7 @@
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="14dp"
                 android:layout_marginEnd="40dp"
                 android:text="4.0"
                 android:textSize="24sp"
@@ -359,13 +406,66 @@
 
             <ImageView
                 android:id="@+id/imageView19"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="25dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="14dp"
                 android:layout_marginEnd="10dp"
                 app:layout_constraintEnd_toStartOf="@+id/textView15"
                 app:layout_constraintTop_toBottomOf="@+id/iv_srchResultImage"
                 app:srcCompat="@drawable/star2" />
+
+            <Button
+                android:id="@+id/btn_result_music"
+                android:layout_width="157dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="10dp"
+                android:text="AI 음악 듣기"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="검색하신 이미지로 음악을 만들어 봤어요!"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResHour" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="(음악은 마이페이지에 자동 저장됩니다)"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_result_music" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="12dp"
+                android:text="평점 :"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/imageView19"
+                app:layout_constraintTop_toBottomOf="@+id/iv_srchResultImage" />
+
+            <ImageView
+                android:id="@+id/img_music"
+                android:layout_width="41dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="2dp"
+                app:layout_constraintEnd_toStartOf="@+id/textView16"
+                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResHour"
+                tools:srcCompat="@drawable/ic_launcher_music_foreground" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
