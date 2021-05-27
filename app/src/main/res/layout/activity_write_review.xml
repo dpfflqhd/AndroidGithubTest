@@ -34,6 +34,7 @@
         android:numStars="5"
         android:progressTint="#FFC107"
         android:rating="3"
+        android:stepSize="0.5"
         android:secondaryProgressTint="#F4F47210"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

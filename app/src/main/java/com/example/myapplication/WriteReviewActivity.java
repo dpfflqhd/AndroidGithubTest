@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,9 +16,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.util.Listener;
 
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WriteReviewActivity extends AppCompatActivity {
 
@@ -28,6 +35,13 @@ public class WriteReviewActivity extends AppCompatActivity {
     ImageView iv_reviewImageInsert;
     int GET_GALLERY_IMAGE = 100;
     Uri selectedImageUri;
+
+    private String email;
+    private String user_name;
+    private String store_name;
+    String document_id;
+    private String imageUri;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
     @Override
@@ -44,6 +58,13 @@ public class WriteReviewActivity extends AppCompatActivity {
         // 별점 기본값 3.0
         rb_reviewRating.setRating(3.0f);
         starScore = 3.0f;
+
+        //ReviewActivity에서 값 받아오기
+        Intent read_intent = getIntent();
+        email = read_intent.getStringExtra("id");
+        store_name = read_intent.getStringExtra("store");
+        user_name = read_intent.getStringExtra("name");
+        Log.d("write user get intent",email + "/" + store_name + "/" + user_name);
 
 
         // 별점이 변경되었을때 이를 추적하는 리스너
@@ -65,9 +86,47 @@ public class WriteReviewActivity extends AppCompatActivity {
                 // 이미지 Uri를 받아서 저장
                 // 이미지를 넣지 않고 리뷰 작성을 하는경우가 있을 수 있으므로 if로 분기
                 if (selectedImageUri != null) {
-                    String imageUri = selectedImageUri.toString();
+                    imageUri = selectedImageUri.toString();
                     Log.d("이미지Uri", imageUri);
                 }
+
+                //파이어베이스에 리뷰 데이터 저장
+                Map<String, Object> review_map = new HashMap<>();
+
+                review_map.put("store", store_name);
+                review_map.put("id", email);
+                review_map.put("name", user_name);
+                review_map.put("review", reviewText);
+                review_map.put("rating", starScore);
+                review_map.put("img", imageUri);
+
+                Log.d("review 데이터베이스 저장", store_name + "/" + email + "/" + user_name + "/" + reviewText + "/" + starScore + "/" + imageUri);
+
+                //파이베이스 imageurl 컬렉션에 데이터 넣기
+                db.collection("reviews")
+                        .add(review_map)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+
+                                document_id = documentReference.getId();
+                                Log.d("review 데이터베이스 추가:", "DocumentSnapshot added: " + documentReference.getId());
+
+
+                                Intent back_intent = new Intent(getApplicationContext(), ReviewActivity.class);
+                                back_intent.putExtra("id", email);
+                                back_intent.putExtra("store", store_name);
+                                back_intent.putExtra("name", user_name);
+                                startActivity(back_intent);
+
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("데이터베이스 추가실패:", "Error adding document", e);
+                            }
+                        });
             }
         });
 

@@ -23,6 +23,7 @@ public class FirstFragment extends Fragment {
     // Store instance variables
     private String title;
     private int page;
+    private String name;
 
     TextView tv_likeview, tv_myMusciView2, tv_firstfrag_name;
     ImageView profileImage;
@@ -59,9 +60,10 @@ public class FirstFragment extends Fragment {
 
         Bundle bundle = getArguments(); //번들 안의 텍스트 불러오기
         title = bundle.getString("send"); //fragment1의 TextView에 전달 받은 text 띄우기
+        name = bundle.getString("name");
         Log.d("firstfrag title", title);
 
-        tv_firstfrag_name.setText(title);
+        tv_firstfrag_name.setText(name + "님 환영합니다");
 
 
 
@@ -86,6 +88,7 @@ public class FirstFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), MyMusicActivity.class);
+                intent.putExtra("id", title);
                 startActivity(intent);
             }
         });

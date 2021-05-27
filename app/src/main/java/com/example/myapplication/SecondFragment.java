@@ -102,6 +102,7 @@ public class SecondFragment extends Fragment {
     private static String CONNECT_MSG = "connect";
     Intent result_intent;
     String audio = "";
+    String name = "";
 
     String[] receive_split;
 //    private DataOutputStream dataOutput;
@@ -159,7 +160,8 @@ public class SecondFragment extends Fragment {
 
         Bundle bundle = getArguments(); //번들 안의 텍스트 불러오기
         title = bundle.getString("send"); //fragment1의 TextView에 전달 받은 text 띄우기
-        Log.d("secondfrag title", title);
+        name = bundle.getString("name");
+        Log.d("secondfrag title", title + "/" + name);
 
 
         //권한 설정
@@ -428,7 +430,7 @@ public class SecondFragment extends Fragment {
                     //만약에 hello.mp3, test20_1.mp3, test20_2.mp3, test20_3.mp3 가 저장되어 있다면 = fileList
                     //fileList에 있는 파일 중 사용자 아이디와 일치하는 파일만을 추출해서 userAudioList에 저장
 
-                    if(fileList[0] != null) {
+                    if(fileList != null) {
                         for (int i = 0; i < fileList.length; i++) {
                             if (fileList[i].contains(tes)) {
                                 test = fileList[i];
@@ -479,7 +481,7 @@ public class SecondFragment extends Fragment {
                         Log.d("audio_replace is ", "null");
                     }
 
-                    if(audio_replace != null){
+                    if(!audio_replace.equals("")){
                         audio_replace_int = Integer.parseInt(audio_replace);
                         Log.d("a = ", ""+String.valueOf(audio_replace_int));
                     }
@@ -496,6 +498,8 @@ public class SecondFragment extends Fragment {
                     result_intent.putExtra("acc", receive_split[1]);
                     result_intent.putExtra("email", email);
                     result_intent.putExtra("audio", audio);
+                    result_intent.putExtra("name", name);
+                    Log.d("second put intent name", name);
                     startActivity(result_intent);
 
                     File file = new  File("/storage/emulated/0/Download/"+ audio +".mp3");

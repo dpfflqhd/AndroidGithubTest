@@ -182,8 +182,13 @@ public class MyLikeViewActivity extends AppCompatActivity {
                                                         iv_like_back.setOnClickListener(new View.OnClickListener() {
                                                             @Override
                                                             public void onClick(View v) {
-                                                                Intent back_intent = new Intent(getApplicationContext(), MainSwipeActivity.class);
-                                                                startActivity(back_intent);
+                                                                /*Intent back_intent = new Intent(getApplicationContext(), BottomNaviActivity.class);
+                                                                startActivity(back_intent);*/
+
+                                                                FirstFragment fragment1 = new FirstFragment();
+                                                                getSupportFragmentManager().beginTransaction().replace(R.id.b_frame, fragment1).commit();
+
+//                                                                ((BottomNaviActivity)getActivity()).replaceFragment(NewFragment.newInstance());
                                                             }
                                                         });
                                                     }

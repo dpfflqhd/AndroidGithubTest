@@ -92,6 +92,7 @@ public class StartActivity extends AppCompatActivity {
                                             intent.putExtra("id", email);
                                             Log.d("보낸 id : ", email);
                                             startActivity(intent);
+//                                            finish();
                                         } else {
                                             Toast.makeText(StartActivity.this, "로그인 오류", Toast.LENGTH_SHORT).show();
                                         }

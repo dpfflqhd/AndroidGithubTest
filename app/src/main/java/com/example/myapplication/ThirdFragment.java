@@ -23,6 +23,7 @@ import com.google.android.gms.maps.model.Dash;
 import com.google.android.gms.maps.model.Dot;
 import com.google.android.gms.maps.model.Gap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PatternItem;
 import com.google.android.gms.maps.model.Polygon;
@@ -76,18 +77,41 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
         title = getArguments().getString("send");
 
         context = container.getContext();
+        //처음 childfragment 지정
+        getFragmentManager().beginTransaction().add(R.id.child_fragment, new FirstFragment()).commit();
 
-        googlemap = (MapView)view.findViewById(R.id.GoogleMapView1);
+        //하위버튼
+        /*Button subButton1 = view.findViewById(R.id.subButton1);
+        Button subButton2 = view.findViewById(R.id.subButton2);*/
+
+        googlemap = (MapView) view.findViewById(R.id.GoogleMapView1);
         googlemap.getMapAsync(this);
+
+        //클릭 이벤트 - child fragment로 이동
+       /* subButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                googlemap.setVisibility(View.VISIBLE);
+                getFragmentManager().beginTransaction().replace(R.id.child_fragment, new Fragment3Child1()).commit();
+            }
+        });
+        subButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                googlemap.setVisibility(View.INVISIBLE);
+                getFragmentManager().beginTransaction().replace(R.id.child_fragment, new Fragment3Child2()).commit();
+            }
+        });*/
+
 
         return view;
     }
 
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState){
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if(googlemap != null){
+        if (googlemap != null) {
             googlemap.onCreate(savedInstanceState);
         }
     }
@@ -130,9 +154,9 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
         LatLng fish = new LatLng(33.441830138798046, 126.89275771151483);
         LatLng galbi = new LatLng(37.022800963059254, 128.17525624043282);
         LatLng go = new LatLng(37.5132311501985, 127.10269233600526);
-        LatLng gwanganri= new LatLng(35.15628721278359, 129.12158236922477);
-        LatLng han= new LatLng(37.49047339819476, 127.98657522695109);
-        LatLng hang= new LatLng(37.35992607848986, 127.03896002509816);
+        LatLng gwanganri = new LatLng(35.15628721278359, 129.12158236922477);
+        LatLng han = new LatLng(37.49047339819476, 127.98657522695109);
+        LatLng hang = new LatLng(37.35992607848986, 127.03896002509816);
         LatLng hong = new LatLng(37.51465704121981, 129.11991619626636);
         LatLng hwang = new LatLng(35.836034228059866, 129.21213822691183);
         LatLng jamami = new LatLng(35.23040868249358, 129.08537778086955);
@@ -162,7 +186,7 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
         LatLng spa = new LatLng(37.557446942009946, 126.65321387769944);
         LatLng sukju = new LatLng(37.51158257819225, 127.11400981160894);
         LatLng theflower = new LatLng(34.86626812951516, 128.69117285572509);
-        LatLng two = new LatLng( 35.8143346842598, 127.15681294225399);
+        LatLng two = new LatLng(35.8143346842598, 127.15681294225399);
         LatLng vivi = new LatLng(35.22733467716698, 128.87656156922645);
         LatLng yasmaru = new LatLng(35.15621057165188, 129.06431043853925);
         LatLng zerk = new LatLng(37.54919363367814, 126.91750922695252);
@@ -323,6 +347,15 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
                 .position(zuk)
                 .title("풍전뚝집"));
 
+        googleMap.setOnMarkerClickListener(markerClickListener);
+        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Toast.makeText(context, marker.getTitle(), Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
         //폴리곤 그리기, 서울경기
         Polygon polygon1 = googleMap.addPolygon(new PolygonOptions()
                 .clickable(true)
@@ -341,7 +374,7 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
                         new LatLng(37.673439494313804, 127.57467704254977),
                         new LatLng(37.99629947912301, 127.54927153036529),
                         new LatLng(38.16900262914078, 127.25595348566473)
-                        ));
+                ));
         // Store a data object with the polygon, used here to indicate an arbitrary type.
 
         // Style the polygon.
@@ -652,5 +685,25 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
         polygon.setStrokeColor(strokeColor);
         polygon.setFillColor(fillColor);
     }
+
+    GoogleMap.OnMarkerClickListener markerClickListener = new GoogleMap.OnMarkerClickListener() {
+        @Override
+        public boolean onMarkerClick(Marker marker) {
+            // Retrieve the data from the marker.
+            Integer clickCount = (Integer) marker.getTag();
+
+            // Check if a click count was set, then display the click count.
+            if (clickCount != null) {
+                clickCount = clickCount + 1;
+                marker.setTag(clickCount);
+                Toast.makeText(context, marker.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+
+            // Return false to indicate that we have not consumed the event and that we wish
+            // for the default behavior to occur (which is for the camera to move such that the
+            // marker is centered and for the marker's info window to open, if it has one).
+            return false;
+        }
+    };
 }
 

@@ -55,7 +55,7 @@ public class SearchResultActivity extends AppCompatActivity {
               iv_srchResultRelatedImage3,
               iv_music;
 
-    Button btn_foodLike, btn_foodsave, btn_music;
+    Button btn_foodLike, btn_foodsave, btn_music, btn_review;
 
     TextView tv_howMuchLikes,
             tv_srchResultFoodName,
@@ -69,6 +69,8 @@ public class SearchResultActivity extends AppCompatActivity {
             tv_srchResultRelatedImage3,
             tv_acc,
             tv_acc2;
+
+    String user_name = "";
 
     String store = "";
     String email = "";
@@ -112,7 +114,8 @@ public class SearchResultActivity extends AppCompatActivity {
         email = read_intent.getStringExtra("email");
         acc = read_intent.getStringExtra("acc");
         audio = read_intent.getStringExtra("audio");
-        Log.d("result액티비티, 받아온 데이터 : ", store + "/" + email + "/" + acc);
+        user_name = read_intent.getStringExtra("name");
+        Log.d("result액티비티, 받아온 데이터 : ", store + "/" + email + "/" + acc + "/" + user_name);
         Log.d("searchresult audio", audio);
         url = "/storage/emulated/0/Download/"+ audio +".mp3";
 
@@ -121,6 +124,7 @@ public class SearchResultActivity extends AppCompatActivity {
         btn_foodLike = findViewById(R.id.btn_foodLike);
         btn_foodsave = findViewById(R.id.btn_foodsave);
         btn_music = findViewById(R.id.btn_result_music);
+        btn_review = findViewById(R.id.btn_review2);
 
         iv_srchResultImage = findViewById(R.id.iv_srchResultImage);
         iv_srchResultRelatedImage1 = findViewById(R.id.iv_srchResultRelatedImage1);
@@ -144,6 +148,17 @@ public class SearchResultActivity extends AppCompatActivity {
 
         //정확도 출력
 
+        btn_review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent review_intent = new Intent(getApplicationContext(), ReviewActivity.class);
+                review_intent.putExtra("id", email);
+                review_intent.putExtra("store", store);
+                review_intent.putExtra("name", user_name);
+                Log.d("searchresult name", "?" + user_name);
+                startActivity(review_intent);
+            }
+        });
 
         btn_music.setOnClickListener(new View.OnClickListener() {
             @Override
