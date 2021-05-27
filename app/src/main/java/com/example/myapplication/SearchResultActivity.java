@@ -133,6 +133,15 @@ public class SearchResultActivity extends AppCompatActivity {
         iv_music = findViewById(R.id.img_music);
         iv_music.setImageResource(R.drawable.ic_launcher_music_foreground);
 
+        // 임시 이미지 넣은 코드 나중에 삭제ㄱㄱ
+        iv_srchResultRelatedImage1.setImageResource(R.drawable.rec_zambalaya);
+        iv_srchResultRelatedImage2.setImageResource(R.drawable.rec_dongbaek);
+        iv_srchResultRelatedImage2.setImageResource(R.drawable.rec_sakana);
+        tv_srchResultRelatedImage1.setText("곱창잠발라야");
+        tv_srchResultRelatedImage1.setText("하얀동백떡볶이");
+        tv_srchResultRelatedImage1.setText("구슬초밥");
+        
+
         tv_howMuchLikes = findViewById(R.id.tv_howMuchLikes);
         tv_srchResultFoodName = findViewById(R.id.tv_srchResultFoodName);
         tv_srchResultFoodPrice = findViewById(R.id.tv_srchResultFoodPrice);
