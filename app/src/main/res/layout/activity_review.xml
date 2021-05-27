@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#33FF5722"
-    android:backgroundTint="#56FF5722"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
     tools:context=".ReviewActivity">
 
     <Button
@@ -13,9 +13,9 @@
         android:layout_width="108dp"
         android:layout_height="37dp"
         android:layout_marginTop="48dp"
-        android:background="@drawable/round_backgroud_border_black"
-        android:backgroundTint="#FFFFFF"
-        android:text="리뷰 쓰기"
+        android:background="@drawable/round_background_dark"
+        android:backgroundTint="#00FFFFFF"
+        android:text="리뷰 작성"
         android:textColor="#F47210"
         android:textSize="12sp"
         android:textStyle="bold"

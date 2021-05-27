@@ -76,35 +76,9 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
         title = getArguments().getString("send");
 
         context = container.getContext();
-        //처음 childfragment 지정
-        getFragmentManager().beginTransaction().add(R.id.child_fragment, new Fragment3Child1()).commit();
-
-        //하위버튼
-        Button subButton1 = view.findViewById(R.id.subButton1);
-        Button subButton2 = view.findViewById(R.id.subButton2);
 
         googlemap = (MapView)view.findViewById(R.id.GoogleMapView1);
         googlemap.getMapAsync(this);
-
-        //클릭 이벤트 - child fragment로 이동
-        subButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                googlemap.setVisibility(View.VISIBLE);
-                getFragmentManager().beginTransaction().replace(R.id.child_fragment, new Fragment3Child1()).commit();
-            }
-        });
-        subButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                googlemap.setVisibility(View.INVISIBLE);
-                getFragmentManager().beginTransaction().replace(R.id.child_fragment, new Fragment3Child2()).commit();
-            }
-        });
-
-
-
-
 
         return view;
     }

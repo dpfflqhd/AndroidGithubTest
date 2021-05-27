@@ -70,15 +70,23 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginTop="44dp"
-        android:background="@drawable/round_backgroud_border_black"
+        android:background="@drawable/round_background_gray"
         android:padding="5dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView36"
-        app:srcCompat="@drawable/searchimg"
-        tools:srcCompat="@drawable/searchimg" />
+        app:layout_constraintTop_toBottomOf="@+id/textView36" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="99dp"
+        android:layout_height="98dp"
+        android:src="@drawable/imgsearch2"
+        app:layout_constraintBottom_toBottomOf="@+id/selectedImage"
+        app:layout_constraintEnd_toEndOf="@+id/selectedImage"
+        app:layout_constraintStart_toStartOf="@+id/selectedImage"
+        app:layout_constraintTop_toTopOf="@+id/selectedImage" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

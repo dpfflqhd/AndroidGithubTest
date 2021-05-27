@@ -31,12 +31,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.google.android.gms.common.api.Result;
-import com.google.android.gms.maps.model.LatLng;
+//import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -149,12 +150,10 @@ public class SecondFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
         context = container.getContext();
 
-
         // 요소 초기화. view를 통해 접근해야 id 찾기가 가능.
         selectedImage = view.findViewById(R.id.selectedImage);
         btn_searchImage = view.findViewById(R.id.btn_searchImage);
         btn_resultimage = view.findViewById(R.id.btn_resultimage);
-        selectedImage.setImageResource(R.drawable.camera);
         tempImg = selectedImage.getDrawable();
 
 

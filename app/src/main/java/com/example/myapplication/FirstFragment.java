@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,6 +50,7 @@ public class FirstFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
+
         tv_likeview = view.findViewById(R.id.tv_likeview);
         profileImage = view.findViewById(R.id.profileImage);
         tv_myMusciView2 = view.findViewById(R.id.tv_myMusciView2);
@@ -61,7 +63,6 @@ public class FirstFragment extends Fragment {
 
         tv_firstfrag_name.setText(title);
 
-        Glide.with(getContext()).load(R.drawable.paddington).apply(new RequestOptions().circleCrop()).into(profileImage);
 
 
         tv_likeview.setOnClickListener(new View.OnClickListener() {

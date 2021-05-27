@@ -66,16 +66,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_acc" />
 
-            <ImageView
-                android:id="@+id/imageView16"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
-                app:srcCompat="@drawable/simple_line" />
-
             <Button
                 android:id="@+id/btn_foodLike"
                 android:layout_width="32dp"
@@ -102,7 +92,7 @@
                 android:id="@+id/iv_srchResultImage"
                 android:layout_width="345dp"
                 android:layout_height="259dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/salmon"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toStartOf="@+id/btn_after2"
@@ -115,7 +105,7 @@
                 android:layout_width="15dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="7dp"
-                android:background="@drawable/next1"
+                android:background="@drawable/graybefore2"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_srchResultImage"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/iv_srchResultImage" />
@@ -125,7 +115,7 @@
                 android:layout_width="15dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="7dp"
-                android:background="@drawable/next2"
+                android:background="@drawable/graynext2"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_srchResultImage"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/iv_srchResultImage" />
@@ -134,7 +124,9 @@
                 android:id="@+id/imageView12"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -145,7 +137,9 @@
                 android:id="@+id/imageView4"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="100dp"
+                android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -156,17 +150,8 @@
                 android:id="@+id/imageView7"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResHour"
-                app:srcCompat="@drawable/simple_line" />
-
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_marginTop="130dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -177,13 +162,14 @@
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="414dp"
                 android:layout_height="350dp"
+                android:layout_marginTop="27dp"
                 android:background="#37F47210"
                 android:backgroundTint="#37F47210"
                 android:scrollbars="none"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView9">
+                app:layout_constraintTop_toBottomOf="@+id/textView17">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
@@ -273,17 +259,17 @@
 
             <Button
                 android:id="@+id/btn_foodsave"
-                android:layout_width="32dp"
-                android:layout_height="30dp"
+                android:layout_width="28dp"
+                android:layout_height="29dp"
                 android:layout_marginStart="14dp"
-                android:layout_marginTop="14dp"
-                android:background="@drawable/star1"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/tagcolor"
                 app:layout_constraintStart_toEndOf="@+id/btn_review2"
                 app:layout_constraintTop_toBottomOf="@+id/iv_srchResultImage" />
 
             <TextView
                 android:id="@+id/tv_howMuchLikes"
-                android:layout_width="341dp"
+                android:layout_width="0dp"
                 android:layout_height="28dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="9dp"
@@ -416,10 +402,10 @@
 
             <Button
                 android:id="@+id/btn_result_music"
-                android:layout_width="157dp"
-                android:layout_height="43dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="10dp"
-                android:text="AI 음악 듣기"
+                android:background="@drawable/playbtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView16" />
@@ -428,8 +414,9 @@
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:text="검색하신 이미지로 음악을 만들어 봤어요!"
+                android:layout_marginTop="25dp"
+                android:text="검색하신 이미지로 AI가 음악을 만들어 봤어요!"
+                android:textColor="#434343"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -440,32 +427,22 @@
                 android:id="@+id/textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="(음악은 마이페이지에 자동 저장됩니다)"
+                android:layout_marginTop="8dp"
+                android:text="음악은 마이페이지에서 다시 들을 수 있습니다."
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_result_music" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="12dp"
-                android:text="평점 :"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/imageView19"
-                app:layout_constraintTop_toBottomOf="@+id/iv_srchResultImage" />
-
             <ImageView
                 android:id="@+id/img_music"
-                android:layout_width="41dp"
-                android:layout_height="46dp"
-                android:layout_marginTop="2dp"
-                app:layout_constraintEnd_toStartOf="@+id/textView16"
-                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResHour"
-                tools:srcCompat="@drawable/ic_launcher_music_foreground" />
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="21dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:srcCompat="@drawable/eighth_note" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

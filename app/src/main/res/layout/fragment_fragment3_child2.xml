@@ -52,10 +52,24 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/adv" />
+
                 <TextView
                     android:id="@+id/textView31"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="5dp"
+                    android:background="#FFFFFF"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
                     android:textSize="30sp" />
 
                 <TextView

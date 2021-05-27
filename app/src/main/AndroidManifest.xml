@@ -25,10 +25,11 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity android:name=".BottomNaviActivity">
-
         </activity>
         <activity android:name=".WriteReviewActivity" />
-        <activity android:name=".ReviewActivity"></activity>
+        <activity android:name=".ReviewActivity">
+
+        </activity>
         <activity android:name=".SearchResultActivity"></activity>
         <activity android:name=".MyLikeViewActivity"></activity>
         <activity android:name=".MyMusicActivity"></activity>
