@@ -185,7 +185,9 @@ public class MyLikeViewActivity extends AppCompatActivity {
                                                         iv_like_back.setOnClickListener(new View.OnClickListener() {
                                                             @Override
                                                             public void onClick(View v) {
-                                                                finish();
+                                                                Intent intent = new Intent(getApplicationContext(), BottomNaviActivity.class);
+                                                                startActivity(intent);
+//                                                                finish();
                                                             }
                                                         });
                                                     }

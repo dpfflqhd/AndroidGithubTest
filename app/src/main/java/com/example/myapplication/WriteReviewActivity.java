@@ -52,7 +52,7 @@ public class WriteReviewActivity extends AppCompatActivity {
 
     long now = System.currentTimeMillis();
     Date mDate = new Date(now);
-    SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     String getTime = simpleDate.format(mDate);
 
 

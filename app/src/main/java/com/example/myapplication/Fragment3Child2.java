@@ -1,5 +1,12 @@
 package com.example.myapplication;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Point;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,8 +18,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.model.GlideUrl;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -20,8 +31,13 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Fragment3Child2 extends Fragment {
@@ -32,7 +48,12 @@ public class Fragment3Child2 extends Fragment {
     String store_name = "";
     String rating = "";
     String like = "";
+    ImageView img_top1;
+    Context context;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    TextView tv_top_menu1, tv_top_menu2, tv_top_menu3, tv_top_name1, tv_top_name2, tv_top_name3, tv_sea_name1, tv_sea_name2, tv_sea_name3,
+            tv_sea_menu1, tv_sea_menu2, tv_sea_menu3;
 
     List<LikeSortVO> name_list = new ArrayList<>();
     List<String> menu_list = new ArrayList<>();
@@ -51,7 +72,7 @@ public class Fragment3Child2 extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_fragment3_child2, container, false);
 
-        ImageView img_top1 = view.findViewById(R.id.img_top1);
+        img_top1 = view.findViewById(R.id.img_top1);
         ImageView img_top2 = view.findViewById(R.id.img_top2);
         ImageView img_top3 = view.findViewById(R.id.img_top3);
 
@@ -67,6 +88,141 @@ public class Fragment3Child2 extends Fragment {
         ImageView img_sea2 = view.findViewById(R.id.img_sea2);
         ImageView img_sea3 = view.findViewById(R.id.img_sea3);
 
+        ImageView img_magazine1 = view.findViewById(R.id.img_magazine1);
+        ImageView img_magazine2 = view.findViewById(R.id.img_magazine2);
+        ImageView img_magazine3 = view.findViewById(R.id.img_magazine3);
+
+
+        //TextView 초기화
+        tv_top_menu1 = view.findViewById(R.id.tv_top_menu1);
+        tv_top_menu2 = view.findViewById(R.id.tv_top_menu2);
+        tv_top_menu3 = view.findViewById(R.id.tv_top_menu3);
+        tv_top_name1 = view.findViewById(R.id.tv_top_name1);
+        tv_top_name2 = view.findViewById(R.id.tv_top_name2);
+        tv_top_name3 = view.findViewById(R.id.tv_top_name3);
+
+        tv_sea_menu1 = view.findViewById(R.id.tv_sea_menu1);
+        tv_sea_menu2 = view.findViewById(R.id.tv_sea_menu2);
+        tv_sea_menu3 = view.findViewById(R.id.tv_sea_menu3);
+
+        tv_sea_name1 = view.findViewById(R.id.tv_sea_name1);
+        tv_sea_name2 = view.findViewById(R.id.tv_sea_name2);
+        tv_sea_name3 = view.findViewById(R.id.tv_sea_name3);
+
+
+        img_sea1.setImageResource(R.drawable.yasmaru);
+        img_sea2.setImageResource(R.drawable.red);
+        img_sea3.setImageResource(R.drawable.don);
+
+        tv_sea_menu1.setText("파랑국수");
+        tv_sea_name1.setText("야스마루");
+        tv_sea_menu2.setText("로켓버거");
+        tv_sea_name2.setText("빨간모자 마법사");
+        tv_sea_menu3.setText("돈까스 물회");
+        tv_sea_name3.setText("소영이네");
+
+        img_sea1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=야스마루";
+
+                if(uri != null){
+
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse(uri));
+                    startActivity(intent);
+                }
+            }
+        });
+
+        img_sea2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=빨간모자마법사";
+
+                if(uri != null){
+
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse(uri));
+                    startActivity(intent);
+                }
+            }
+        });
+
+        img_sea3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=소영이네돈까스물회";
+
+                if(uri != null){
+
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse(uri));
+                    startActivity(intent);
+                }
+            }
+        });
+
+        /*don red yasmaru
+
+        don : 소영이네 돈까스물회, 돈까스물회
+
+        red : 빨간모자 마법사, 로켓버거
+
+        yasmaru : 야스마루, 파랑국수*/
+
+
+        img_magazine1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=멍게비빔밥";
+
+                if(uri != null){
+
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse(uri));
+                    startActivity(intent);
+                }
+            }
+        });
+
+        img_magazine2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=마라장어매운탕";
+
+                if(uri != null){
+
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse(uri));
+                    startActivity(intent);
+                }
+            }
+        });
+
+        img_magazine3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=전복해물라면";
+
+                if(uri != null){
+
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse(uri));
+                    startActivity(intent);
+                }
+            }
+        });
+
+
+
+
+
+        context = container.getContext();
+
+        /*String image_url = "https://firebasestorage.googleapis.com/v0/b/finfooproject.appspot.com/o/stores%2Foct.JPG?alt=media&token=7011e1a8-ede9-4c40-a2e9-1d4d05838cd7";
+        loadImageTask imageTask = new loadImageTask(image_url);
+        imageTask.execute();*/
 
 
 
@@ -86,30 +242,162 @@ public class Fragment3Child2 extends Fragment {
                                 like = document.getString("like");
                                 Log.d("like", like);
                                 store_name = document.getId();
+
+
                                 //이미지액티비티에서 받아온 결과값(음식점이름)에 해당되는 데이터베이스 불러오기
                                 name_list.add(new LikeSortVO(name, menu, img, rating, Integer.parseInt(like), store_name));
+
+
                             }
                             if(name_list != null && !name_list.isEmpty()){
                                 for(int i = 0 ; i < name_list.size(); i++){
-                                    Log.d("rating sort", ""+ name_list.get(i).getRating() + "/" + name_list.get(i).getName());
+                                    Log.d("rating sort", ""+ name_list.get(i).getRating() + "/" + name_list.get(i).getName() + "/" + name_list.get(i).getImg());
                                 }
+                            }
+
+
+                            if(name_list != null && !name_list.isEmpty()){
+                                String imageStr = name_list.get(0).getImg();
+                                Glide.with(context).load(imageStr).into(img_top1);
+                                String imageStr1 = name_list.get(1).getImg();
+                                Glide.with(context).load(imageStr1).into(img_top2);
+                                String imageStr2 = name_list.get(2).getImg();
+                                Glide.with(context).load(imageStr2).into(img_top3);
+
+                                tv_top_menu1.setText(name_list.get(0).getMenu());
+                                tv_top_menu2.setText(name_list.get(1).getMenu());
+                                tv_top_menu3.setText(name_list.get(2).getMenu());
+
+                                tv_top_name1.setText(name_list.get(0).getName());
+                                tv_top_name2.setText(name_list.get(1).getName());
+                                tv_top_name3.setText(name_list.get(2).getName());
+
+
+                                img_top1.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query="+name_list.get(0).getName();
+
+                                        if(uri != null){
+
+                                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                                    Uri.parse(uri));
+                                            startActivity(intent);
+
+                                        }
+                                    }
+                                });
+
+                                img_top2.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query="+name_list.get(1).getName();
+
+                                        if(uri != null){
+
+                                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                                    Uri.parse(uri));
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
+
+                                img_top3.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query="+name_list.get(2).getName();
+
+                                        if(uri != null){
+
+                                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                                    Uri.parse(uri));
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
+
+
+
+
+
+
+
+                                /*String imageStr = "https://firebasestorage.googleapis.com/v0/b/finfooproject.appspot.com/o/stores%2Foct.JPG?alt=media&token=7011e1a8-ede9-4c40-a2e9-1d4d05838cd7";
+                                Glide.with(context)
+                                        .load(imageStr)
+                                        .into(img_top1);*/
+
+                                /*String imageStr = name_list.get(0).getImg();
+                                Glide.with(view)
+                                        .load(imageStr)
+                                        .into(img_top1);*/
+
+                                /*Log.d("imagastre", imageStr);*/
+
                             }
                         } else {
                             Log.w("받아오기실패", "Error getting documents.", task.getException());
                         }
                     }
                 });
-
-
-
-
-
-
-
-
-
-
-
-        return inflater.inflate(R.layout.fragment_fragment3_child2, container, false);
+//        return inflater.inflate(R.layout.fragment_fragment3_child2, container, false);
+        return view;
     }
+
+    class Descending implements Comparator<Integer> {
+
+
+        @Override
+        public int compare(Integer o1, Integer o2) {
+            return o2.compareTo(o1);
+        }
+    }
+
+    // 오름차순
+    class Ascending implements Comparator<Integer> {
+        @Override
+        public int compare(Integer o1, Integer o2) {
+            return o1.compareTo(o2);
+        }
+    }
+
+    public class loadImageTask extends AsyncTask<Bitmap, Void, Bitmap> {
+
+        private String url;
+
+        public loadImageTask(String url) {
+
+            this.url = url;
+        }
+        @Override
+        protected Bitmap doInBackground(Bitmap... params) {
+
+            Bitmap imgBitmap = null;
+
+            try {
+                URL url1 = new URL(url);
+                URLConnection conn = url1.openConnection();
+                conn.connect();
+                int nSize = conn.getContentLength();
+                BufferedInputStream bis = new BufferedInputStream(conn.getInputStream(), nSize);
+                imgBitmap = BitmapFactory.decodeStream(bis);
+                bis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return imgBitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bit) {
+            super.onPostExecute(bit);
+            img_top1.setImageBitmap(bit);
+        }
+
+
+    }
+
+
+
 }

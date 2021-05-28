@@ -75,7 +75,7 @@ public class ReviewActivity extends AppCompatActivity {
         });
 
 
-        db.collection("reviews")
+        db.collection("reviews").orderBy("time", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 

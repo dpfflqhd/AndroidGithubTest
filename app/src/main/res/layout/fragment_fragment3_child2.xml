@@ -76,7 +76,7 @@
                     android:id="@+id/textView32"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="        주간 리뷰 순위 TOP3"
+                    android:text="        주간 별점 순위 TOP3"
                     android:textColor="#373737"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -537,7 +537,7 @@
                             android:textColor="#404040"
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="@+id/img_month1"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView23" />
+                            app:layout_constraintTop_toBottomOf="@+id/img_magazine1" />
 
                         <TextView
                             android:id="@+id/textView44"
@@ -551,7 +551,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/textView41" />
 
                         <ImageView
-                            android:id="@+id/imageView20"
+                            android:id="@+id/img_magazine2"
                             android:layout_width="285dp"
                             android:layout_height="142dp"
                             android:layout_marginTop="12dp"
@@ -571,7 +571,7 @@
                             android:textColor="#404040"
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="@+id/img_month2"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView20" />
+                            app:layout_constraintTop_toBottomOf="@+id/img_magazine2" />
 
                         <TextView
                             android:id="@+id/textView46"
@@ -585,7 +585,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/textView45" />
 
                         <ImageView
-                            android:id="@+id/imageView21"
+                            android:id="@+id/img_magazine3"
                             android:layout_width="285dp"
                             android:layout_height="142dp"
                             android:layout_marginTop="12dp"
@@ -605,7 +605,7 @@
                             android:textColor="#404040"
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="@+id/img_month3"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView21" />
+                            app:layout_constraintTop_toBottomOf="@+id/img_magazine3" />
 
                         <TextView
                             android:id="@+id/textView49"
@@ -619,7 +619,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/textView48" />
 
                         <ImageView
-                            android:id="@+id/imageView23"
+                            android:id="@+id/img_magazine1"
                             android:layout_width="285dp"
                             android:layout_height="142dp"
                             android:layout_marginTop="12dp"

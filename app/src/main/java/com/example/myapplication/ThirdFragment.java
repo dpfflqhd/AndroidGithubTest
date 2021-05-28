@@ -1,12 +1,18 @@
 package com.example.myapplication;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -15,7 +21,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -36,13 +45,20 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Arrays;
 import java.util.List;
 
-public class ThirdFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnPolygonClickListener, GoogleMap.OnMyLocationClickListener, GoogleMap.OnMyLocationButtonClickListener {
+public class ThirdFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnPolygonClickListener, GoogleMap.OnMyLocationClickListener, GoogleMap.OnMyLocationButtonClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
     // Store instance variables
     private String title;
     private int page;
     private MapView googlemap = null;
     private Context context;
+    private CheckBox mMyLocationButtonCheckbox;
+    private CheckBox mMyLocationLayerCheckbox;
     Button btn_seoul, btn_gangwon, btn_chung, btn_geungsang, btn_gwang, btn_jeju;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    private boolean permissionDenied = false;
+    private EditText edt_map;
+    Button btn_map_search;
+    TextView map_text;
 
     // newInstance constructor for creating fragment with arguments
     public static ThirdFragment newInstance(int page, String title) {
@@ -75,6 +91,9 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
         btn_geungsang = view.findViewById(R.id.btn_geungsang);
         btn_gwang = view.findViewById(R.id.btn_gwang);
         btn_jeju = view.findViewById(R.id.btn_jeju);
+
+        /*mMyLocationButtonCheckbox = (CheckBox) findViewById(R.id.mylocationbutton_toggle);
+        mMyLocationLayerCheckbox = (CheckBox) findViewById(R.id.mylocationlayer_toggle);*/
 
 //        title = getArguments().getString("send");
 
@@ -122,8 +141,13 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+//        googleMap.setMyLocationEnabled(true);
+//        googleMap.setMyLocationEnabled(true);
         googleMap.setOnMyLocationButtonClickListener(this);
         googleMap.setOnMyLocationClickListener(this);
+
+//        googleMap.isMyLocationEnabled();
+
         LatLng center = new LatLng(35.893762, 127.890505);
 
 
@@ -333,11 +357,92 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
                 .position(zuk)
                 .title("풍전뚝집"));
 
+
         googleMap.setOnMarkerClickListener(markerClickListener);
         googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                Toast.makeText(context, marker.getTitle(), Toast.LENGTH_SHORT).show();
+                MapDialog mapDialog = new MapDialog(context);
+                mapDialog.show();
+
+                btn_map_search = mapDialog.findViewById(R.id.btn_map_search);
+                map_text = mapDialog.findViewById(R.id.map_text);
+                map_text.setText(marker.getTitle());
+
+                btn_map_search.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                        Toast.makeText(context, marker.getTitle(), Toast.LENGTH_SHORT).show();
+
+
+                            String uri = null;
+                            if (marker.getTitle().equals("코코스톤")) {
+                                uri = "https://www.google.com/maps/dir/%EC%BD%94%EC%BD%94%EC%8A%A4%ED%86%A4+%EC%A0%84%EB%9D%BC%EB%B6%81%EB%8F%84+%EC%A0%84%EC%A3%BC%EC%8B%9C+%EC%99%84%EC%82%B0%EA%B5%AC+%EB%8F%99%EC%84%9C%ED%95%99%EB%8F%99+142-4/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@35.4408271,127.0239927,10z/data=!4m13!4m12!1m5!1m1!1s0x3570249be35cf17f:0x685d0abd6c880e11!2m2!1d127.1529605!2d35.809484!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("바롯식당")) {
+                                uri = "https://www.google.com/maps/dir/%EC%9D%B8%EC%B2%9C%EA%B0%80%EB%93%A0+%EC%A0%84%EB%9D%BC%EB%B6%81%EB%8F%84+%EA%B3%A0%EC%B0%BD%EA%B5%B0+%EC%95%84%EC%82%B0%EB%A9%B4+%EC%9B%90%ED%8F%89%EA%B8%B8+9/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@35.2850495,126.4694162,10z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x35719ff27a338f7d:0xc8f42d5a844ee5ca!2m2!1d126.6277615!2d35.4625537!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("백반의 신")) {
+                                uri = "https://www.google.com/maps/dir/%EC%84%9C%EC%82%B0%EB%B6%88%EA%B3%A0%EA%B8%B0+%EB%B0%B1%EB%B0%98%EC%9D%98%EC%8B%A0+%EC%B6%A9%EC%B2%AD%EB%82%A8%EB%8F%84+%EC%84%9C%EC%82%B0%EC%8B%9C+%EB%8F%99%EB%AC%B8%EB%8F%99+189-10/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@35.9398695,126.1241549,9z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x357a5db68f3c1491:0x495e935073c5bbcc!2m2!1d126.4659683!2d36.7794637!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("제주 판타스틱버거")) {
+                                uri = "https://www.google.co.kr/maps/dir/%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84+%EC%84%9C%EA%B7%80%ED%8F%AC%EC%8B%9C+%ED%91%9C%EC%84%A0%EB%A9%B4+%ED%86%A0%EC%82%B0%EC%A4%91%EC%95%99%EB%A1%9C15%EB%B2%88%EA%B8%B8+6+%ED%8C%90%ED%83%80%EC%8A%A4%ED%8B%B1%EB%B2%84%EA%B1%B0/%EC%A0%9C%EC%A3%BC%EC%8B%9C+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84/@33.4090683,126.6034857,12z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x350d070b02a48ccb:0x4b9741cefed0cd29!2m2!1d126.7790718!2d33.3084898!1m5!1m1!1s0x350ce0858a6d79fd:0x4b9a8869e1919ce2!2m2!1d126.5311884!2d33.4996213?hl=ko";
+                            } else if (marker.getTitle().equals("칡산에")) {
+                                uri = "https://www.google.com/maps/dir/%EC%B9%A1%EC%82%B0%EC%97%90+%EA%B0%95%EC%9B%90%EB%8F%84+%EC%9B%90%EC%A3%BC%EC%8B%9C+%EB%8B%A8%EA%B3%84%EB%8F%99+825-2/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@36.3174728,126.2428876,8z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x356374544c71bb9b:0x4f92c9625c2adcd3!2m2!1d127.932466!2d37.349023!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("홍대구루메")) {
+                                uri = "https://www.google.com/maps/dir/%ED%99%8D%EB%8C%80%EA%B5%AC%EB%A3%A8%EB%A9%94+%EC%9D%B8%EC%B2%9C%EB%85%BC%ED%98%84%EC%A0%90(%EC%95%84%EC%9D%B4%ED%94%8C%EB%A0%89%EC%8A%A4+2%EC%B8%B5)+%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EB%8F%99%EA%B5%AC+%EB%85%BC%ED%98%842%EB%8F%99+%EB%85%BC%EA%B3%A0%EA%B0%9C%EB%A1%9C123%EB%B2%88%EA%B8%B8+17+%EC%95%84%EC%9D%B4%ED%94%8C%EB%A0%89%EC%8A%A4+2%EC%B8%B5/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@36.3174728,126.2428876,8z/data=!4m13!4m12!1m5!1m1!1s0x357b7a6dc46d6ad3:0xbd70ff0cccfeb751!2m2!1d126.723068!2d37.4016411!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("마세오른")) {
+                                uri = "https://www.google.com/maps/dir/%EB%A7%88%EC%84%B8%EC%98%A4%EB%A5%B8+%EC%B6%A9%EC%B2%AD%EB%82%A8%EB%8F%84+%EA%B3%B5%EC%A3%BC%EC%8B%9C+%EB%B0%98%ED%8F%AC%EB%A9%B4+%EB%B4%89%EA%B3%A1%EB%A6%AC+467-31+KR/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@35.7684094,126.4527456,9z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x357ab52bb1a75a59:0x272bcb04b83a351c!2m2!1d127.2335218!2d36.4027025!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("18번 완당집")) {
+                                uri = "https://www.google.com/maps/dir/18%EB%B2%88%EC%99%84%EB%8B%B9%EC%A7%91+%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EB%82%A8%ED%8F%AC%EB%8F%99+%EB%B9%84%ED%94%84%EA%B4%91%EC%9E%A5%EB%A1%9C+31/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@35.8427466,125.7266539,7z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x3568e9a089ebd5ad:0x59a27f458fb19449!2m2!1d129.0284706!2d35.0989623!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("소영이네 돈까스물회")) {
+                                uri = "https://www.google.com/maps/dir/%EC%86%8C%EC%98%81%EC%9D%B4%EB%84%A4%EB%8F%88%EA%B9%8C%EC%8A%A4%EB%AC%BC%ED%9A%8C+%EA%B0%95%EC%9B%90%EB%8F%84+%EA%B0%95%EB%A6%89%EC%8B%9C+%EC%A0%95%EC%9B%90%EB%A1%9C+54+KR+1%EC%B8%B5/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@36.419529,125.6091375,7z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x3561e539f638a0b7:0x46a129f252b025a9!2m2!1d128.8758955!2d37.7624613!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("동백아가씨1961")) {
+                                uri = "https://www.google.com/maps/dir/%EB%8F%99%EB%B0%B1%EC%95%84%EA%B0%80%EC%94%A81961+%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%B6%80%EC%82%B0%EC%A7%84%EA%B5%AC+%EC%A0%84%ED%8F%AC%EB%8F%99+%EC%84%9C%EC%A0%84%EB%A1%9C37%EB%B2%88%EA%B8%B8+18/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@35.1754729,125.7480508,7z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x3568ebb19eb8728b:0xefc51cba020965e6!2m2!1d129.0642146!2d35.1585585!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("어부피자")) {
+                                uri = "https://www.google.com/maps/dir/%EC%96%B4%EB%B6%80%ED%94%BC%EC%9E%90+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84+%EC%84%9C%EA%B7%80%ED%8F%AC%EC%8B%9C+%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84,+%EC%84%B1%EC%82%B0%EC%9D%8D+%EC%88%98%EC%82%B0%EB%A6%AC+225+KR/%EC%A0%9C%EC%A3%BC%EC%8B%9C+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84/@33.4653006,126.1445466,9z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x350d1395b2f9ce73:0x8e37dad1ec53d26a!2m2!1d126.8926323!2d33.443463!1m5!1m1!1s0x350ce0858a6d79fd:0x4b9a8869e1919ce2!2m2!1d126.5311884!2d33.4996213";
+                            } else if (marker.getTitle().equals("청풍떡갈비")) {
+                                uri = "https://www.google.com/maps/dir/%EC%B2%AD%ED%92%8D%EB%96%A1%EA%B0%88%EB%B9%84+%EC%B6%A9%EC%B2%AD%EB%B6%81%EB%8F%84+%EC%A0%9C%EC%B2%9C%EC%8B%9C+%EA%B8%88%EC%84%B1%EB%A9%B4+%EC%84%B1%EB%82%B4%EB%A6%AC+192/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@36.3263552,125.2600877,7z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x356388473cd8c3e1:0x3b55a13230b82264!2m2!1d128.1752777!2d37.0226211!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("테이스팅룸")) {
+                                uri = "https://www.google.com/maps/dir/%EC%B9%98%EC%A6%88%EB%A3%B8X%ED%85%8C%EC%9D%B4%EC%8A%A4%ED%8C%85%EB%A3%B8+Seoul+Songpa-gu+%EC%9E%A0%EC%8B%A46%EB%8F%99/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@36.3077491,125.8357485,8z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x357ca50a93fdf00d:0x48f2189075c1a5b9!2m2!1d127.1044286!2d37.5140543!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("광안리 끄티집")) {
+                                uri = "https://www.google.com/maps/dir/%EA%B4%91%EC%95%88%EB%A6%AC+%EB%81%84%ED%8B%B0%EC%A7%91+%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%88%98%EC%98%81%EA%B5%AC+%EB%AF%BC%EB%9D%BD%EB%8F%99+%EB%AF%BC%EB%9D%BD%EB%A1%9C13%EB%B2%88%EA%B8%B8+21/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@35.8431744,125.7264293,7z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x3568ed3cbfacc795:0x4e21e2cfbf5e9e66!2m2!1d129.1215931!2d35.1561732!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("하누&카누")) {
+                                uri = "https://www.google.com/maps/dir/%ED%95%98%EB%88%84%26%EC%B9%B4%EB%88%84+%ED%9A%A1%EC%84%B1%EC%A0%90+%EA%B0%95%EC%9B%90%EB%8F%84+%ED%9A%A1%EC%84%B1%EA%B5%B0+%ED%9A%A1%EC%84%B1%EC%9D%8D+%EC%9D%8D%EC%83%81%EB%A6%AC+285-2+%ED%9A%A1%EC%84%B1%EC%9D%8D+%EC%9D%8D%EC%83%81%EB%A6%AC+285-2%EB%B2%88%EC%A7%80+%ED%9A%A1%EC%84%B1%EA%B5%B0+%EA%B0%95%EC%9B%90%EB%8F%84+KR+25232/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@36.2913619,126.313153,8z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x3563a78e5f0296fb:0x2179f2a0060ddf99!2m2!1d127.9865645!2d37.4903287!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("산골항아리바베큐")) {
+                                uri = "https://www.google.com/maps/dir/%EC%82%B0%EA%B3%A8+%ED%95%AD%EC%95%84%EB%A6%AC%EB%B0%94%EB%B2%A0%ED%81%90+%EA%B2%BD%EA%B8%B0%EB%8F%84+%EC%9A%A9%EC%9D%B8%EC%8B%9C+%EC%88%98%EC%A7%80%EA%B5%AC+%EA%B3%A0%EA%B8%B0%EB%8F%99+%EC%9D%B4%EC%A2%85%EB%AC%B4%EB%A1%9C169%EB%B2%88%EA%B8%B8+3/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@36.2913619,126.313153,8z/data=!4m13!4m12!1m5!1m1!1s0x357b5eb2a27e13f1:0x62b77baf9d4dba21!2m2!1d127.0387092!2d37.3599692!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("면뽑는 선생 만두빚는 아내")) {
+                                uri = "https://www.google.com/maps/dir/%EB%A9%B4%EB%BD%91%EB%8A%94%EC%84%A0%EC%83%9D%EB%A7%8C%EB%91%90%EB%B9%9A%EB%8A%94%EC%95%84%EB%82%B4,+%ED%98%91%EC%9E%AC%EB%A6%AC+%ED%95%9C%EB%A6%BC%EC%9D%8D+%EC%A0%9C%EC%A3%BC%EC%8B%9C+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84/%EC%A0%9C%EC%A3%BC%EC%8B%9C+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84/@33.4500769,126.1107823,10z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x350c613501b8d64b:0xec98cc589b85c31b!2m2!1d126.2493752!2d33.3998472!1m5!1m1!1s0x350ce0858a6d79fd:0x4b9a8869e1919ce2!2m2!1d126.5311884!2d33.4996213";
+                            } else if (marker.getTitle().equals("목스키친")) {
+                                uri = "https://www.google.com/maps/dir/mokskitchen-%EB%AA%A9%EC%8A%A4%ED%82%A4%EC%B9%9C+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84+%EC%84%9C%EA%B7%80%ED%8F%AC%EC%8B%9C+%ED%91%9C%EC%84%A0%EB%A9%B4+%ED%86%A0%EC%82%B0%EB%A6%AC+423-3/%EC%A0%9C%EC%A3%BC%EC%8B%9C+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84/@33.4314515,126.1705177,9z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x350d09dc0566a3b5:0xea66495a2de2c9b3!2m2!1d126.7838081!2d33.3064995!1m5!1m1!1s0x350ce0858a6d79fd:0x4b9a8869e1919ce2!2m2!1d126.5311884!2d33.4996213";
+                            } else if (marker.getTitle().equals("문쏘")) {
+                                uri = "https://www.google.com/maps/dir/%EB%AC%B8%EC%8F%98+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84+%EC%A0%9C%EC%A3%BC%EC%8B%9C+%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84,+KR+%ED%95%9C%EB%A6%BC%EC%9D%8D+%ED%95%9C%EB%A6%BC%EC%9D%8D+%EC%98%B9%ED%8F%AC%EB%A6%AC326-3+%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84/%EC%A0%9C%EC%A3%BC%EC%8B%9C+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84/@33.4500769,126.1131562,10z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x350c608758a60011:0x8cca5648bec31258!2m2!1d126.2566867!2d33.4056209!1m5!1m1!1s0x350ce0858a6d79fd:0x4b9a8869e1919ce2!2m2!1d126.5311884!2d33.4996213";
+                            } else if (marker.getTitle().equals("떡하니 문어떡볶이")) {
+                                uri = "https://www.google.com/maps/dir/%EB%96%A1%ED%95%98%EB%8B%88+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84+%EC%A0%9C%EC%A3%BC%EC%8B%9C+%EA%B5%AC%EC%A2%8C%EC%9D%8D+%ED%96%89%EC%9B%90%EB%A1%9C9%EA%B8%B8+9-5/%EC%A0%9C%EC%A3%BC%EC%8B%9C+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84/@33.5283788,126.3862953,10z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x350d17c3ec7dd4d1:0x81a17ebde7a32717!2m2!1d126.8078888!2d33.5537833!1m5!1m1!1s0x350ce0858a6d79fd:0x4b9a8869e1919ce2!2m2!1d126.5311884!2d33.4996213";
+                            } else if (marker.getTitle().equals("김피라 전국체인")) {
+                                uri = "https://www.google.com/maps/dir/%EA%B9%80%ED%94%BC%EB%9D%BC%EB%8C%80%EC%A0%84%EB%91%94%EC%82%B0%EC%A0%90+%EB%91%94%EC%82%B0%EB%8F%99+1006%EB%B2%88%EC%A7%80+2%EC%B8%B5+201%ED%98%B8+%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%83%88%EB%B9%8C%EB%94%A9+%EC%84%9C%EA%B5%AC+%EB%8C%80%EC%A0%84%EA%B4%91%EC%97%AD%EC%8B%9C+KR/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90+%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+60+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+2%EC%B8%B5/@35.8592873,126.5530904,9z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x35654bde733855d5:0x1b8091427680b1d1!2m2!1d127.377808!2d36.3539002!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            } else if (marker.getTitle().equals("빨간모자 마법사")) {
+                                uri = "https://www.google.com/maps/dir/%EB%B9%A8%EA%B0%84%EB%AA%A8%EC%9E%90+%EB%A7%88%EB%B2%95%EC%82%AC+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84+%EC%84%9C%EA%B7%80%ED%8F%AC%EC%8B%9C+%EC%95%88%EB%8D%95%EB%A9%B4+%EC%84%9C%EA%B4%91%EB%A6%AC+1419-5/%EC%A0%9C%EC%A3%BC%EC%8B%9C+%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84/@33.393365,126.1368109,10z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x350c5d217be3a273:0xdfd8d7b6d6541c75!2m2!1d126.3014324!2d33.2903799!1m5!1m1!1s0x350ce0858a6d79fd:0x4b9a8869e1919ce2!2m2!1d126.5311884!2d33.4996213";
+                            } else if (marker.getTitle().equals("사카나식당")) {
+                                uri = "https://www.google.com/maps/dir/%EC%82%AC%EC%B9%B4%EB%82%98+%EC%8B%9D%EB%8B%B9+%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C+%ED%95%B4%EC%9A%B4%EB%8C%80%EA%B5%AC+%EC%9A%B0%EB%8F%99+%EC%9A%B0%EB%8F%991%EB%A1%9C+34/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90+%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+60+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+2%EC%B8%B5/@35.9301739,125.7365762,7z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x35688d0e4c3f633f:0x906f9de509064aea!2m2!1d129.1571983!2d35.1644501!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
+                            }
+
+
+                            if (uri != null) {
+
+                                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                        Uri.parse(uri));
+                                startActivity(intent);
+                            }
+
+                            mapDialog.dismiss();
+                        }
+
+
+                });
+
+
+//                Toast.makeText(context, marker.getTitle(), Toast.LENGTH_SHORT).show();
+
                 return false;
             }
         });
@@ -682,8 +787,24 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
             if (clickCount != null) {
                 clickCount = clickCount + 1;
                 marker.setTag(clickCount);
-                Toast.makeText(context, marker.getTitle(), Toast.LENGTH_SHORT).show();
+
+                String uri = "https://naver.com";
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse(uri));
+                startActivity(intent);
+
+//                https://www.google.com/maps/dir/35.161123,126.836917/37.5487836,127.2872/@36.3496332,125.9409072,8z/data=!3m1!4b1
+                /*String uri ="http://maps.google.com/maps/dir/35.161123,126.836917/37.548783572815914,127.28719999820369";
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse(uri));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addCategory(Intent.CATEGORY_LAUNCHER );
+                intent.setClassName("com.google.android.apps.maps", "com.example.myapplication");
+                startActivity(intent);
+                Toast.makeText(context, marker.getTitle(), Toast.LENGTH_SHORT).show();*/
             }
+
+
 
             // Return false to indicate that we have not consumed the event and that we wish
             // for the default behavior to occur (which is for the camera to move such that the
