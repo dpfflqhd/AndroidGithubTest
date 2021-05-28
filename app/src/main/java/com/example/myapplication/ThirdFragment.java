@@ -1,9 +1,12 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.location.Location;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -33,14 +36,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Arrays;
 import java.util.List;
 
-public class ThirdFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnPolygonClickListener {
+public class ThirdFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnPolygonClickListener, GoogleMap.OnMyLocationClickListener, GoogleMap.OnMyLocationButtonClickListener {
     // Store instance variables
     private String title;
     private int page;
     private MapView googlemap = null;
     private Context context;
     Button btn_seoul, btn_gangwon, btn_chung, btn_geungsang, btn_gwang, btn_jeju;
-
 
     // newInstance constructor for creating fragment with arguments
     public static ThirdFragment newInstance(int page, String title) {
@@ -74,34 +76,16 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
         btn_gwang = view.findViewById(R.id.btn_gwang);
         btn_jeju = view.findViewById(R.id.btn_jeju);
 
-        title = getArguments().getString("send");
+//        title = getArguments().getString("send");
 
         context = container.getContext();
         //처음 childfragment 지정
-        getFragmentManager().beginTransaction().add(R.id.child_fragment, new FirstFragment()).commit();
+//        getFragmentManager().beginTransaction().add(R.id.child_fragment, new Fragment3Child2()).commit();
 
-        //하위버튼
-        /*Button subButton1 = view.findViewById(R.id.subButton1);
-        Button subButton2 = view.findViewById(R.id.subButton2);*/
 
         googlemap = (MapView) view.findViewById(R.id.GoogleMapView1);
         googlemap.getMapAsync(this);
 
-        //클릭 이벤트 - child fragment로 이동
-       /* subButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                googlemap.setVisibility(View.VISIBLE);
-                getFragmentManager().beginTransaction().replace(R.id.child_fragment, new Fragment3Child1()).commit();
-            }
-        });
-        subButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                googlemap.setVisibility(View.INVISIBLE);
-                getFragmentManager().beginTransaction().replace(R.id.child_fragment, new Fragment3Child2()).commit();
-            }
-        });*/
 
 
         return view;
@@ -134,10 +118,12 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
         googlemap.onResume();
     }
 
+    @SuppressLint("MissingPermission")
     @Override
-
-
     public void onMapReady(GoogleMap googleMap) {
+
+        googleMap.setOnMyLocationButtonClickListener(this);
+        googleMap.setOnMyLocationClickListener(this);
         LatLng center = new LatLng(35.893762, 127.890505);
 
 
@@ -705,5 +691,20 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
             return false;
         }
     };
+
+    @Override
+    public void onMyLocationClick(@NonNull Location location) {
+        Toast.makeText(context, "Current location:\n" + location, Toast.LENGTH_LONG)
+                .show();
+    }
+
+    @Override
+    public boolean onMyLocationButtonClick() {
+        Toast.makeText(context, "MyLocation button clicked", Toast.LENGTH_SHORT)
+                .show();
+        // Return false so that we don't consume the event and the default behavior still occurs
+        // (the camera animates to the user's current position).
+        return false;
+    }
 }
 

@@ -53,6 +53,8 @@ public class JoinActivity extends AppCompatActivity {
     Spinner aSpinner;
     String sex = null;
     ImageView img_id, img_pw, img_name, img_age, img_sex, img_addr;
+    Spinner addr_spinner;
+    String addr;
 
     EditText edt_join_id, edt_join_pw, edt_join_fn, edt_join_age, edt_join_sex, edt_join_address;
     private DatePickerDialog.OnDateSetListener callbackMethod;
@@ -87,6 +89,7 @@ public class JoinActivity extends AppCompatActivity {
 
         aSpinner = findViewById(R.id.spinner3);
         String[] models = getResources().getStringArray(R.array.sizes);
+        addr_spinner = findViewById(R.id.spinner);
         /*img_id = findViewById(R.id.img_id);
         img_pw = findViewById(R.id.img_pw);
         img_name = findViewById(R.id.img_name);
@@ -100,7 +103,6 @@ public class JoinActivity extends AppCompatActivity {
         img_age.setImageResource(R.drawable.ic_launcher_age_foreground);
         img_sex.setImageResource(R.drawable.ic_launcher_sex_foreground);
         img_addr.setImageResource(R.drawable.ic_launcher_adr_foreground);*/
-
 
 
         ArrayAdapter age_adapter = ArrayAdapter.createFromResource(this, R.array.sizes, android.R.layout.simple_spinner_dropdown_item);
@@ -117,6 +119,19 @@ public class JoinActivity extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        addr_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                addr = addr_spinner.getSelectedItem().toString();
+                Log.d("주소 : ", ""+ addr);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
@@ -171,7 +186,7 @@ public class JoinActivity extends AppCompatActivity {
                 String pw = edt_join_pw.getText().toString();
                 String name = edt_join_fn.getText().toString();
                 String age = edt_join_age.getText().toString();
-                String addr = edt_join_address.getText().toString();
+//                String addr = edt_join_address.getText().toString();
 
 //                data.clear();
 

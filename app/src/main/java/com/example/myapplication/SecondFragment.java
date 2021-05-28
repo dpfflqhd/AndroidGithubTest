@@ -76,7 +76,7 @@ public class SecondFragment extends Fragment {
     private int page;
 
     // 전역 변수 선언
-    ImageView selectedImage;
+    ImageView selectedImage, imageView8;
     Button btn_searchImage, btn_resultimage;
     Drawable tempImg;
     Bitmap bm;
@@ -156,6 +156,7 @@ public class SecondFragment extends Fragment {
         btn_searchImage = view.findViewById(R.id.btn_searchImage);
         btn_resultimage = view.findViewById(R.id.btn_resultimage);
         tempImg = selectedImage.getDrawable();
+        imageView8 = view.findViewById(R.id.imageView8);
 
 
         Bundle bundle = getArguments(); //번들 안의 텍스트 불러오기
@@ -181,7 +182,10 @@ public class SecondFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // 갤러리에 접근
-               getAlbum();
+
+                getAlbum();
+
+
             }
         });
 
@@ -235,6 +239,9 @@ public class SecondFragment extends Fragment {
 
     // 갤러리에 접근하는 코드
     public void getAlbum() {
+
+        imageView8.setVisibility(View.INVISIBLE);
+
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.setDataAndType(MediaStore.Images.Media.INTERNAL_CONTENT_URI, "image/*");
@@ -246,7 +253,7 @@ public class SecondFragment extends Fragment {
     //이미지의 경로를 구한 뒤 데이터베이스에 저장한다
     private void dataSend() {
         String path = getImagePathToUri(uri);
-        Log.d("uri dataSend", resultUri.toString());
+        Log.d("uri dataSend", uri.toString());
 
         Uri file = Uri.fromFile(new File(path));
         StorageReference riversRef = storageRef.child("images/" + file.getLastPathSegment());
@@ -432,7 +439,9 @@ public class SecondFragment extends Fragment {
 
                     if(fileList != null) {
                         for (int i = 0; i < fileList.length; i++) {
-                            if (fileList[i].contains(tes)) {
+                            String[] test2 = fileList[i].split("_");
+                            Log.d("test2 split", test2[0] + "/" + test2[1]);
+                            if (tes.equals(test2[0])) {
                                 test = fileList[i];
                             }
                             if (test != null) {
@@ -462,8 +471,13 @@ public class SecondFragment extends Fragment {
                             //audio_cnt = 1,2,3
                             String audi = email.replace("@gmail.com","");
                             Log.d("audi", ""+audi);
-
                             Log.d("user audi", ""+userAudioList.get(i));
+
+
+
+
+
+
 
                             String audi_user = userAudioList.get(i);
                             audio_replace = audi_user.replace(audi + "_", "").replace(".mp3", "").replace(" ","");
@@ -544,9 +558,7 @@ public class SecondFragment extends Fragment {
             Log.d("secondfrag audio", audio);
 
 
-
-
-            selectedImage.setImageResource(R.drawable.camera);
+            selectedImage.setImageResource(R.drawable.camera2);
         }
     }
 }

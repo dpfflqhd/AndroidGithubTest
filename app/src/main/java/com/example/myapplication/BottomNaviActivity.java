@@ -120,7 +120,6 @@ public class BottomNaviActivity extends AppCompatActivity {
 
                                             // 지도 프래그먼트를 띄워줍니다. exeFrag()의 매개변수에 지도 프래그먼트를 넣어주세요.
                                         } else if (item.getItemId() == R.id.item_foodMap) {
-
                                             exeFrag(frag3);
                                             // 커뮤니티 프래그먼트를 띄워줍니다. exeFrag()의 매개변수에 커뮤니티 프래그먼트를 넣어주세요.
                                         } else if (item.getItemId() == R.id.item_foodCommunity) {

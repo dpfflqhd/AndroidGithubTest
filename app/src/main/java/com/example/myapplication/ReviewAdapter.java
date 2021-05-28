@@ -1,6 +1,10 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class ReviewAdapter extends BaseAdapter {
@@ -23,6 +28,7 @@ public class ReviewAdapter extends BaseAdapter {
     int layout;
     ArrayList<ReviewVO> data;
     LayoutInflater inflater;
+    RatingBar rating_value;
 
     public ReviewAdapter(Context context, int layout, ArrayList<ReviewVO> data) {
         this.context = context;
@@ -54,11 +60,41 @@ public class ReviewAdapter extends BaseAdapter {
             convertView = inflater.inflate(layout, null);
             holder = new ReviewAdapter.ViewHolder(convertView);
 
-            //holder.tv_reviewStarPoint.setText(String.valueOf(data.get(position).getStarPoint()));
-            holder.tv_reviewWriteText.setText(data.get(position).getReviewText());
-            holder.tv_reviewWriteDate.setText(data.get(position).getWriteDate());
-            holder.tv_reviewUserID.setText(data.get(position).getUserId());
-            holder.iv_reviewWriteImage.setImageResource(data.get(position).getReviewImage());
+//            holder.tv_reviewStarPoint.setText(String.valueOf(data.get(position).getStarPoint()));
+
+            try {
+                rating_value.setRating(Float.parseFloat(data.get(position).getStarPoint()));
+                holder.tv_reviewWriteText.setText(data.get(position).getReviewText());
+                holder.tv_reviewWriteDate.setText(data.get(position).getWriteDate());
+                holder.tv_reviewUserID.setText(data.get(position).getUserName());
+
+                if(data.get(position).getReviewImage().equals("a")){
+                    holder.iv_reviewWriteImage.setVisibility(View.GONE);
+                }
+                Glide.with(convertView)
+                        .load(data.get(position).getReviewImage())
+                        .into(holder.iv_reviewWriteImage);
+
+//                holder.iv_reviewWriteImage.setImageBitmap(originalBm);
+
+
+
+                /*File files = new File("content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F35/ORIGINAL/NONE/image%2Fjpeg/1169728720");
+                if(files.exists()) {
+
+                    Uri uri = Uri.parse("content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F35/ORIGINAL/NONE/image%2Fjpeg/1169728720");
+                    holder.iv_reviewWriteImage.setImageURI(uri);
+//                    holder.iv_reviewWriteImage.setImageResource(data.get(position).getReviewImage());
+                    Log.d("review Uri", uri.toString());
+                }*/
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+
+
+
             holder.iv_reviewProfileImage.setImageResource(data.get(position).getProfileImage());
 
 
@@ -72,7 +108,7 @@ public class ReviewAdapter extends BaseAdapter {
                     .skipMemoryCache(true) // Skip memory cache
                     .diskCacheStrategy(DiskCacheStrategy.NONE);//Do not buffer disk hard disk
 
-            Glide.with(convertView).load(data.get(position).getReviewImage()).apply(options).into(holder.iv_reviewWriteImage);
+//            Glide.with(convertView).load(data.get(position).getReviewImage()).apply(options).into(holder.iv_reviewWriteImage);
 
         }
 
@@ -90,6 +126,7 @@ public class ReviewAdapter extends BaseAdapter {
             tv_reviewUserID = itemView.findViewById(R.id.tv_reviewUserID);
             tv_reviewWriteDate = itemView.findViewById(R.id.tv_reviewWriteDate);
             tv_reviewWriteText = itemView.findViewById(R.id.tv_reviewWriteText);
+            rating_value = itemView.findViewById(R.id.rb_reviewscore);
             //tv_reviewStarPoint = itemView.findViewById(R.id.tv_reviewStarPoint);
         }
 

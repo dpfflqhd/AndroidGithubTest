@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -20,6 +21,7 @@ public class MyMusicActivity extends AppCompatActivity {
     ListView lv_myMusic;
     ImageView iv_myMusic_back;
     String email ="";
+    List<Integer> musicImg = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,13 @@ public class MyMusicActivity extends AppCompatActivity {
         data = new ArrayList<MyMusicVO>();
 
         iv_myMusic_back.setImageResource(R.drawable.next1);
+
+        iv_myMusic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         //1. 이미지파일 목록을 불러올 경로를 구한다.
         String path = "/storage/emulated/0/Download/";
@@ -59,21 +68,35 @@ public class MyMusicActivity extends AppCompatActivity {
         String email_replace = email.replace("@gmail.com", "");
 
         for(int i = 0; i < fileList.length; i++){
-            if(fileList[i].contains(email_replace)){
+            String[] test2 = fileList[i].split("_");
+            if(email_replace.equals(test2[0])){
                 test = fileList[i];
                 Log.d("filelist", fileList[i]);
                 if(cnt > 0){
                     cnt++;
                 }
             }
-            if(test != null){
+            if(!test.equals("")){
                 userAudioList.add("/storage/emulated/0/Download/"+ test);
+
             }
         }
 
+        musicImg.add(R.drawable.sakana);
+        musicImg.add(R.drawable.gogi);
+        musicImg.add(R.drawable.pizza);
+        musicImg.add(R.drawable.coco);
+        musicImg.add(R.drawable.burger);
+        musicImg.add(R.drawable.pizza);
+        musicImg.add(R.drawable.gogi);
+        musicImg.add(R.drawable.sakana);
+        musicImg.add(R.drawable.coco);
+
+
+
         if(userAudioList != null && !userAudioList.isEmpty()){
             for (int i = 0; i < userAudioList.size(); i++) {
-                data.add(new MyMusicVO(R.drawable.zambalaya, userAudioList.get(i), "AI 음악 "+(i+1)+"번째"));
+                data.add(new MyMusicVO(musicImg.get(i), userAudioList.get(i), "AI 음악 "+(i+1)+"번째"));
                 Log.d("userAudioList", "" + userAudioList.get(i) + "/" + i);
             }
         }

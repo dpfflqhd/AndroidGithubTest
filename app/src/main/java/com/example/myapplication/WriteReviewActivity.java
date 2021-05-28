@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Instrumentation;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -21,8 +23,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.util.Listener;
+import com.theartofdev.edmodo.cropper.CropImage;
 
+import java.io.File;
 import java.net.URI;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +41,7 @@ public class WriteReviewActivity extends AppCompatActivity {
     ImageView iv_reviewImageInsert;
     int GET_GALLERY_IMAGE = 100;
     Uri selectedImageUri;
+    private File tempFile;
 
     private String email;
     private String user_name;
@@ -42,6 +49,11 @@ public class WriteReviewActivity extends AppCompatActivity {
     String document_id;
     private String imageUri;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    long now = System.currentTimeMillis();
+    Date mDate = new Date(now);
+    SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
+    String getTime = simpleDate.format(mDate);
 
 
     @Override
@@ -97,10 +109,16 @@ public class WriteReviewActivity extends AppCompatActivity {
                 review_map.put("id", email);
                 review_map.put("name", user_name);
                 review_map.put("review", reviewText);
-                review_map.put("rating", starScore);
-                review_map.put("img", imageUri);
+                review_map.put("rating", String.valueOf(starScore));
+                if(tempFile != null) {
+                    review_map.put("img", tempFile.toString());
+                } else {
+                    review_map.put("img", "a");
 
-                Log.d("review 데이터베이스 저장", store_name + "/" + email + "/" + user_name + "/" + reviewText + "/" + starScore + "/" + imageUri);
+                }
+                review_map.put("time", getTime);
+
+                Log.d("review 데이터베이스 저장", store_name + "/" + email + "/" + user_name + "/" + reviewText + "/" + starScore + "/" + "/" + getTime);
 
                 //파이베이스 imageurl 컬렉션에 데이터 넣기
                 db.collection("reviews")
@@ -152,6 +170,33 @@ public class WriteReviewActivity extends AppCompatActivity {
         if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
             selectedImageUri = data.getData();
             iv_reviewImageInsert.setImageURI(selectedImageUri);
+
+
+            Uri photoUri = data.getData();
+
+            Cursor cursor = null;
+            try {
+                String[] proj = { MediaStore.Images.Media.DATA };
+
+                assert photoUri != null;
+                cursor = getContentResolver().query(photoUri, proj, null, null, null);
+
+                assert cursor != null;
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+
+                cursor.moveToFirst();
+
+                tempFile = new File(cursor.getString(column_index));
+
+            } finally {
+                if (cursor != null) {
+                    cursor.close();
+                }
+            }
+            Log.d("selectedUri", tempFile.toString());
+
+
+
         }
     }
 

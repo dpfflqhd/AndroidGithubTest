@@ -53,7 +53,8 @@ public class SearchResultActivity extends AppCompatActivity {
               iv_srchResultRelatedImage1,
               iv_srchResultRelatedImage2,
               iv_srchResultRelatedImage3,
-              iv_music;
+              iv_music,
+              srch_back;
 
     Button btn_foodLike, btn_foodsave, btn_music, btn_review;
 
@@ -132,14 +133,18 @@ public class SearchResultActivity extends AppCompatActivity {
         iv_srchResultRelatedImage3 = findViewById(R.id.iv_srchResultRelatedImage3);
         iv_music = findViewById(R.id.img_music);
         iv_music.setImageResource(R.drawable.ic_launcher_music_foreground);
+        srch_back = findViewById(R.id.srch_back);
+
+        srch_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // 임시 이미지 넣은 코드 나중에 삭제ㄱㄱ
-        iv_srchResultRelatedImage1.setImageResource(R.drawable.rec_zambalaya);
-        iv_srchResultRelatedImage2.setImageResource(R.drawable.rec_dongbaek);
-        iv_srchResultRelatedImage2.setImageResource(R.drawable.rec_sakana);
-        tv_srchResultRelatedImage1.setText("곱창잠발라야");
-        tv_srchResultRelatedImage1.setText("하얀동백떡볶이");
-        tv_srchResultRelatedImage1.setText("구슬초밥");
+
+
         
 
         tv_howMuchLikes = findViewById(R.id.tv_howMuchLikes);
@@ -154,6 +159,14 @@ public class SearchResultActivity extends AppCompatActivity {
         tv_srchResultRelatedImage3 = findViewById(R.id.tv_srchResultRelatedImage3);
         tv_acc = findViewById(R.id.tv_acc);
         tv_acc2 = findViewById(R.id.tv_acc2);
+
+        iv_srchResultRelatedImage1.setImageResource(R.drawable.kum);
+        iv_srchResultRelatedImage2.setImageResource(R.drawable.sinbul);
+        iv_srchResultRelatedImage3.setImageResource(R.drawable.zerk);
+
+        tv_srchResultRelatedImage1.setText("비프스테이크 콤피르");
+        tv_srchResultRelatedImage2.setText("마약옥수수피자");
+        tv_srchResultRelatedImage3.setText("저크치킨");
 
         //정확도 출력
 
@@ -197,7 +210,7 @@ public class SearchResultActivity extends AppCompatActivity {
                                 Log.d("현재 음식점 이름", email + "/" + store);
 
                                 if(email.equals(foodsave_id) && store.equals(foodsave_name)){
-                                    btn_foodsave.setBackgroundResource(R.drawable.star2);
+                                    btn_foodsave.setBackgroundResource(R.drawable.tagcolor2);
                                     save_cnt++;
                                 } else {
                                     Log.d("찜 목록 없음", "");
@@ -247,14 +260,20 @@ public class SearchResultActivity extends AppCompatActivity {
                                         tv_srchResultFoodPrice.setText("가격 : " + price);
                                         tv_srchResultResAddress.setText("주소 : " + addr);
                                         tv_srchResultResHour.setText("운영시간 : " + time);
+//                                        tv_srchResultResHour.setText("운영시간 : 평일 11:30 - 20:30");
                                         tv_srchResultResTel.setText("전화번호 : " + phone);
                                         tv_srchResultResName.setText( name);
                                         Log.d("음식점 :", store + "/ 이름 : " + name + "/메뉴 :" + menu + "/가격 :" + price + "/전화번호 :" + phone + "/주소 :" + addr + "/운영시간 :" +
                                                 time + "/좋아요 수 :" + like + "/이미지url :" + img);
 
                                         tv_howMuchLikes.setText("좋아요 " + String.valueOf(like) + "개" );
-                                        tv_acc.setText("-" + name + " 음식점의 "+ menu + "와(과) ");
-                                        tv_acc2.setText(acc + "% 일치합니다.");
+                                        tv_acc.setText(name + " 음식점의 "+ menu + "와(과) ");
+                                        String strNumber = String.format("%.0f", Float.parseFloat(acc) * 100);
+                                        tv_acc2.setText(strNumber + "% 일치합니다.");
+
+
+//                                        tv_acc2.setText("99% 일치합니다.");
+
                                         String image_url = img;
                                         Log.d("불러온 img url :", img);
                                         Glide.with(SearchResultActivity.this).load(image_url).into(iv_srchResultImage);
@@ -384,7 +403,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
 //                                            document_id = documentReference.getId();
                                     Log.d("찜 목록 추가 성공:", "DocumentSnapshot added with ID: " + documentReference.getId());
-                                    btn_foodsave.setBackgroundResource(R.drawable.heart2);
+                                    btn_foodsave.setBackgroundResource(R.drawable.tagcolor2);
                                     save_cnt++;
 
                                     Log.d("savecnt :", "" + save_cnt);
@@ -420,7 +439,7 @@ public class SearchResultActivity extends AppCompatActivity {
                                                 Log.d("이미 찜하신 목록입니다.", "");
                                             }*/
                                                 Toast.makeText(SearchResultActivity.this, "찜 목록에 추가되었습니다.", Toast.LENGTH_SHORT).show();
-                                                btn_foodsave.setBackgroundResource(R.drawable.heart2);
+                                                btn_foodsave.setBackgroundResource(R.drawable.tagcolor2);
                                                 Log.d("확인", "/");
                                             } else{
 

@@ -4,14 +4,17 @@ public class ReviewVO {
 
     int profileImage;
     String userId;
+    String userName;
     String reviewText;
     String writeDate;
-    int starPoint;
-    int reviewImage;
+    String starPoint;
+    String reviewImage;
 
-    public ReviewVO(int profileImage, String userId, String reviewText, String writeDate, int starPoint, int reviewImage) {
+
+    public ReviewVO(int profileImage, String userId, String userName, String reviewText, String writeDate, String starPoint, String reviewImage) {
         this.profileImage = profileImage;
         this.userId = userId;
+        this.userName = userName;
         this.reviewText = reviewText;
         this.writeDate = writeDate;
         this.starPoint = starPoint;
@@ -34,6 +37,14 @@ public class ReviewVO {
         this.userId = userId;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public String getReviewText() {
         return reviewText;
     }
@@ -50,19 +61,19 @@ public class ReviewVO {
         this.writeDate = writeDate;
     }
 
-    public int getStarPoint() {
+    public String getStarPoint() {
         return starPoint;
     }
 
-    public void setStarPoint(int starPoint) {
+    public void setStarPoint(String starPoint) {
         this.starPoint = starPoint;
     }
 
-    public int getReviewImage() {
+    public String getReviewImage() {
         return reviewImage;
     }
 
-    public void setReviewImage(int reviewImage) {
+    public void setReviewImage(String reviewImage) {
         this.reviewImage = reviewImage;
     }
 }

@@ -57,6 +57,7 @@ public class MyLikeViewActivity extends AppCompatActivity {
     String audio = "";
     String foodsave_id = "";
     String foodsave_name = "";
+    String document_id = "";
     String store_name = "";
     String rating = "";
     int cnt_store = 0;
@@ -105,20 +106,17 @@ public class MyLikeViewActivity extends AppCompatActivity {
 
                                 //이미지액티비티에서 받아온 결과값(음식점이름)에 해당되는 데이터베이스 불러오기
                                 if (email.equals(id)) {
-                                    b = store;
-                                    user_save_list.add(b);
-                                    /*user_save_list.add(store);
-                                    Log.d("아이디 :", id + "/ 찜한 음식점 :" + store);*/
-                                }
-
-                                if(user_save_list != null && !user_save_list.isEmpty()){
-                                    for(int i = 0; i < user_save_list.size(); i++){
-                                        Log.d("user save list", user_save_list.get(i));
-                                    }
+                                    user_save_list.add(store);
+                                    Log.d("user_save_list", store);
                                 }
                                 Log.d("받아오기 실패1", "");
                             }
 
+                            if(user_save_list != null && !user_save_list.isEmpty()){
+                                for(int i = 0; i < user_save_list.size(); i++){
+                                    Log.d("user save list", user_save_list.get(i));
+                                }
+                            }
 
                             if(user_save_list != null && !user_save_list.isEmpty()){
                                 db.collection("store")
@@ -129,6 +127,7 @@ public class MyLikeViewActivity extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                                 if (task.isSuccessful()) {
                                                     for (QueryDocumentSnapshot document : task.getResult()) {
+
 //                                    Log.d("문서리스트 :", document.getId());
                                                         name = document.getString("name");
                                                         menu = document.getString("menu");
@@ -139,19 +138,24 @@ public class MyLikeViewActivity extends AppCompatActivity {
                                                         img = document.getString("img");
                                                         rating = document.getString("rating");
                                                         store_name = document.getId();
+                                                        document_id = document.getId();
+
                                                         //이미지액티비티에서 받아온 결과값(음식점이름)에 해당되는 데이터베이스 불러오기
-                                                        if (user_save_list.get(cnt_store).equals(document.getId())){
-                                                            user_img_list.add(img);
-                                                            user_menu_list.add(menu);
-                                                            user_store_list.add(name);
-                                                            user_rating_list.add(rating);
+
+                                                        for(int i = 0; i < user_save_list.size(); i++){
+                                                            if (user_save_list.get(i).equals(document_id)){
+                                                                user_img_list.add(img);
+                                                                user_menu_list.add(menu);
+                                                                user_store_list.add(name);
+                                                                user_rating_list.add(rating);
+                                                        }
+
 //                                       Glide.with(SearchResultActivity.this).load(image_url).into(iv_srchResultImage);
-                                                            cnt_store++;
+                                                            Log.d("cnt_store", ""+cnt_store);
+
                                                         }
                                                         Log.d("받아오기 실패1", "");
                                                     }
-
-
 
                                                     if(user_img_list != null && !user_img_list.isEmpty()) {
                                                         for (int i = 0; i < user_img_list.size(); i++) {
@@ -169,7 +173,6 @@ public class MyLikeViewActivity extends AppCompatActivity {
                                                         data = new ArrayList<LikeViewVO>();
                                                         iv_like_back.setImageResource(R.drawable.next1);
 
-
                                                         // 데이터 생성 부분. 일단 임시로 아무거나 만듬.
                                                         for (int i=0; i<user_img_list.size(); i++) {
                                                             data.add(new LikeViewVO(user_img_list.get(i),"장소"+i, user_store_list.get(i), user_menu_list.get(i), user_rating_list.get(i), "확인"));
@@ -182,20 +185,10 @@ public class MyLikeViewActivity extends AppCompatActivity {
                                                         iv_like_back.setOnClickListener(new View.OnClickListener() {
                                                             @Override
                                                             public void onClick(View v) {
-                                                                /*Intent back_intent = new Intent(getApplicationContext(), BottomNaviActivity.class);
-                                                                startActivity(back_intent);*/
-
-                                                                FirstFragment fragment1 = new FirstFragment();
-                                                                getSupportFragmentManager().beginTransaction().replace(R.id.b_frame, fragment1).commit();
-
-//                                                                ((BottomNaviActivity)getActivity()).replaceFragment(NewFragment.newInstance());
+                                                                finish();
                                                             }
                                                         });
                                                     }
-
-                            /*String image_url = img;
-        Log.d("불러온 img url :", img);
-        Glide.with(SearchResultActivity.this).load(image_url).into(iv_srchResultImage);*/
                                                 } else {
                                                     Log.w("받아오기실패", "Error getting documents.", task.getException());
                                                 }
@@ -207,29 +200,6 @@ public class MyLikeViewActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
-
-
-
-
-
-
-            /*lv_like = findViewById(R.id.lv_reviewAllList);
-            iv_like_back = findViewById(R.id.iv_like_back);
-            data = new ArrayList<LikeViewVO>();
-
-            iv_like_back.setImageResource(R.drawable.next1);
-
-                                // 데이터 생성 부분. 일단 임시로 아무거나 만듬.
-            for (int i=0; i<user_img_list.size(); i++) {
-                data.add(new LikeViewVO(R.drawable.zambalaya,"장소"+i, user_store_list.get(i), user_menu_list.get(i), user_rating_list.get(i), "확인"));
-            }
-
-            adapter = new MyLikeViewAdapter(getApplicationContext(), R.layout.activity_my_like_view, data);
-            // 어댑터 실행
-            lv_like.setAdapter(adapter);*/
-
     }
 
     public class ImageHelper {

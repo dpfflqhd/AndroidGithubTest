@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -55,7 +56,8 @@ public class MyLikeViewAdapter extends BaseAdapter {
             //holder.tv_resLoc.setText(data.get(position).getResLoc());
             holder.tv_resName.setText(data.get(position).getResName());
             holder.tv_dishName.setText(data.get(position).getDishName());
-            holder.tv_starScore.setText(data.get(position).getStarScore());
+//            holder.tv_starScore.setVa(data.get(position).getStarScore());
+            holder.tv_starScore.setRating(Float.parseFloat(data.get(position).getStarScore()));
 
 
 //            holder.iv_dishImg.setImageResource(data.get(position).getDishImg());
@@ -79,7 +81,8 @@ public class MyLikeViewAdapter extends BaseAdapter {
 
     class ViewHolder {
         ImageView iv_dishImg;
-        TextView tv_resName, tv_dishName, tv_starScore;
+        TextView tv_resName, tv_dishName;
+        RatingBar tv_starScore;
         //TextView tv_resLoc;
 
         public ViewHolder(View itemView) {

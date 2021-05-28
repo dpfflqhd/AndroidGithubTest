@@ -49,7 +49,7 @@
                 android:text="정확도 : 96.5%"
                 android:textColor="#171717"
                 android:textSize="16sp"
-                android:textStyle="bold|italic"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
@@ -269,8 +269,8 @@
 
             <TextView
                 android:id="@+id/tv_howMuchLikes"
-                android:layout_width="0dp"
-                android:layout_height="28dp"
+                android:layout_width="153dp"
+                android:layout_height="29dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="9dp"
                 android:gravity="top"
@@ -279,21 +279,6 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_foodLike" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="115dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="11dp"
-                android:layout_marginEnd="242dp"
-                android:backgroundTint="#FFFFFF"
-                android:text="명이 좋아합니다"
-                android:textColor="#FF323232"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tv_howMuchLikes"
                 app:layout_constraintTop_toBottomOf="@+id/btn_foodLike" />
 
             <TextView
@@ -446,5 +431,15 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/srch_back"
+        android:layout_width="30dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/next1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
