@@ -31,6 +31,16 @@ public class BottomNaviActivity extends AppCompatActivity {
     String age = "";
     String real_id = "";
     String real_name = "";
+    String gender = "";
+    String real_gender = "";
+    String real_age = "";
+
+    String sameStore1 = "";
+    String sameStore2 = "";
+    String sameStore3 = "";
+    String sameStore4 = "";
+    String sameStore5 = "";
+    String sameStore6 = "";
 
     // 이 부분은 재이씨 프래그먼트 전역변수 선언하는 곳입니다.
     ThirdFragment frag3;
@@ -48,11 +58,15 @@ public class BottomNaviActivity extends AppCompatActivity {
         email = get_intent.getStringExtra("id");
         email1 = get_intent.getStringExtra("id");
         email2 = get_intent.getStringExtra("id");
+        sameStore1 = get_intent.getStringExtra("sameStore1");
+        sameStore2 = get_intent.getStringExtra("sameStore2");
+        sameStore3 = get_intent.getStringExtra("sameStore3");
+        sameStore4 = get_intent.getStringExtra("sameStore4");
+        sameStore5 = get_intent.getStringExtra("sameStore5");
+        sameStore6 = get_intent.getStringExtra("sameStore6");
         Log.d("bottom intent id", email);
         Log.d("bottom1 intent id", email1);
         Log.d("bottom2 intent id", email2);
-
-
 
         db.collection("users")
                 .get()
@@ -65,11 +79,17 @@ public class BottomNaviActivity extends AppCompatActivity {
                                 id = document.getString("id");
                                 name = document.getString("name");
                                 age = document.getString("age");
+                                gender = document.getString("gender");
+
+
+
                                 Log.d("bottom get data id", id + name + age);
                                 if(email.equals(id)){
                                     real_id = id;
                                     real_name = name;
-                                    Log.d("real_id, name", real_id + real_name);
+                                    real_age = age;
+                                    real_gender = gender;
+                                    Log.d("real_id, name", real_id + real_name + real_age + real_gender);
                                 }
                             }
 
@@ -105,6 +125,18 @@ public class BottomNaviActivity extends AppCompatActivity {
                                 frag3.setArguments(bundle2);
 
                                 frag5 = new Fragment3Child2();
+                                Bundle bundle3 = new Bundle();
+                                bundle3.putString("age", real_age);
+                                bundle3.putString("gender", real_gender);
+
+                                bundle3.putString("sameStore1", sameStore1);
+                                bundle3.putString("sameStore2", sameStore2);
+                                bundle3.putString("sameStore3", sameStore3);
+
+                                bundle3.putString("sameStore4", sameStore4);
+                                bundle3.putString("sameStore5", sameStore5);
+                                bundle3.putString("sameStore6", sameStore6);
+                                frag5.setArguments(bundle3);
 
                                 // 첫화면은 검색화면으로 합니다.
                                 getSupportFragmentManager().beginTransaction().replace(R.id.b_frame, frag2).commit();
@@ -128,8 +160,6 @@ public class BottomNaviActivity extends AppCompatActivity {
                                         } else if (item.getItemId() == R.id.item_foodMypage) {
                                             exeFrag(frag1);
                                         }
-
-
                                         return true;
                                     }
                                 });
@@ -140,16 +170,6 @@ public class BottomNaviActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
-
-
-
-        //        tran.replace(R.id.fragment_test, fragment).commit();
-
-
-
-
 
     }
 

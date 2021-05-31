@@ -26,23 +26,9 @@ public class MainSwipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_swipe);
 
-
-       /* Bundle arguments = new Bundle();
-        arguments.putString("id", email);
-        Log.d("bundle, 받아온 데이터 : ", email);
-
-        secondFragment.setArguments(arguments);*/
-
-            /*getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.vpPager, secondFragment)
-                    .commit();*/
-
-        Intent read_intent = getIntent();
+        /*Intent read_intent = getIntent();
         email = read_intent.getStringExtra("id");
-        Log.d("result액티비티, 받아온 데이터 : ", email);
-
-
-
+        Log.d("result액티비티, 받아온 데이터 : ", email);*/
 
         ViewPager vpPager = (ViewPager) findViewById(R.id.vpPager);
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
@@ -50,15 +36,8 @@ public class MainSwipeActivity extends AppCompatActivity {
         vpPager.setAdapter(adapterViewPager);
         vpPager.setCurrentItem(1);
 
-
-
         CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(vpPager);
-
-
-//        Home = new SecondFragment();
-//        getSupportFragmentManager().beginTransaction().replace(R.id.vpPager, Home).commit();
-
     }
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {
@@ -68,13 +47,11 @@ public class MainSwipeActivity extends AppCompatActivity {
             super(fragmentManager);
         }
 
-        // Returns total number of pages
         @Override
         public int getCount() {
             return NUM_ITEMS;
         }
 
-        // Returns the fragment to display for that page
         @Override
         public Fragment getItem(int position) {
             Log.d("getItem email", email);
@@ -88,17 +65,11 @@ public class MainSwipeActivity extends AppCompatActivity {
                 default:
                     return null;
             }
-
         }
-
         // Returns the page title for the top indicator
         @Override
         public CharSequence getPageTitle(int position) {
             return "Page " + position;
         }
-
     }
-
-
-
 }

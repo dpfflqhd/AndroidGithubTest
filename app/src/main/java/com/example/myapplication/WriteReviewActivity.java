@@ -195,8 +195,6 @@ public class WriteReviewActivity extends AppCompatActivity {
             }
             Log.d("selectedUri", tempFile.toString());
 
-
-
         }
     }
 

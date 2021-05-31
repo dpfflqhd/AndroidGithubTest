@@ -47,7 +47,6 @@ public class TensorflowTestActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     private Interpreter getTfliteInterpreter(String modelPath) {

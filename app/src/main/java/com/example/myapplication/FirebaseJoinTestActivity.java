@@ -81,7 +81,6 @@ public class FirebaseJoinTestActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
             }
         });
     }

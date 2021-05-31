@@ -55,7 +55,6 @@ public class JoinActivity extends AppCompatActivity {
     ImageView img_id, img_pw, img_name, img_age, img_sex, img_addr;
     Spinner addr_spinner;
     String addr;
-
     EditText edt_join_id, edt_join_pw, edt_join_fn, edt_join_age, edt_join_sex, edt_join_address;
     private DatePickerDialog.OnDateSetListener callbackMethod;
     private Button btn_join_go;
@@ -64,9 +63,7 @@ public class JoinActivity extends AppCompatActivity {
     static final String DB_NAME = "member3.db";
     static final int DB_VERSION = 1;
     SQLiteDatabase database;
-
     private String data1;
-
     ArrayList<String> data;
     ArrayAdapter<String> adapter;
 
@@ -165,19 +162,6 @@ public class JoinActivity extends AppCompatActivity {
         this.InitializeView();
         this.InitializeListener();
 
-        /*edt_age = findViewById(R.id.edt_age);
-
-        edt_age.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                DatePickerFragment newFragment = new DatePickerFragment();   //DatePickerFragment 객체 생성
-                newFragment.show(getSupportFragmentManager(), "datePicker");                //프래그먼트 매니저를 이용하여 프래그먼트 보여주기
-
-
-            }
-        });*/
-
         btn_join_go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,38 +170,7 @@ public class JoinActivity extends AppCompatActivity {
                 String pw = edt_join_pw.getText().toString();
                 String name = edt_join_fn.getText().toString();
                 String age = edt_join_age.getText().toString();
-//                String addr = edt_join_address.getText().toString();
-
-//                data.clear();
-
                 signUp();
-
-                //Cloud Firebase 접근
-                //파이어스토어에 접근하기 위한 객체를 생성한다.
-
-
-               /* //CollectionReference 는 파이어스토어의 컬렉션을 참조하는 객체다.
-                CollectionReference productRef = db.collection("test");
-                //get()을 통해서 해당 컬렉션의 정보를 가져온다.
-                productRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        //작업이 성공적으로 마쳤을때
-                        if (task.isSuccessful()) {
-                            //컬렉션 아래에 있는 모든 정보를 가져온다.
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                //document.getData() or document.getId() 등등 여러 방법으로
-                                //데이터를 가져올 수 있다.
-                                Log.d("데이터베이스 확인 : ", document.getId());
-//                                Log.d("데이터베이스 확인2 : ", document.getData());
-                            }
-                            //그렇지 않을때
-                        } else {
-
-                        }
-                    }
-                });*/
 
                 //파이어베이스에 url 저장
                 // Create a new user with a first and last name
@@ -227,7 +180,6 @@ public class JoinActivity extends AppCompatActivity {
                 user1.put("name", name);
                 user1.put("age", age);
                 user1.put("addr", addr);
-
 
                 // Add a new document with a generated ID
                 db.collection("users")
@@ -244,53 +196,6 @@ public class JoinActivity extends AppCompatActivity {
                                 Log.w("데이터베이스 추가실패:", "Error adding document", e);
                             }
                         });
-
-                //user의 아이디 가져오기
-               /* db.collection("users")
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                        String addr = document.getString("id");
-                                        Log.d("id", id + "/" + addr);
-
-
-                                        if(addr.equals(id)) {
-//                                            Log.d(TAG, document.getId() + " => " + document.getData());
-
-                                            Log.d(TAG, document.getId() + " => " + addr);
-                                        }
-                                    }
-                                } else {
-                                    Log.w(TAG, "Error getting documents.", task.getException());
-                                }
-                            }
-                        });*/
-
-
-                /*//CollectionReference 는 파이어스토어의 컬렉션을 참조하는 객체다.
-                DocumentReference productRef = db.collection("test").document("coco");
-                //get()을 통해서 해당 문서의 정보를 가져온다.
-                productRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        //작업이 성공적으로 마쳤을때
-                        if (task.isSuccessful()) {
-                            //문서의 데이터를 담을 DocumentSnapshot 에 작업의 결과를 담는다.
-                            DocumentSnapshot document1 = (DocumentSnapshot) task.getResult().getData();
-                            DocumentSnapshot userSnapshot=task.getResult().getData();
-                            String addr = document1.getString("addr");
-                            Log.d("파이어베이스 정보 가져오기 : ", ""+addr);
-
-                            //그렇지 않을때
-                        } else {
-
-                        }
-                    }
-                });*/
 
                 CollectionReference productRef = db.collection("test");
                 DocumentReference productRef1 = db.collection("test").document("store");
@@ -309,7 +214,6 @@ public class JoinActivity extends AppCompatActivity {
                     }
                 });
 
-                // Get a subcollection
                 productRef1.collection("coco").get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
@@ -326,8 +230,6 @@ public class JoinActivity extends AppCompatActivity {
                             }
                         });
 
-
-                /*myRef.child("content").child("msg").setValue(data);*/
                 myRef.child("User").setValue(new User(id, pw, name, age, sex, addr));
 
                 Intent login_intent = new Intent(getApplicationContext(), StartActivity.class);
@@ -340,27 +242,19 @@ public class JoinActivity extends AppCompatActivity {
 
         //RealTime Database 부분
         //접근한 경로에 데이터를 저장
-
-
         // 데이터베이스에 변화가 생겼을 때 실시간으로 동작하는 메소드
         myRef.child("User").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // 데이터베이스에 변경된 데이터를 접근
                 // whenever data at this location is updated.
-
-
                 /*String value = dataSnapshot.getValue(String.class);*/
-
                 //저장할 떄 chile()로 특정경로를 접근해서 저장한 경우
                 /*String value = dataSnapshot.child("content").child("msg").getValue(String.class);*/
                 /*String value = dataSnapshot.getValue(String.class)*/
 //                User user = dataSnapshot.getValue(User.class);
 //                Log.d("회원정보 실시간", ""+user);
 //                Toast.makeText(JoinActivity.this, "회원가입에 성공했습니다." ,Toast.LENGTH_SHORT).show();
-
-
-
                 /*Log.d(TAG, "Value is: " + value);*/
             }
 
@@ -377,11 +271,7 @@ public class JoinActivity extends AppCompatActivity {
         edt_join_id = findViewById(R.id.edt_join_id);
         edt_join_pw = findViewById(R.id.edt_join_pw);
         edt_join_age = findViewById(R.id.edt_join_age);
-        /*edt_join_address = findViewById(R.id.edt_address);*/
-
-
         btn_join_go = findViewById(R.id.btn_join_go);
-
         data = new ArrayList<>();
         adapter = new ArrayAdapter<>(getApplication(), android.R.layout.simple_list_item_1, data);
     }
@@ -415,8 +305,6 @@ public class JoinActivity extends AppCompatActivity {
     private void signUp(){
         String id = edt_join_id.getText().toString();
         String password=edt_join_pw.getText().toString();
-//        String passwordCheck=edt_join_fn.getText().toString();
-
 
         if(id.length()>0 && password.length()>0){
             if(password.equals(password)){
@@ -459,14 +347,10 @@ public class JoinActivity extends AppCompatActivity {
                             // If sign in fails, display a message to the user.
                             Log.w("signUp", "signInWithCredential:failure", task.getException());
                         }
-
                         // ...
                     }
                 });
     }
-
-
-
 }
 
 

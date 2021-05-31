@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     SQLiteDatabase database;
     ArrayList<String> data;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +38,6 @@ public class LoginActivity extends AppCompatActivity {
         edt_login_pw = findViewById(R.id.edt_login_pw);
         btn_login = findViewById(R.id.btn_login);
 
-
-
-
-
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,11 +45,6 @@ public class LoginActivity extends AppCompatActivity {
                 select();
             }
         });
-
-
-
-
-
     }
 
     public void select(){
@@ -63,14 +53,6 @@ public class LoginActivity extends AppCompatActivity {
 
         Cursor cursor = database.rawQuery("select id, pw from member3 where id = '"+login_id+"'", null);
 
-        //columns : 검색할 컬럼을 문자열 배열로 정의 ex) new String[]{age, phone}
-        //selection : where 조건 ex) name=?
-        //selectionArgs : where 조건에 들어갈 값을 문자열배열로 정의
-
-//        Cursor cursor = database.query("member3", null, null, null, null, null, null);
-
-//        lv.clearChoices();
-
         //rs.next() --> moveToNext()
         while (cursor.moveToNext()){
             String id = cursor.getString(0);
@@ -78,9 +60,6 @@ public class LoginActivity extends AppCompatActivity {
             /*String first_name = cursor.getString(2);
             String last_name = cursor.getString(3);
             String age = cursor.getString(4);*/
-
-
-
             /*data.add("아이디:"+id+" / 비번 : " +pw+ "/ 성 :" +first_name+"/ 이름:"+ last_name + "/ 나이:"+age);
             Log.d("데이터조회 : ", id + "/" + pw + "/" + first_name + "/" + last_name + "/" + age);*/
 

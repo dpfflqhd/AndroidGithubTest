@@ -43,7 +43,6 @@ public class MyLikeViewActivity extends AppCompatActivity {
     List<String> user_menu_list = new ArrayList<>();
     List<String> user_rating_list = new ArrayList<>();
 
-
     int cnt = 0;
 
     String food = "";
@@ -64,9 +63,6 @@ public class MyLikeViewActivity extends AppCompatActivity {
     String a= "";
     String b= "";
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,18 +71,6 @@ public class MyLikeViewActivity extends AppCompatActivity {
         Intent read_intent = getIntent();
         email = read_intent.getStringExtra("id");
         Log.d("first frag 받아온 데이터 : ", email);
-
-        // 요소 초기화
-
-        /*iv_dishImg 음식점사진
-        tv_resName 음식점 이름
-        tv_dishName 메뉴 이름
-        tv_starScore 별점*/
-
-
-
-
-
 
         //저장한 음식점 받아오기
         db.collection("foodsave")

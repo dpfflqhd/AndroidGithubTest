@@ -25,7 +25,6 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity android:name=".MapDialog"></activity>
-        <activity android:name=".ImageUriTestActivity"></activity>
         <activity android:name=".BottomNaviActivity" />
         <activity android:name=".WriteReviewActivity" />
         <activity android:name=".ReviewActivity" />
@@ -43,7 +42,9 @@
         <activity android:name=".JoinActivity" />
         <activity android:name=".PhotoActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".MainSwipeActivity" />
+        <activity android:name=".MainSwipeActivity" >
+
+        </activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />

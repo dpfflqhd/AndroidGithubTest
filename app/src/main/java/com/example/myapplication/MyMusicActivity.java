@@ -78,7 +78,6 @@ public class MyMusicActivity extends AppCompatActivity {
             }
             if(!test.equals("")){
                 userAudioList.add("/storage/emulated/0/Download/"+ test);
-
             }
         }
 
@@ -93,24 +92,12 @@ public class MyMusicActivity extends AppCompatActivity {
         musicImg.add(R.drawable.coco);
 
 
-
         if(userAudioList != null && !userAudioList.isEmpty()){
             for (int i = 0; i < userAudioList.size(); i++) {
                 data.add(new MyMusicVO(musicImg.get(i), userAudioList.get(i), "AI 음악 "+(i+1)+"번째"));
                 Log.d("userAudioList", "" + userAudioList.get(i) + "/" + i);
             }
         }
-        //toLowerCase : 소문자로 변환
-        // endsWith() : 끝의 문자가 ()안의 문자와 같은지 판별해서 Boolean형으로 리턴한다.
-        // 파일목록중 png, 9.png, gif, jpg 확장자를 가진 파일들 목록만 imgList에 저장된다.
-        // 임의로 데이터셋 생성함. 여기에 DB를 받아오는 코드 필요
-
-        /*for (int a=0; a<5; a++) {
-            data.add(new MyMusicVO(R.drawable.zambalaya, "/storage/emulated/0/Download//test20_19.mp3", "AI 음악 "+a+"번째"));
-            if (a==3) {
-                data.add(new MyMusicVO(R.drawable.salmon, "https://www.youtube.com/watch?v=HHQXdILvsPE", "AI 음악 "+a+"번째"));
-            }
-        }*/
 
         adapter = new MyMusicAdapter(getApplicationContext(), R.layout.adapter_my_music, data);
 

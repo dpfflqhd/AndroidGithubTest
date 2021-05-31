@@ -23,7 +23,6 @@ public class MapDialog extends Dialog {
     private EditText edt_map;
     private TextView map_text;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

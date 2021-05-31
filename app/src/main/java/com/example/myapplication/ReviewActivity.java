@@ -48,7 +48,6 @@ public class ReviewActivity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,9 +133,6 @@ public class ReviewActivity extends AppCompatActivity {
                                     }
                                 });
                             }
-
-
-
                         } else {
                             Log.w("받아오기실패", "Error getting documents.", task.getException());
                         }

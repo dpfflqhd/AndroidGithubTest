@@ -210,11 +210,12 @@
                             android:id="@+id/imageView15"
                             android:layout_width="20dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="184dp"
+                            android:layout_marginStart="275dp"
+                            android:layout_marginTop="155dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/tag"
-                            app:layout_constraintStart_toEndOf="@+id/tv_top_name1"
-                            app:layout_constraintTop_toBottomOf="@+id/img_top1" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/textView14"

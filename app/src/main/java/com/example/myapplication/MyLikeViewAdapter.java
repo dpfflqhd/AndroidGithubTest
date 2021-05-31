@@ -53,14 +53,9 @@ public class MyLikeViewAdapter extends BaseAdapter {
             convertView = inflater.inflate(layout, null);
             holder = new MyLikeViewAdapter.ViewHolder(convertView);
 
-            //holder.tv_resLoc.setText(data.get(position).getResLoc());
             holder.tv_resName.setText(data.get(position).getResName());
             holder.tv_dishName.setText(data.get(position).getDishName());
-//            holder.tv_starScore.setVa(data.get(position).getStarScore());
             holder.tv_starScore.setRating(Float.parseFloat(data.get(position).getStarScore()));
-
-
-//            holder.iv_dishImg.setImageResource(data.get(position).getDishImg());
 
             //Rounded-Circle
             RoundedCorners corners = new RoundedCorners(14);
@@ -71,10 +66,6 @@ public class MyLikeViewAdapter extends BaseAdapter {
 
             Glide.with(convertView).load(data.get(position).getDishImg()).apply(options).into(holder.iv_dishImg);
 
-            /*String image_url = img;
-        Log.d("불러온 img url :", img);
-        Glide.with(SearchResultActivity.this).load(image_url).into(iv_srchResultImage);*/
-
         }
         return convertView;
     }
@@ -83,11 +74,9 @@ public class MyLikeViewAdapter extends BaseAdapter {
         ImageView iv_dishImg;
         TextView tv_resName, tv_dishName;
         RatingBar tv_starScore;
-        //TextView tv_resLoc;
 
         public ViewHolder(View itemView) {
             iv_dishImg = itemView.findViewById(R.id.iv_dishImg);
-            //tv_resLoc = itemView.findViewById(R.id.tv_resLoc);
             tv_resName = itemView.findViewById(R.id.tv_resName);
             tv_dishName = itemView.findViewById(R.id.tv_dishName);
             tv_starScore = itemView.findViewById(R.id.tv_starScore);

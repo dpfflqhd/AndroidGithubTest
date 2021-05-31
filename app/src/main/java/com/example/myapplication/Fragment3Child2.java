@@ -4,14 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Point;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,11 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ViewFlipper;
-
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.model.GlideUrl;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,7 +29,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -48,30 +40,51 @@ public class Fragment3Child2 extends Fragment {
     String store_name = "";
     String rating = "";
     String like = "";
+    String store1 = "";
+    String store2 = "";
+    String store3 = "";
+
+    String sameName1 = "";
+    String sameName2 = "";
+    String sameName3 = "";
+
+    String sameMenu1 = "";
+    String sameMenu2 = "";
+    String sameMenu3 = "";
+
+    String sameStore1 = "";
+    String sameStore2 = "";
+    String sameStore3 = "";
+    String sameStore4 = "";
+    String sameStore5 = "";
+    String sameStore6 = "";
+    String document_id = "";
+    String sameImg = "";
+
     ImageView img_top1;
     Context context;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     TextView tv_top_menu1, tv_top_menu2, tv_top_menu3, tv_top_name1, tv_top_name2, tv_top_name3, tv_sea_name1, tv_sea_name2, tv_sea_name3,
-            tv_sea_menu1, tv_sea_menu2, tv_sea_menu3;
+            tv_sea_menu1, tv_sea_menu2, tv_sea_menu3, tv_ai_menu1, tv_ai_menu2, tv_ai_menu3, tv_ai_name1, tv_ai_name2, tv_ai_name3;
 
     List<LikeSortVO> name_list = new ArrayList<>();
-    List<String> menu_list = new ArrayList<>();
-    List<String> img_list = new ArrayList<>();
-    List<String> rating_list = new ArrayList<>();
-    List<String> store_name_list = new ArrayList<>();
-    List<Integer> like_list = new ArrayList<>();
-
-    String[] top3 = new String[3];
-
     int cnt = 1;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_fragment3_child2, container, false);
 
+        Bundle bundle = getArguments(); //번들 안의 텍스트 불러오기
+        sameStore1 = bundle.getString("sameStore1");
+        sameStore2 = bundle.getString("sameStore2");
+        sameStore3 = bundle.getString("sameStore3");
+        sameStore4 = bundle.getString("sameStore4");
+        sameStore5 = bundle.getString("sameStore5");
+        sameStore6 = bundle.getString("sameStore6");
+
+        Log.d("frag3child2 :", sameStore1);
         img_top1 = view.findViewById(R.id.img_top1);
         ImageView img_top2 = view.findViewById(R.id.img_top2);
         ImageView img_top3 = view.findViewById(R.id.img_top3);
@@ -109,17 +122,58 @@ public class Fragment3Child2 extends Fragment {
         tv_sea_name2 = view.findViewById(R.id.tv_sea_name2);
         tv_sea_name3 = view.findViewById(R.id.tv_sea_name3);
 
+        tv_ai_menu1 = view.findViewById(R.id.tv_ai_menu1);
+        tv_ai_menu2 = view.findViewById(R.id.tv_ai_menu2);
+        tv_ai_menu3 = view.findViewById(R.id.tv_ai_menu3);
 
-        img_sea1.setImageResource(R.drawable.yasmaru);
-        img_sea2.setImageResource(R.drawable.red);
-        img_sea3.setImageResource(R.drawable.don);
+        tv_ai_name1 = view.findViewById(R.id.tv_ai_name1);
+        tv_ai_name2 = view.findViewById(R.id.tv_ai_name2);
+        tv_ai_name3 = view.findViewById(R.id.tv_ai_name3);
 
-        tv_sea_menu1.setText("파랑국수");
-        tv_sea_name1.setText("야스마루");
-        tv_sea_menu2.setText("로켓버거");
-        tv_sea_name2.setText("빨간모자 마법사");
-        tv_sea_menu3.setText("돈까스 물회");
-        tv_sea_name3.setText("소영이네");
+
+
+
+        img_ai1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=어부피자";
+
+                if(uri != null){
+
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse(uri));
+                    startActivity(intent);
+                }
+            }
+        });
+
+        img_ai2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=문쏘";
+
+                if(uri != null){
+
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse(uri));
+                    startActivity(intent);
+                }
+            }
+        });
+
+        img_ai3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=제주판타스틱버거";
+
+                if(uri != null){
+
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse(uri));
+                    startActivity(intent);
+                }
+            }
+        });
 
         img_sea1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,15 +217,6 @@ public class Fragment3Child2 extends Fragment {
             }
         });
 
-        /*don red yasmaru
-
-        don : 소영이네 돈까스물회, 돈까스물회
-
-        red : 빨간모자 마법사, 로켓버거
-
-        yasmaru : 야스마루, 파랑국수*/
-
-
         img_magazine1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -214,17 +259,68 @@ public class Fragment3Child2 extends Fragment {
             }
         });
 
+        //ai 추천 음식점 3개
+        db.collection("store")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                sameName1 = document.getString("name");
+                                sameMenu1 = document.getString("menu");
+                                sameImg = document.getString("img");
 
+                                document_id = document.getId();
+                                //성별 추천
+                                if(sameStore1.equals(document_id)){
 
+                                    tv_ai_menu1.setText(sameMenu1);
+                                    tv_ai_name1.setText(sameName1);
+                                    Glide.with(context).load(sameImg).into(img_ai1);
+                                }
 
+                                if(sameStore2.equals(document_id)){
+                                    tv_ai_name2.setText(sameName1);
+                                    tv_ai_menu2.setText(sameMenu1);
+                                    Glide.with(context).load(sameImg).into(img_ai2);
+                                }
+
+                                if(sameStore3.equals(document_id)){
+                                    tv_ai_menu3.setText(sameMenu1);
+                                    tv_ai_name3.setText(sameName1);
+                                    Glide.with(context).load(sameImg).into(img_ai3);
+                                }
+
+                                if(sameStore4.equals(document_id)){
+                                    tv_sea_menu1.setText(sameMenu1);
+                                    tv_sea_name1.setText(sameName1);
+                                    Glide.with(context).load(sameImg).into(img_sea1);
+                                }
+
+                                if(sameStore5.equals(document_id)){
+                                    tv_sea_menu2.setText(sameMenu1);
+                                    tv_sea_name2.setText(sameName1);
+                                    Glide.with(context).load(sameImg).into(img_sea2);
+                                }
+
+                                if(sameStore6.equals(document_id)){
+                                    tv_sea_menu3.setText(sameMenu1);
+                                    tv_sea_name3.setText(sameName1);
+                                    Glide.with(context).load(sameImg).into(img_sea3);
+                                }
+
+                            }
+                        }
+                        else {
+                            Log.w("받아오기실패", "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+
+//        Log.d("ai store", store1 + "/"  + store2 + "/" + store3);
         context = container.getContext();
-
-        /*String image_url = "https://firebasestorage.googleapis.com/v0/b/finfooproject.appspot.com/o/stores%2Foct.JPG?alt=media&token=7011e1a8-ede9-4c40-a2e9-1d4d05838cd7";
-        loadImageTask imageTask = new loadImageTask(image_url);
-        imageTask.execute();*/
-
-
 
         //별점 순으로 정렬 후 ArrayList에 저장
         db.collection("store").orderBy("rating", Query.Direction.DESCENDING).limit(3)
@@ -244,6 +340,7 @@ public class Fragment3Child2 extends Fragment {
                                 store_name = document.getId();
 
 
+
                                 //이미지액티비티에서 받아온 결과값(음식점이름)에 해당되는 데이터베이스 불러오기
                                 name_list.add(new LikeSortVO(name, menu, img, rating, Integer.parseInt(like), store_name));
 
@@ -254,7 +351,6 @@ public class Fragment3Child2 extends Fragment {
                                     Log.d("rating sort", ""+ name_list.get(i).getRating() + "/" + name_list.get(i).getName() + "/" + name_list.get(i).getImg());
                                 }
                             }
-
 
                             if(name_list != null && !name_list.isEmpty()){
                                 String imageStr = name_list.get(0).getImg();
@@ -316,50 +412,16 @@ public class Fragment3Child2 extends Fragment {
                                     }
                                 });
 
-
-
-
-
-
-
-                                /*String imageStr = "https://firebasestorage.googleapis.com/v0/b/finfooproject.appspot.com/o/stores%2Foct.JPG?alt=media&token=7011e1a8-ede9-4c40-a2e9-1d4d05838cd7";
-                                Glide.with(context)
-                                        .load(imageStr)
-                                        .into(img_top1);*/
-
-                                /*String imageStr = name_list.get(0).getImg();
-                                Glide.with(view)
-                                        .load(imageStr)
-                                        .into(img_top1);*/
-
-                                /*Log.d("imagastre", imageStr);*/
-
                             }
                         } else {
                             Log.w("받아오기실패", "Error getting documents.", task.getException());
                         }
                     }
                 });
-//        return inflater.inflate(R.layout.fragment_fragment3_child2, container, false);
+
         return view;
     }
 
-    class Descending implements Comparator<Integer> {
-
-
-        @Override
-        public int compare(Integer o1, Integer o2) {
-            return o2.compareTo(o1);
-        }
-    }
-
-    // 오름차순
-    class Ascending implements Comparator<Integer> {
-        @Override
-        public int compare(Integer o1, Integer o2) {
-            return o1.compareTo(o2);
-        }
-    }
 
     public class loadImageTask extends AsyncTask<Bitmap, Void, Bitmap> {
 
@@ -394,10 +456,5 @@ public class Fragment3Child2 extends Fragment {
             super.onPostExecute(bit);
             img_top1.setImageBitmap(bit);
         }
-
-
     }
-
-
-
 }

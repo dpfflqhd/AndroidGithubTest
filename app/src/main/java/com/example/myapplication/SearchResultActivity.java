@@ -86,6 +86,13 @@ public class SearchResultActivity extends AppCompatActivity {
     String audio = "";
     String foodsave_id = "";
     String foodsave_name = "";
+    String sameStore1 = "";
+    String sameStore2 = "";
+    String sameStore3 = "";
+    String sameStoreData1 = "";
+    String sameStoreData2 = "";
+    String sameStoreData3 = "";
+
     int real_like = 0;
     int cnt = 0;
     int like = 0;
@@ -114,9 +121,14 @@ public class SearchResultActivity extends AppCompatActivity {
         store = read_intent.getStringExtra("data");
         email = read_intent.getStringExtra("email");
         acc = read_intent.getStringExtra("acc");
+        sameStore1 = read_intent.getStringExtra("sameStore1");
+        sameStore2 = read_intent.getStringExtra("sameStore2");
+        sameStore3 = read_intent.getStringExtra("sameStore3");
+
         audio = read_intent.getStringExtra("audio");
         user_name = read_intent.getStringExtra("name");
         Log.d("result액티비티, 받아온 데이터 : ", store + "/" + email + "/" + acc + "/" + user_name);
+//        Log.d("result액티비티, 받아온 데이터 : ", store + "/" + email + "/" + acc + "/" + user_name + "/" + sameStore1 + "/" + sameStore2 + "/" + sameStore3);
         Log.d("searchresult audio", audio);
         url = "/storage/emulated/0/Download/"+ audio +".mp3";
 
@@ -143,10 +155,6 @@ public class SearchResultActivity extends AppCompatActivity {
         });
 
         // 임시 이미지 넣은 코드 나중에 삭제ㄱㄱ
-
-
-        
-
         tv_howMuchLikes = findViewById(R.id.tv_howMuchLikes);
         tv_srchResultFoodName = findViewById(R.id.tv_srchResultFoodName);
         tv_srchResultFoodPrice = findViewById(R.id.tv_srchResultFoodPrice);
@@ -167,6 +175,9 @@ public class SearchResultActivity extends AppCompatActivity {
         tv_srchResultRelatedImage1.setText("비프스테이크 콤피르");
         tv_srchResultRelatedImage2.setText("마약옥수수피자");
         tv_srchResultRelatedImage3.setText("저크치킨");
+
+
+
 
         //정확도 출력
 
@@ -278,6 +289,35 @@ public class SearchResultActivity extends AppCompatActivity {
                                         Log.d("불러온 img url :", img);
                                         Glide.with(SearchResultActivity.this).load(image_url).into(iv_srchResultImage);
                                     }
+
+
+                                    //비슷한 음식점 출력
+                                    if(sameStore1.equals(document.getId())){
+
+                                        tv_srchResultRelatedImage1.setText(name);
+                                        String image_url = img;
+                                        Log.d("same1 img url :", img);
+                                        Glide.with(SearchResultActivity.this).load(image_url).into(iv_srchResultRelatedImage1);
+                                    }
+
+                                    if(sameStore2.equals(document.getId())){
+
+                                        tv_srchResultRelatedImage2.setText(name);
+                                        String image_url = img;
+                                        Log.d("same2 img url :", img);
+                                        Glide.with(SearchResultActivity.this).load(image_url).into(iv_srchResultRelatedImage2);
+
+                                    }
+
+                                    if(sameStore3.equals(document.getId())){
+
+                                        tv_srchResultRelatedImage3.setText(name);
+                                        String image_url = img;
+                                        Log.d("same3 img url :", img);
+                                        Glide.with(SearchResultActivity.this).load(image_url).into(iv_srchResultRelatedImage3);
+
+                                    }
+
                                     Log.d("받아오기 실패1", "");
                                 }
 
@@ -351,36 +391,6 @@ public class SearchResultActivity extends AppCompatActivity {
                                     Log.w("좋아요 실패", "Error updating document", e);
                                 }
                             });
-
-                    //파이어베이스DB에 저장된 내용을 읽어온 후 ArrayList<ChatVO>에 저장
-                    /*myRef.addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                            //데이터가 추가되었을 때 실행되는 메소드
-                            LikeVO vo = dataSnapshot.getValue(LikeVO.class);
-                            data.add(vo);
-                        }
-
-                        @Override
-                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
-                        @Override
-                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                        }
-
-                        @Override
-                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });*/
                 }
             }
         });
@@ -400,12 +410,9 @@ public class SearchResultActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-
-//                                            document_id = documentReference.getId();
                                     Log.d("찜 목록 추가 성공:", "DocumentSnapshot added with ID: " + documentReference.getId());
                                     btn_foodsave.setBackgroundResource(R.drawable.tagcolor2);
                                     save_cnt++;
-
                                     Log.d("savecnt :", "" + save_cnt);
                                 }
                             })
@@ -511,16 +518,9 @@ public class SearchResultActivity extends AppCompatActivity {
 
     class TimerThread extends Thread{
         TextView tv;
-
-        /*public TimerThread(TextView tv){
-            this.tv = tv;
-        }*/
-
-
         @Override
         public void run() {
             try {
-
                 for(int i=10; i>=0; i--){
                     Thread.sleep(1000);
 
@@ -532,9 +532,6 @@ public class SearchResultActivity extends AppCompatActivity {
 
                     myHandler.sendMessage(message);
                 }
-
-
-
                 Handler mHandler = new Handler(Looper.getMainLooper());
                 mHandler.postDelayed(new Runnable() {
                     @Override
@@ -556,7 +553,6 @@ public class SearchResultActivity extends AppCompatActivity {
         private String url;
 
         public loadImageTask(String url) {
-
             this.url = url;
         }
 

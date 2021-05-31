@@ -12,7 +12,7 @@
     <item
         android:id="@+id/item_foodCommunity"
         android:icon="@drawable/idea"
-        android:title="커뮤니티" />
+        android:title="카테고리" />
     <item
         android:id="@+id/item_foodMypage"
         android:icon="@drawable/user"

@@ -103,37 +103,16 @@ public class SecondFragment extends Fragment {
     Intent result_intent;
     String audio = "";
     String name = "";
-
     String[] receive_split;
-//    private DataOutputStream dataOutput;
 
-   /* private static String SERVER_IP = "192.168.128.1";
-    private static String CONNECT_MSG = "connect";
-    private static String STOP_MSG = "stop";
-    private static int BUF_SIZE = 100;
-    String image_url = "";
-    String email = "";*/
-//    Connect connect = new Connect();
+    String age = "";
+    String gender = "";
     int cnt = 0;
-
-
-
-
 
     // newInstance constructor for creating fragment with arguments
     public static SecondFragment newInstance(int page, String title) {
         SecondFragment fragment = new SecondFragment();
-        /*Bundle args = new Bundle();
-        args.putInt("someInt", page);
-        args.putString("someTitle", title);
-        Log.d("secondefrag newIns", title + page);
-        fragment.setArguments(args);*/
-
-
-
         return fragment;
-
-
     }
 
     // Store instance variables based on arguments passed
@@ -162,6 +141,9 @@ public class SecondFragment extends Fragment {
         Bundle bundle = getArguments(); //번들 안의 텍스트 불러오기
         title = bundle.getString("send"); //fragment1의 TextView에 전달 받은 text 띄우기
         name = bundle.getString("name");
+        age = bundle.getString("age");
+        gender = bundle.getString("gender");
+
         Log.d("secondfrag title", title + "/" + name);
 
 
@@ -182,9 +164,7 @@ public class SecondFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // 갤러리에 접근
-
                 getAlbum();
-
 
             }
         });
@@ -249,7 +229,6 @@ public class SecondFragment extends Fragment {
         startActivityForResult(intent, REQUEST_TAKE_ALBUM);
     }
 
-
     //이미지의 경로를 구한 뒤 데이터베이스에 저장한다
     private void dataSend() {
         String path = getImagePathToUri(uri);
@@ -259,7 +238,6 @@ public class SecondFragment extends Fragment {
         StorageReference riversRef = storageRef.child("images/" + file.getLastPathSegment());
         Log.d("riversRef : ", riversRef.getPath());
         UploadTask uploadTask = riversRef.putFile(file);
-
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
@@ -282,7 +260,6 @@ public class SecondFragment extends Fragment {
 
                 image_url = uri.toString();
                 Log.d("받아온 url : ", image_url);
-
 
                 //파이어베이스에 url 저장
                 Map<String, Object> user1 = new HashMap<>();
@@ -323,7 +300,6 @@ public class SecondFragment extends Fragment {
         });
     }
 
-
     //이미지의 경로값을 가져온다~
     public String getImagePathToUri(Uri data) {
 
@@ -347,8 +323,6 @@ public class SecondFragment extends Fragment {
         return imgPath;
     }
 
-
-
     //파이썬 서버와 통신하는 부분 AsyncTask는 비동기 통신을 하는데 사용
     private class Connect extends AsyncTask< String , String,Void > {
 
@@ -368,7 +342,7 @@ public class SecondFragment extends Fragment {
 
             try {
                 //소켓에 서버 IP와 PORT 번호를 담아 통신한다.
-                client = new Socket(SERVER_IP, 8088);
+                client = new Socket(SERVER_IP, 8087);
                 dataOutput = new DataOutputStream(client.getOutputStream());
                 dataInput = new DataInputStream(client.getInputStream());
 
@@ -385,7 +359,7 @@ public class SecondFragment extends Fragment {
                 //그 url을 가지고 이미지 파일을 저장한 다음 음식분류 모델을 돌린다.
                 //분류가 끝나면 해당 음식이름을 안드로이드로 return한다.
                 //안드로이드에서는 그 음식이름을 기반으로 결과페이지에서 음식점 정보를 가져와 뿌려준다.
-                output_message = " a " + email + "/" + document_id;
+                output_message = " a " + email + "/" + document_id + "/" + age + "/" + gender;
                 Log.d("document_id 어디갔냐", document_id);
                 dataOutput.writeUTF(output_message);
 
@@ -473,12 +447,6 @@ public class SecondFragment extends Fragment {
                             Log.d("audi", ""+audi);
                             Log.d("user audi", ""+userAudioList.get(i));
 
-
-
-
-
-
-
                             String audi_user = userAudioList.get(i);
                             audio_replace = audi_user.replace(audi + "_", "").replace(".mp3", "").replace(" ","");
                             Log.d("audio_replace string", ""+audio_replace);
@@ -503,6 +471,10 @@ public class SecondFragment extends Fragment {
 
                     Log.d("receive 확인", receive_split[0]);
                     Log.d("receive 1확인", receive_split[1]);
+                    Log.d("receive_split[2]", receive_split[2]);
+                    Log.d("receive_split[3]", receive_split[3]);
+                    Log.d("receive_split[4]", receive_split[4]);
+
 
                     audio = tes + "_" + String.valueOf(test_int + 1);
                     Log.d("audio", audio);
@@ -510,6 +482,11 @@ public class SecondFragment extends Fragment {
                     result_intent= new Intent(getActivity(), SearchResultActivity.class);
                     result_intent.putExtra("data", receive_split[0]);
                     result_intent.putExtra("acc", receive_split[1]);
+
+                    result_intent.putExtra("sameStore1", receive_split[2]);
+                    result_intent.putExtra("sameStore2", receive_split[3]);
+                    result_intent.putExtra("sameStore3", receive_split[4]);
+
                     result_intent.putExtra("email", email);
                     result_intent.putExtra("audio", audio);
                     result_intent.putExtra("name", name);
@@ -527,18 +504,10 @@ public class SecondFragment extends Fragment {
                         fos.write(buffer, 0, readBytes);
                         Log.d("fos write", fos.toString());
                     }
-
-
-
-
-
                     is.close();
                     fos.close();
 
                     Thread.sleep(10);
-
-
-
 
                 } catch (IOException | InterruptedException e) {
                     e.printStackTrace();
@@ -555,8 +524,12 @@ public class SecondFragment extends Fragment {
             receive_split = params[0].split("/");
             Log.d("receive_split[0]", receive_split[0]);
             Log.d("receive_split[1]", receive_split[1]);
-            Log.d("secondfrag audio", audio);
 
+            /*비슷한 음식점
+            Log.d("receive_split[2]", receive_split[2]);
+            Log.d("receive_split[3]", receive_split[3]);
+            Log.d("receive_split[4]", receive_split[4]);*/
+            Log.d("secondfrag audio", audio);
 
             selectedImage.setImageResource(R.drawable.camera2);
         }

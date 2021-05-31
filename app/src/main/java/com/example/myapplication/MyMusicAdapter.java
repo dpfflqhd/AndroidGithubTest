@@ -70,7 +70,6 @@ public class MyMusicAdapter extends BaseAdapter {
             holder.btn_myMusicStop.setImageResource(R.drawable.stopbtn);
             holder.btn_myMusicPause.setImageResource(R.drawable.pausebtn);
 
-
             //Rounded-Circle
             RoundedCorners corners = new RoundedCorners(14);
             RequestOptions options = RequestOptions.bitmapTransform(corners)

@@ -60,26 +60,16 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
     Button btn_map_search;
     TextView map_text;
 
-    // newInstance constructor for creating fragment with arguments
     public static ThirdFragment newInstance(int page, String title) {
         ThirdFragment fragment = new ThirdFragment();
-        /*Bundle args = new Bundle();
-        args.putInt("someInt", page);
-        args.putString("someTitle", title);
-        fragment.setArguments(args);*/
         return fragment;
     }
 
-    // Store instance variables based on arguments passed
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*page = getArguments().getInt("someInt", 0);
-        title = getArguments().getString("someTitle");*/
-
     }
 
-    // Inflate the view for the fragment based on layout XML
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -92,24 +82,13 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
         btn_gwang = view.findViewById(R.id.btn_gwang);
         btn_jeju = view.findViewById(R.id.btn_jeju);
 
-        /*mMyLocationButtonCheckbox = (CheckBox) findViewById(R.id.mylocationbutton_toggle);
-        mMyLocationLayerCheckbox = (CheckBox) findViewById(R.id.mylocationlayer_toggle);*/
-
-//        title = getArguments().getString("send");
-
         context = container.getContext();
-        //처음 childfragment 지정
-//        getFragmentManager().beginTransaction().add(R.id.child_fragment, new Fragment3Child2()).commit();
-
 
         googlemap = (MapView) view.findViewById(R.id.GoogleMapView1);
         googlemap.getMapAsync(this);
 
-
-
         return view;
     }
-
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -141,15 +120,10 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-//        googleMap.setMyLocationEnabled(true);
-//        googleMap.setMyLocationEnabled(true);
         googleMap.setOnMyLocationButtonClickListener(this);
         googleMap.setOnMyLocationClickListener(this);
 
-//        googleMap.isMyLocationEnabled();
-
         LatLng center = new LatLng(35.893762, 127.890505);
-
 
         LatLng bareut = new LatLng(35.28279225131622, 129.25899915573476);
         LatLng bulgogi = new LatLng(36.77968115750337, 126.46597305576968);
@@ -201,10 +175,6 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
         LatLng yasmaru = new LatLng(35.15621057165188, 129.06431043853925);
         LatLng zerk = new LatLng(37.54919363367814, 126.91750922695252);
         LatLng zuk = new LatLng(36.775023179438875, 126.42633476926262);
-
-
-
-
 
         googleMap.addMarker(new MarkerOptions()
                 .position(bareut)
@@ -357,7 +327,6 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
                 .position(zuk)
                 .title("풍전뚝집"));
 
-
         googleMap.setOnMarkerClickListener(markerClickListener);
         googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
@@ -373,9 +342,7 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
                     @Override
                     public void onClick(View v) {
 
-
                         Toast.makeText(context, marker.getTitle(), Toast.LENGTH_SHORT).show();
-
 
                             String uri = null;
                             if (marker.getTitle().equals("코코스톤")) {
@@ -426,7 +393,6 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
                                 uri = "https://www.google.com/maps/dir/%EC%82%AC%EC%B9%B4%EB%82%98+%EC%8B%9D%EB%8B%B9+%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C+%ED%95%B4%EC%9A%B4%EB%8C%80%EA%B5%AC+%EC%9A%B0%EB%8F%99+%EC%9A%B0%EB%8F%991%EB%A1%9C+34/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90+%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%82%A8%EA%B5%AC+%EC%86%A1%ED%95%98%EB%8F%99+%EC%86%A1%EC%95%94%EB%A1%9C+60+%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0+2%EC%B8%B5/@35.9301739,125.7365762,7z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x35688d0e4c3f633f:0x906f9de509064aea!2m2!1d129.1571983!2d35.1644501!1m5!1m1!1s0x35718b03033bfeef:0x9148e0a92fb527ab!2m2!1d126.8777619!2d35.1104947";
                             }
 
-
                             if (uri != null) {
 
                                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
@@ -437,12 +403,7 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
                             mapDialog.dismiss();
                         }
 
-
                 });
-
-
-//                Toast.makeText(context, marker.getTitle(), Toast.LENGTH_SHORT).show();
-
                 return false;
             }
         });
@@ -466,9 +427,7 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
                         new LatLng(37.99629947912301, 127.54927153036529),
                         new LatLng(38.16900262914078, 127.25595348566473)
                 ));
-        // Store a data object with the polygon, used here to indicate an arbitrary type.
 
-        // Style the polygon.
         polygon1.setTag("서울경기");
         onPolygonClick(polygon1);
         stylePolygon(polygon1);
@@ -676,14 +635,9 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
         });
     }
 
-
     private static final int PATTERN_GAP_LENGTH_PX = 20;
     private static final PatternItem DOT = new Dot();
     private static final PatternItem GAP = new Gap(PATTERN_GAP_LENGTH_PX);
-
-    // Create a stroke pattern of a gap followed by a dot.
-
-
 
     @Override
     public void onPolygonClick(Polygon polygon) {
@@ -693,7 +647,6 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
         color = polygon.getFillColor() ^ 0x00ffffff;
         polygon.setFillColor(color);
 
-//        Toast.makeText(context, "Area type " + polygon.getTag().toString(), Toast.LENGTH_SHORT).show();
         Log.d("폴리곤 클릭", "");
     }
 
@@ -707,13 +660,10 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
     private static final int PATTERN_DASH_LENGTH_PX = 20;
     private static final PatternItem DASH = new Dash(PATTERN_DASH_LENGTH_PX);
 
-    // Create a stroke pattern of a gap followed by a dash.
     private static final List<PatternItem> PATTERN_POLYGON_ALPHA = Arrays.asList(GAP, DASH);
 
-    // Create a stroke pattern of a dot followed by a gap, a dash, and another gap.
     private static final List<PatternItem> PATTERN_POLYGON_BETA =
             Arrays.asList(DOT, GAP, DASH, GAP);
-
 
     private void stylePolygon(Polygon polygon) {
         String type = "";
@@ -792,23 +742,8 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                         Uri.parse(uri));
                 startActivity(intent);
-
-//                https://www.google.com/maps/dir/35.161123,126.836917/37.5487836,127.2872/@36.3496332,125.9409072,8z/data=!3m1!4b1
-                /*String uri ="http://maps.google.com/maps/dir/35.161123,126.836917/37.548783572815914,127.28719999820369";
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse(uri));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addCategory(Intent.CATEGORY_LAUNCHER );
-                intent.setClassName("com.google.android.apps.maps", "com.example.myapplication");
-                startActivity(intent);
-                Toast.makeText(context, marker.getTitle(), Toast.LENGTH_SHORT).show();*/
             }
 
-
-
-            // Return false to indicate that we have not consumed the event and that we wish
-            // for the default behavior to occur (which is for the camera to move such that the
-            // marker is centered and for the marker's info window to open, if it has one).
             return false;
         }
     };
@@ -823,8 +758,6 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
     public boolean onMyLocationButtonClick() {
         Toast.makeText(context, "MyLocation button clicked", Toast.LENGTH_SHORT)
                 .show();
-        // Return false so that we don't consume the event and the default behavior still occurs
-        // (the camera animates to the user's current position).
         return false;
     }
 }
