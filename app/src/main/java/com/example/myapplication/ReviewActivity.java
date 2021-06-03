@@ -83,8 +83,6 @@ public class ReviewActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-
-
                                     real_store = document.getString("store");
                                     real_user_name = document.getString("name");
                                     real_email = document.getString("id");
@@ -92,7 +90,6 @@ public class ReviewActivity extends AppCompatActivity {
                                     img = document.getString("img");
                                     time = document.getString("time");
                                     rating = document.getString("rating");
-
 
                                     cnt++;
                                 if(store.equals(real_store)){
@@ -107,7 +104,7 @@ public class ReviewActivity extends AppCompatActivity {
                             data.clear();
 
                             if(review_data_map != null && !review_data_map.isEmpty()){
-                                for (int a=0; a < cnt; a++) {
+                                for (int a=0; a < cnt-1; a++) {
                                     Log.d("review data size", ""+review_data_map.size());
 
                                     data.add(new ReviewVO(review_data_map.get(a).getProfileImage(), review_data_map.get(a).getUserId(), review_data_map.get(a).getUserName(), review_data_map.get(a).getReviewText(), review_data_map.get(a).getWriteDate(), review_data_map.get(a).starPoint, review_data_map.get(a).getReviewImage()));
@@ -132,6 +129,20 @@ public class ReviewActivity extends AppCompatActivity {
                                         startActivity(write_intent);
                                     }
                                 });
+                            }
+                            else {
+                                btn_writeReview.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent write_intent = new Intent(getApplicationContext(), WriteReviewActivity.class);
+                                        write_intent.putExtra("id", email);
+                                        write_intent.putExtra("store", store);
+                                        write_intent.putExtra("name", user_name);
+                                        Log.d("Review Act put intent", email + "/" + store + "/" + user_name);
+                                        startActivity(write_intent);
+                                    }
+                                });
+
                             }
                         } else {
                             Log.w("받아오기실패", "Error getting documents.", task.getException());

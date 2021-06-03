@@ -45,6 +45,9 @@
         <activity android:name=".MainSwipeActivity" >
 
         </activity>
+        <activity android:name=".AudioTestActivity">
+
+        </activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />

@@ -13,6 +13,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -24,6 +25,8 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -33,6 +36,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -373,16 +377,20 @@ public class SecondFragment extends Fragment {
 
             while (true){
                 try {
-                    byte[] buf = new byte[BUF_SIZE];
-                    Log.d("buf", buf.toString());
-                    int read_Byte  = dataInput.read(buf);
-                    input_message = new String(buf, 0, read_Byte);
 
-                    if (!input_message.equals(STOP_MSG)){
-                        publishProgress(input_message);
-                    } else{
-                        break;
-                    }
+                        byte[] buf = new byte[BUF_SIZE];
+                        Log.d("buf", buf.toString());
+                        int read_Byte = dataInput.read(buf);
+                        input_message = new String(buf, 0, read_Byte);
+
+                        if (!input_message.equals(STOP_MSG)) {
+                            publishProgress(input_message);
+
+
+                        } else {
+                            break;
+                        }
+
 
                     String path = "/storage/emulated/0/Download/";
                     //path에는 "sdcard/ImageList/" 와 같은 값이 들어갑니다.
@@ -531,7 +539,12 @@ public class SecondFragment extends Fragment {
             Log.d("receive_split[4]", receive_split[4]);*/
             Log.d("secondfrag audio", audio);
 
+
+
+
+
             selectedImage.setImageResource(R.drawable.camera2);
         }
     }
+
 }

@@ -192,14 +192,24 @@ public class Fragment3Child2 extends Fragment {
         img_sea2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=빨간모자마법사";
+                /*String uri = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=빨간모자마법사";
 
                 if(uri != null){
 
                     Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                             Uri.parse(uri));
                     startActivity(intent);
-                }
+                }*/
+                Intent intent = new Intent(context, SearchResultActivity.class);
+                intent.putExtra("data", "coco");
+                intent.putExtra("email", "test1@gmail.com");
+                intent.putExtra("acc", "1");
+                intent.putExtra("sameStore1", "sirae");
+                intent.putExtra("sameStore2", "snake");
+                intent.putExtra("sameStore3", "burger");
+                intent.putExtra("audio", "test2_1");
+                intent.putExtra("name", "sandmann");
+                startActivity(intent);
             }
         });
 
@@ -381,6 +391,8 @@ public class Fragment3Child2 extends Fragment {
                                             startActivity(intent);
 
                                         }
+
+
                                     }
                                 });
 

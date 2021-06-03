@@ -3,23 +3,31 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class AudioTestActivity extends AppCompatActivity {
-    public static String url = "/storage/emulated/0/Download/hello.mp3";
+    public static String url = "/storage/emulated/0/Download/warning.wav";
 
     MediaPlayer player;
     int position = 0; // 다시 시작 기능을 위한 현재 재생 위치 확인 변수
     TextView tv_timer;
+    SoundPool soundPool = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,7 +149,7 @@ public class AudioTestActivity extends AppCompatActivity {
             try {
 
                 for(int i=10; i>=0; i--){
-                    Thread.sleep(1000);
+                    Thread.sleep(300);
 
                     Message message = new Message();
 
@@ -169,4 +177,7 @@ public class AudioTestActivity extends AppCompatActivity {
             }
         }
     }
+
+
+
 }

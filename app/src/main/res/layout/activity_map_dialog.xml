@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="250dp"
-    android:layout_height="100dp"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
     android:background="@drawable/round_backgroud_border_black"
     android:orientation="vertical"
     tools:context=".MapDialog">
@@ -11,40 +11,152 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/map_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
             android:gravity="center"
             android:text="판타스틱버거"
             android:textSize="16sp"
             android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:background="#0B0B0B"
+        android:orientation="horizontal">
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_map"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="85dp"
+            tools:src="@tools:sample/avatars" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="85dp"
+                    android:src="@drawable/star2" />
+
+                <TextView
+                    android:id="@+id/tv_map_rating"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="4.0"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_map_like"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="좋아요 47개"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_map_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="주소 : 광주 대남대로 171번길 23"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_map_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="전화번호 : 062-676-0304"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_map_search"
-            android:layout_width="96dp"
+            android:layout_width="100dp"
             android:layout_height="49dp"
-            android:layout_marginLeft="20dp"
+
             android:background="@drawable/round_backgroud_border_black"
             android:text="길찾기"
             android:textColor="#FF9800"
             android:textSize="16sp"
+            android:layout_marginLeft="50dp"
             tools:layout_editor_absoluteX="17dp"
             tools:layout_editor_absoluteY="138dp" />
 
         <Button
             android:id="@+id/btn_map_cancle"
-            android:layout_width="96dp"
+            android:layout_width="100dp"
             android:layout_height="49dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/round_backgroud_border_black"

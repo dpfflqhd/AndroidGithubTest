@@ -92,10 +92,11 @@
                 android:id="@+id/iv_srchResultImage"
                 android:layout_width="345dp"
                 android:layout_height="259dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/salmon"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toStartOf="@+id/btn_after2"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/btn_before2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="?attr/selectableItemBackgroundBorderless" />
@@ -147,29 +148,41 @@
                 app:srcCompat="@drawable/simple_line" />
 
             <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/horizontalScrollView"
+                app:srcCompat="@drawable/simple_line" />
+
+            <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
                 android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResHour"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
                 app:srcCompat="@drawable/simple_line" />
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="414dp"
                 android:layout_height="350dp"
-                android:layout_marginTop="27dp"
                 android:background="#37F47210"
                 android:backgroundTint="#37F47210"
                 android:scrollbars="none"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView17">
+                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResHour">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
@@ -265,6 +278,20 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </HorizontalScrollView>
+
+            <ImageView
+                android:id="@+id/iv_srchResultImage3"
+                android:layout_width="345dp"
+                android:layout_height="259dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/coco1"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView17"
+                app:srcCompat="?attr/selectableItemBackgroundBorderless" />
 
             <Button
                 android:id="@+id/btn_foodsave"
@@ -394,49 +421,298 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_srchResultImage"
                 app:srcCompat="@drawable/star2" />
 
-            <Button
-                android:id="@+id/btn_result_music"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/playbtn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="30dp"
                 android:text="검색하신 이미지로 AI가 음악을 만들어 봤어요!"
                 android:textColor="#434343"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_srchResultResHour" />
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="음악은 마이페이지에서 다시 들을 수 있습니다."
+                android:layout_marginTop="20dp"
+                android:text="위 그림과 틀린 부분을 클릭해보세요!"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_result_music" />
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
             <ImageView
                 android:id="@+id/img_music"
                 android:layout_width="25dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="21dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
                 app:srcCompat="@drawable/eighth_note" />
+
+            <Button
+                android:id="@+id/music_1"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toTopOf="@+id/music_6"
+                app:layout_constraintStart_toStartOf="@+id/iv_srchResultImage3"
+                app:layout_constraintTop_toTopOf="@+id/iv_srchResultImage3" />
+
+            <Button
+                android:id="@+id/music_2"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toBottomOf="@+id/music_1"
+                app:layout_constraintStart_toEndOf="@+id/music_1"
+                app:layout_constraintTop_toTopOf="@+id/music_1"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/music_3"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="68dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toBottomOf="@+id/music_1"
+                app:layout_constraintStart_toEndOf="@+id/music_1"
+                app:layout_constraintTop_toTopOf="@+id/music_1"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/music_4"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="136dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toBottomOf="@+id/music_1"
+                app:layout_constraintStart_toEndOf="@+id/music_1"
+                app:layout_constraintTop_toTopOf="@+id/music_1"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/music_5"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="208dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toBottomOf="@+id/music_1"
+                app:layout_constraintStart_toEndOf="@+id/music_1"
+                app:layout_constraintTop_toTopOf="@+id/music_1"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/music_6"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toTopOf="@+id/music_11"
+                app:layout_constraintEnd_toEndOf="@+id/music_1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/music_1"
+                app:layout_constraintTop_toBottomOf="@+id/music_1" />
+
+            <Button
+                android:id="@+id/music_7"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toTopOf="@+id/music_12"
+                app:layout_constraintStart_toEndOf="@+id/music_6"
+                app:layout_constraintTop_toBottomOf="@+id/music_2" />
+
+            <Button
+                android:id="@+id/music_8"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="68dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toTopOf="@+id/music_12"
+                app:layout_constraintStart_toEndOf="@+id/music_6"
+                app:layout_constraintTop_toBottomOf="@+id/music_2"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/music_9"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="136dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toTopOf="@+id/music_12"
+                app:layout_constraintStart_toEndOf="@+id/music_6"
+                app:layout_constraintTop_toBottomOf="@+id/music_2"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/music_11"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintEnd_toEndOf="@+id/music_6"
+                app:layout_constraintEnd_toStartOf="@+id/music_12"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_before2"
+                app:layout_constraintStart_toStartOf="@+id/music_6"
+                app:layout_constraintTop_toBottomOf="@+id/music_6" />
+
+            <Button
+                android:id="@+id/music_16"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintStart_toStartOf="@+id/iv_srchResultImage3"
+                app:layout_constraintTop_toBottomOf="@+id/music_11" />
+
+            <Button
+                android:id="@+id/music_21"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintStart_toStartOf="@+id/iv_srchResultImage3"
+                app:layout_constraintTop_toBottomOf="@+id/music_16" />
+
+            <Button
+                android:id="@+id/music_12"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toBottomOf="@+id/music_11"
+                app:layout_constraintEnd_toStartOf="@+id/music_13"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/music_11"
+                app:layout_constraintTop_toBottomOf="@+id/music_6" />
+
+            <Button
+                android:id="@+id/music_17"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintEnd_toStartOf="@+id/music_18"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/music_16"
+                app:layout_constraintTop_toBottomOf="@+id/music_12" />
+
+            <Button
+                android:id="@+id/music_22"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintEnd_toStartOf="@+id/music_23"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/music_21"
+                app:layout_constraintTop_toBottomOf="@+id/music_17" />
+
+            <Button
+                android:id="@+id/music_23"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintEnd_toStartOf="@+id/music_24"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/music_22"
+                app:layout_constraintTop_toBottomOf="@+id/music_18" />
+
+            <Button
+                android:id="@+id/music_24"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintEnd_toStartOf="@+id/music_25"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/music_23"
+                app:layout_constraintTop_toBottomOf="@+id/music_19" />
+
+            <Button
+                android:id="@+id/music_25"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintEnd_toEndOf="@+id/iv_srchResultImage"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/music_24"
+                app:layout_constraintTop_toBottomOf="@+id/music_20" />
+
+            <Button
+                android:id="@+id/music_18"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintEnd_toStartOf="@+id/music_19"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/music_17"
+                app:layout_constraintTop_toBottomOf="@+id/music_13" />
+
+            <Button
+                android:id="@+id/music_19"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintEnd_toStartOf="@+id/music_20"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/music_18"
+                app:layout_constraintTop_toBottomOf="@+id/music_14" />
+
+            <Button
+                android:id="@+id/music_20"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintEnd_toEndOf="@+id/iv_srchResultImage"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/music_19"
+                app:layout_constraintTop_toBottomOf="@+id/music_15" />
+
+            <Button
+                android:id="@+id/music_13"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toBottomOf="@+id/music_11"
+                app:layout_constraintEnd_toStartOf="@+id/music_14"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/music_12"
+                app:layout_constraintTop_toBottomOf="@+id/music_6"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/music_14"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toBottomOf="@+id/music_11"
+                app:layout_constraintEnd_toStartOf="@+id/music_15"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/music_13"
+                app:layout_constraintTop_toBottomOf="@+id/music_6"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/music_15"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toBottomOf="@+id/music_11"
+                app:layout_constraintEnd_toEndOf="@+id/iv_srchResultImage"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/music_14"
+                app:layout_constraintTop_toBottomOf="@+id/music_6"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/music_10"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
+                android:background="#00DB0E0E"
+                app:layout_constraintBottom_toBottomOf="@+id/music_6"
+                app:layout_constraintEnd_toEndOf="@+id/iv_srchResultImage"
+                app:layout_constraintTop_toBottomOf="@+id/music_1"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

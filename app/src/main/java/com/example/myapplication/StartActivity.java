@@ -218,13 +218,11 @@ public class StartActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(String... strings) {
-
             try {
                 //소켓에 서버 IP와 PORT 번호를 담아 통신한다.
                 client = new Socket(SERVER_IP, 8089);
                 dataOutput = new DataOutputStream(client.getOutputStream());
                 dataInput = new DataInputStream(client.getInputStream());
-
                 output_message = age + "/" + gender + "/" + store_name;
                 dataOutput.writeUTF(output_message);
 
@@ -235,7 +233,6 @@ public class StartActivity extends AppCompatActivity {
                 String str = e.getMessage().toString();
                 Log.w("discnt", str + " 2");
             }
-
             while (true){
                 try {
 

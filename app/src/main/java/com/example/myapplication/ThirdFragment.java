@@ -23,10 +23,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -40,7 +42,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PatternItem;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Arrays;
 import java.util.List;
@@ -58,12 +65,20 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
     private boolean permissionDenied = false;
     private EditText edt_map;
     Button btn_map_search;
-    TextView map_text;
+    TextView map_text, tv_map_rating, tv_map_like, tv_map_addr, tv_map_phone;
+    ImageView iv_map;
 
     public static ThirdFragment newInstance(int page, String title) {
         ThirdFragment fragment = new ThirdFragment();
         return fragment;
     }
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    String rating = "";
+    String like = "";
+    String addr = "";
+    String phone = "";
+    String name = "";
+    String img = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -327,6 +342,11 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
                 .position(zuk)
                 .title("풍전뚝집"));
 
+
+
+
+
+
         googleMap.setOnMarkerClickListener(markerClickListener);
         googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
@@ -334,9 +354,52 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
                 MapDialog mapDialog = new MapDialog(context);
                 mapDialog.show();
 
+
                 btn_map_search = mapDialog.findViewById(R.id.btn_map_search);
                 map_text = mapDialog.findViewById(R.id.map_text);
                 map_text.setText(marker.getTitle());
+                tv_map_rating = mapDialog.findViewById(R.id.tv_map_rating);
+                tv_map_like = mapDialog.findViewById(R.id.tv_map_like);
+                tv_map_addr = mapDialog.findViewById(R.id.tv_map_addr);
+                tv_map_phone = mapDialog.findViewById(R.id.tv_map_phone);
+                iv_map = mapDialog.findViewById(R.id.iv_map);
+
+                String marker_name = marker.getTitle();
+
+                db.collection("store")
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                        rating = document.getString("rating");
+                                        like = document.getString("like");
+                                        addr = document.getString("addr");
+                                        phone = document.getString("phone");
+                                        name = document.getString("name");
+                                        img = document.getString("img");
+
+//                                        Log.d("map data", rating + like + addr + phone);
+                                        Log.d("marker name" , marker_name);
+
+                                        if (marker_name.equals(name)) {
+                                            tv_map_rating.setText(rating);
+                                            tv_map_like.setText("좋아요" + like +"개");
+                                            tv_map_addr.setText("주소 : " + addr);
+                                            tv_map_phone.setText("전화번호 : " + phone);
+                                            Glide.with(context).load(img).into(iv_map);
+                                        }
+                                    }
+                                } else {
+                                    Log.w("받아오기실패", "Error getting documents.", task.getException());
+                                }
+                            }
+                        });
+
+
 
                 btn_map_search.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -507,7 +570,6 @@ public class ThirdFragment extends Fragment implements OnMapReadyCallback, Googl
                         new LatLng(35.16475558992005, 129.12122497158867),
                         new LatLng(35.59616928465684, 129.50664303548396),
                         new LatLng(36.056963107662185, 129.33679778698774),
-
                         new LatLng(36.44153712328924, 129.37599284433304),
                         new LatLng(36.839900347896105, 129.40212288256322),
                         new LatLng(36.98614583448306, 129.04283485689808)

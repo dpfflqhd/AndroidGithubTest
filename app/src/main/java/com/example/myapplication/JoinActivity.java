@@ -65,6 +65,7 @@ public class JoinActivity extends AppCompatActivity {
     SQLiteDatabase database;
     private String data1;
     ArrayList<String> data;
+    String gender;
     ArrayAdapter<String> adapter;
 
     private FirebaseAuth mAuth;
@@ -84,9 +85,10 @@ public class JoinActivity extends AppCompatActivity {
                 .build();
 
 
-        aSpinner = findViewById(R.id.spinner3);
+
         String[] models = getResources().getStringArray(R.array.sizes);
         addr_spinner = findViewById(R.id.spinner);
+        aSpinner = findViewById(R.id.spinner3);
         /*img_id = findViewById(R.id.img_id);
         img_pw = findViewById(R.id.img_pw);
         img_name = findViewById(R.id.img_name);
@@ -180,6 +182,7 @@ public class JoinActivity extends AppCompatActivity {
                 user1.put("name", name);
                 user1.put("age", age);
                 user1.put("addr", addr);
+                user1.put("gender", sex);
 
                 // Add a new document with a generated ID
                 db.collection("users")

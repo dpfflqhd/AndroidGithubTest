@@ -53,10 +53,13 @@ public class SearchResultActivity extends AppCompatActivity {
               iv_srchResultRelatedImage1,
               iv_srchResultRelatedImage2,
               iv_srchResultRelatedImage3,
+              iv_srchResultImage3,
               iv_music,
               srch_back;
 
-    Button btn_foodLike, btn_foodsave, btn_music, btn_review;
+    Button btn_foodLike, btn_foodsave, btn_review;
+    Button btn_music1, btn_music2, btn_music3, btn_music4, btn_music5, btn_music6, btn_music7, btn_music8, btn_music9, btn_music10, btn_music11, btn_music12, btn_music13,
+            btn_music14, btn_music15, btn_music16, btn_music17, btn_music18, btn_music19, btn_music20, btn_music21, btn_music22, btn_music23, btn_music24, btn_music25;
 
     TextView tv_howMuchLikes,
             tv_srchResultFoodName,
@@ -110,6 +113,10 @@ public class SearchResultActivity extends AppCompatActivity {
     ArrayList<LikeVO> data;
     int data1 = 0;
 
+    public static String url1 = "/storage/emulated/0/Download/warning.wav";
+    MediaPlayer player1;
+    int position1 = 0; // 다시 시작 기능을 위한 현재 재생 위치 확인 변수
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,16 +143,71 @@ public class SearchResultActivity extends AppCompatActivity {
         // 요소를 초기화합니다.
         btn_foodLike = findViewById(R.id.btn_foodLike);
         btn_foodsave = findViewById(R.id.btn_foodsave);
-        btn_music = findViewById(R.id.btn_result_music);
         btn_review = findViewById(R.id.btn_review2);
+
 
         iv_srchResultImage = findViewById(R.id.iv_srchResultImage);
         iv_srchResultRelatedImage1 = findViewById(R.id.iv_srchResultRelatedImage1);
         iv_srchResultRelatedImage2 = findViewById(R.id.iv_srchResultRelatedImage2);
         iv_srchResultRelatedImage3 = findViewById(R.id.iv_srchResultRelatedImage3);
+        iv_srchResultImage3 = findViewById(R.id.iv_srchResultImage3);
         iv_music = findViewById(R.id.img_music);
         iv_music.setImageResource(R.drawable.ic_launcher_music_foreground);
         srch_back = findViewById(R.id.srch_back);
+
+
+        btn_music1 = findViewById(R.id.music_1);
+        btn_music2 = findViewById(R.id.music_2);
+        btn_music3 = findViewById(R.id.music_3);
+        btn_music4 = findViewById(R.id.music_4);
+        btn_music5 = findViewById(R.id.music_5);
+        btn_music6 = findViewById(R.id.music_6);
+        btn_music7 = findViewById(R.id.music_7);
+        btn_music8 = findViewById(R.id.music_8);
+        btn_music9 = findViewById(R.id.music_9);
+        btn_music10 = findViewById(R.id.music_10);
+        btn_music11 = findViewById(R.id.music_11);
+        btn_music12 = findViewById(R.id.music_12);
+        btn_music13 = findViewById(R.id.music_13);
+        btn_music14 = findViewById(R.id.music_14);
+        btn_music15 = findViewById(R.id.music_15);
+        btn_music16 = findViewById(R.id.music_16);
+        btn_music17 = findViewById(R.id.music_17);
+        btn_music18 = findViewById(R.id.music_18);
+        btn_music19 = findViewById(R.id.music_19);
+        btn_music20 = findViewById(R.id.music_20);
+        btn_music21 = findViewById(R.id.music_21);
+        btn_music22 = findViewById(R.id.music_22);
+        btn_music23 = findViewById(R.id.music_23);
+        btn_music24 = findViewById(R.id.music_24);
+        btn_music25 = findViewById(R.id.music_25);
+
+//        btn_music1.setEnabled(false);
+        /*btn_music2.setEnabled(false);
+        btn_music3.setEnabled(false);
+        btn_music4.setEnabled(false);
+        btn_music5.setEnabled(false);
+        btn_music6.setEnabled(false);
+        btn_music7.setEnabled(false);
+        btn_music8.setEnabled(false);
+        btn_music9.setEnabled(false);
+        btn_music10.setEnabled(false);
+        btn_music11.setEnabled(false);
+        btn_music12.setEnabled(false);
+        btn_music13.setEnabled(false);
+        btn_music14.setEnabled(false);
+        btn_music15.setEnabled(false);
+        btn_music16.setEnabled(false);
+        btn_music17.setEnabled(false);
+        btn_music18.setEnabled(false);
+        btn_music19.setEnabled(false);
+        btn_music20.setEnabled(false);
+        btn_music21.setEnabled(false);
+        btn_music22.setEnabled(false);
+        btn_music23.setEnabled(false);
+        btn_music24.setEnabled(false);
+        btn_music25.setEnabled(false);*/
+
 
         srch_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,7 +240,6 @@ public class SearchResultActivity extends AppCompatActivity {
 
 
 
-
         //정확도 출력
 
         btn_review.setOnClickListener(new View.OnClickListener() {
@@ -193,7 +254,7 @@ public class SearchResultActivity extends AppCompatActivity {
             }
         });
 
-        btn_music.setOnClickListener(new View.OnClickListener() {
+        /*btn_music.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -201,7 +262,7 @@ public class SearchResultActivity extends AppCompatActivity {
                 Log.d("playAudio 클릭", "yes");
                 playAudio();
             }
-        });
+        });*/
 
         //이미 찜한거면 색깔칠한 하트 나오게
         Log.d("찜 클릭", "");
@@ -258,6 +319,620 @@ public class SearchResultActivity extends AppCompatActivity {
                                             // Deal with the situation like
                                             like = 0;
                                         }
+                                    }
+
+                                    if(store.equals("sakana")){
+                                        iv_srchResultImage3.setImageResource(R.drawable.sakana1);
+
+                                        btn_music1.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+
+                                            }
+                                        });
+
+                                        btn_music2.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music3.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music4.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music5.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music6.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music7.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music8.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music9.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music10.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music11.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music12.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music13.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "정답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio();
+                                            }
+                                        });
+
+                                        btn_music14.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music15.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music16.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music17.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music18.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music19.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music20.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music21.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music22.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music23.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music24.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music25.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+                                    }
+
+                                    if(store.equals("burger")){
+                                        iv_srchResultImage3.setImageResource(R.drawable.burger1);
+                                        btn_music1.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+
+                                            }
+                                        });
+
+                                        btn_music2.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music3.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music4.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music5.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music6.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music7.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music8.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music9.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music10.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music11.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music12.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music13.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music14.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music15.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music16.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music17.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music18.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music19.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music20.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music21.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "정답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio();
+                                            }
+                                        });
+
+                                        btn_music22.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music23.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music24.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music25.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+                                    }
+
+                                    if(store.equals("coco")){
+                                        iv_srchResultImage3.setImageResource(R.drawable.coco1);
+
+                                        btn_music1.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+
+                                            }
+                                        });
+
+                                        btn_music2.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music3.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music4.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music5.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music6.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music7.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music8.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music9.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music10.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music11.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music12.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music13.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music14.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music15.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music16.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "정답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio();
+                                            }
+                                        });
+
+                                        btn_music17.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music18.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music19.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music20.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music21.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music22.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music23.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music24.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
+
+                                        btn_music25.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(SearchResultActivity.this, "오답입니다!", Toast.LENGTH_SHORT).show();
+                                                playAudio1();
+                                            }
+                                        });
                                     }
 
                                     img = document.getString("img");
@@ -548,7 +1223,7 @@ public class SearchResultActivity extends AppCompatActivity {
         }
     }
 
-    public class loadImageTask extends AsyncTask<Bitmap, Void, Bitmap> {
+    /*public class loadImageTask extends AsyncTask<Bitmap, Void, Bitmap> {
 
         private String url;
 
@@ -580,6 +1255,101 @@ public class SearchResultActivity extends AppCompatActivity {
         protected void onPostExecute(Bitmap bit) {
             super.onPostExecute(bit);
             iv_srchResultImage.setImageBitmap(bit);
+        }
+    }*/
+
+    private void playAudio1() {
+        try {
+            closePlayer1();
+
+            player1 = new MediaPlayer();
+            player1.setDataSource(url1);
+            player1.prepare();
+            player1.start();
+
+            Thread myThread1 = new TimerThread1();
+            myThread1.start(); // start() -> run() 한 번 호출
+
+//            Toast.makeText(this, "재생 시작됨.", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 현재 일시정지가 되었는지 중지가 되었는지 헷갈릴 수 있기 때문에 스위치 변수를 선언해 구분할 필요가 있다. (구현은 안했다.)
+    private void pauseAudio1() {
+        if (player1 != null) {
+            position1 = player1.getCurrentPosition();
+            player1.pause();
+
+//            Toast.makeText(this, "일시정지됨.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void stopAudio1() {
+        if(player1 != null && player1.isPlaying()){
+            player1.stop();
+
+//            Toast.makeText(this, "중지됨.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /* 녹음 시 마이크 리소스 제한. 누군가가 lock 걸어놓으면 다른 앱에서 사용할 수 없음.
+     * 따라서 꼭 리소스를 해제해주어야함. */
+    public void closePlayer1() {
+        if (player1 != null) {
+            player1.release();
+            player1 = null;
+        }
+    }
+
+    Handler myHandler1 = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+
+
+            int number1 = msg.arg2;
+            /* TextView tv = (TextView)msg.obj;*/
+            if(number1 == 0){
+//                Toast.makeText(getApplicationContext(), "시간초과!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+
+    class TimerThread1 extends Thread{
+
+        @Override
+        public void run() {
+            try {
+
+                for(int i=10; i>=0; i--){
+                    Thread.sleep(300);
+
+                    Message message1 = new Message();
+
+                    message1.arg2 = i;
+                    /*message.obj = tv;*/
+
+
+                    myHandler1.sendMessage(message1);
+                }
+
+
+
+                Handler mHandler1 = new Handler(Looper.getMainLooper());
+                mHandler1.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // 사용하고자 하는 코드
+                        stopAudio1();
+//                        Toast.makeText(getApplicationContext(), "중지됨.", Toast.LENGTH_SHORT).show();
+                    }
+                }, 0);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

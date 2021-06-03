@@ -50,7 +50,7 @@
                         android:layout_weight="1"
                         android:backgroundTint="#F47210"
                         android:ems="10"
-                        android:hint="아이디"
+                        android:hint="ID ex)test@gmail.com"
                         android:inputType="textPersonName" />
 
                 </LinearLayout>
@@ -95,7 +95,7 @@
                         android:layout_weight="1"
                         android:backgroundTint="#F47210"
                         android:ems="10"
-                        android:hint="비밀번호"
+                        android:hint="비밀번호(6자 이상)"
                         android:inputType="textPassword" />
                 </LinearLayout>
 

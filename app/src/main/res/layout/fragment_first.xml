@@ -65,7 +65,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="50dp"
-            android:background="#EBEAEA"
+            android:background="#F1F0F0"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

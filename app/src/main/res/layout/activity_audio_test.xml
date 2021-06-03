@@ -10,10 +10,13 @@
         android:id="@+id/play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="3dp"
         android:text="재생"
-        app:layout_constraintBaseline_toBaselineOf="@+id/pause"
+        app:layout_constraintBottom_toTopOf="@+id/btn_hoho"
         app:layout_constraintEnd_toEndOf="@+id/restart"
-        app:layout_constraintStart_toStartOf="@+id/restart" />
+        app:layout_constraintStart_toStartOf="@+id/restart"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/pause"
@@ -53,4 +56,14 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_hoho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:text="효과음"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/play" />
 </androidx.constraintlayout.widget.ConstraintLayout>
